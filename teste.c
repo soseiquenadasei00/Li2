@@ -1,6 +1,14 @@
 #include <stdio.h>
 
 
-// isso é apenas um teste
+/* Esse arquivo foi criado para indicar que são os alunos que estão a fazer o trablho de li2
 
-// segundo teste
+Alunos esses que pertence ao PL1, sendo eles:
+
+Pedro Araujo-A90614
+
+Pedro Saldanha-A90618
+
+Vitor Lelis-A90707
+
+*/ 
