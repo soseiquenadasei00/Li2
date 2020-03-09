@@ -5,10 +5,10 @@
 
 Alunos esses que pertence ao PL1, sendo eles:
 
-Pedro Araujo-A90614
+Pedro Araujo- A90614
 
-Pedro Saldanha-A90618
+Pedro Saldanha- A90618
 
-Vitor Lelis-A90707
+Vitor Lelis- A90707
 
 */ 
