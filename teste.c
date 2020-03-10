@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #include <stdio.h>
 
 
@@ -7,11 +5,10 @@
 
 Alunos esses que pertence ao PL1, sendo eles:
 
-Pedro Araujo- A90614
+Pedro Araujo-A90614
 
-Pedro Saldanha- A90618
+Pedro Saldanha-A90618
 
-Vitor Lelis Noronha Leite- A90707
+Vitor Lelis-A90707
 
-*/ 
->>>>>>> 483b11df50943a432e1ea72302c46cdcda5d26a5
+*/ w
