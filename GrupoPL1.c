@@ -7,7 +7,7 @@
 
 Alunos esses que pertence ao PL1, sendo eles:
 
-Pedro Araujo- A90614
+Pedro Aquino Martins de Araujo- A90614
 
 Pedro Henrique do Vale Saldanha- A90618
 
