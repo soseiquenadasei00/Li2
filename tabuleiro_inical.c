@@ -16,4 +16,5 @@ void tab_inicial(char tabuleiro[8][8])
 
     tabuleiro[7][0] = '1';
     tabuleiro[0][7] = '2';
+    tabuleiro[3][4] = '*';
 }
