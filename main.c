@@ -7,5 +7,5 @@ int main()
 {
     ESTADO *e = inicializar_estado();
     interpretador(e);
-}
-return 0;
+
+return 0;}
