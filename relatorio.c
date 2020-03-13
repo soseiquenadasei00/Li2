@@ -22,3 +22,4 @@ forma simples e clara e então inicializamos o nosso desenvolvimento. Diante dis
 tão compacto e simples como o já estabelecido.Embora,apesar  nos apresentar um código que é simples nos faltava conhecimento mas conseguimos aprender um pouco mais das funções e com os nossos erros em testes.*/
 
 
+ 
