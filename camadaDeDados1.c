@@ -35,6 +35,6 @@ ESTADO *inicializar_estado() {
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
             e->tab[8][8]=VAZIA;
-                    e->tab[4][4]=BRACA;}
+                    e->tab[3][4]=BRACA;}
     return e;
 }

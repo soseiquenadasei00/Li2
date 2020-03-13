@@ -16,13 +16,13 @@ void mostrar_tabuleiro(ESTADO *e) {
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
             if (i==0 && j==7) printf("2");
-            if (i==7 && j==0) printf("1");
+           else if (i==7 && j==0) printf("1");
              else pecas(e->tab[i][j]);
         }putchar('\n');
     }
 }
 
-/*int interpretador(ESTADO *e) {
+int interpretador(ESTADO *e) {
     char linha[Tamanho];
     char col[2], lin[2];
     if (fgets(linha, Tamanho, stdin) == NULL)
@@ -33,4 +33,4 @@ void mostrar_tabuleiro(ESTADO *e) {
         jogar(e, coord);
         mostrar_tabuleiro(e);}
     return 1;
- }*/
+ }
