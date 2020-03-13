@@ -6,6 +6,7 @@
 int main()
 {
     ESTADO *e = inicializar_estado();
-    interpretador(e);
+    mostrar_tabuleiro(e);
+    //interpretador(e);
 
 return 0;}
