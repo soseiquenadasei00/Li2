@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 #include "CamadaDeDados.h"
 #include "Logica.h"
-#define  Tamanho 1024
-#include <string.h>
+#define  TAMANHO 1024
+
 
 //criar o tabuleiro com base nas peças
 void pecas (CASA p ){
@@ -29,7 +30,7 @@ void mostrar_tabuleiro(ESTADO *e) {
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 int interpretador(ESTADO *e){
 
-    char linha[Tamanho];
+    char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
     char jog1[15], jog2[15];
@@ -53,7 +54,7 @@ int interpretador(ESTADO *e){
             e -> jogador_atual = 1;
         }
 
-        fgets(linha,Tamanho,stdin);
+        fgets(linha,TAMANHO,stdin);
 
         if(linha == "quit") break; //  Nao conseguimos estabelecer este caso de paragem.
 
