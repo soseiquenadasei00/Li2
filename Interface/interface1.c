@@ -29,15 +29,13 @@ void mostrar_tabuleiro(ESTADO *e) {
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 int interpretador(ESTADO *e){
 
-
     char linha[Tamanho];
     char col[2],lin[2];
     int num = 0;
     char jog1[15], jog2[15];
 
-    strcpy(jog1, "Jogador 1");
-    strcpy(jog2, "Jogador 2");
-
+    strcpy(jog1, "Jogador (1)");
+    strcpy(jog2, "Jogador (2)");
 
     e->num_jogadas = 1;
 
@@ -48,14 +46,10 @@ int interpretador(ESTADO *e){
     while (num == 0){
 
         if((e -> num_jogadas) % 2 == 0){
-
-            printf("%s;\nDigite sua jogada: ",jog2);
             e -> jogador_atual = 2;
         }
 
         if((e -> num_jogadas) % 2 != 0){
-
-            printf("%s;\nDigite sua jogada: ",jog1);
             e -> jogador_atual = 1;
         }
 
@@ -65,21 +59,19 @@ int interpretador(ESTADO *e){
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
-        /* while(linha == NULL || strlen(linha) < 3 || strlen(linha) > 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2){
+        while(linha == NULL || strlen(linha) < 3 || strlen(linha) > 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2){
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
-
-           FUTURA VALIDACAO DE JOGADAS
         }
-        */
+        
 
-        if (e -> num_jogadas == 64){
+        if (e -> num_jogadas == 64 ){
             num++;
         }
 
-        if (e -> jogador_atual = 1) printf("%s sua jogada foi: %s%s\n\nNúmero de jogadas: %d\n", jog1,col,lin, e->num_jogadas);
+        if (e -> jogador_atual = 1) printf("#%d %s -> %s%s", e->num_jogadas,jog1,col,lin);
 
-        else printf("%s sua jogada foi: %s%s\n\nNúmero de jogadas: %d\n", jog2,col,lin, e->num_jogadas);
+        else printf("#%d %s -> %s%s", e->num_jogadas,jog2,col,lin);
 
 
         e -> num_jogadas++;
