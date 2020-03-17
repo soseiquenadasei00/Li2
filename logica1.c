@@ -1,5 +1,5 @@
-#include "CamadaDeDados.h"
 #include <stdio.h>
+#include "CamadaDeDados.h"
 
 int jogar(ESTADO *e, COORDENADA x) {
     printf("jogar %d %d\n\n", x.letra, x.linha);
