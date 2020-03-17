@@ -34,7 +34,8 @@ ESTADO *inicializar_estado() {
     int i,j;
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
-            e->tab[8][8]=VAZIA;
-                    e->tab[3][4]=BRACA;}
+            e->tab[i][j]=VAZIA;}
+        e->tab[3][4]=BRANCA;
+        e->tab[0][7]=printf("2");
     return e;
 }
