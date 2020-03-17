@@ -11,13 +11,15 @@
 
 void mostrar_tabuleiro(ESTADO *e) {
     int i, j;
+    int c = 8;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
             printf ("%c ",e->tab[i][j]);
         }
-        putchar('\n');
+        printf("  %d\n", c);
+        c--;
     }
-    putchar('\n');
+    printf("\nA B C D E F G H\n");
 }
 
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
@@ -39,7 +41,7 @@ int interpretador(ESTADO *e){
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
 
-        if((e -> num_jogadas) % 2 == 0){
+        if((e ->num_jogadas) % 2 == 0){
             e -> jogador_atual = 2;
         }
 
@@ -63,14 +65,14 @@ int interpretador(ESTADO *e){
             num++;
         }
 
-        if (e -> jogador_atual = 1) printf("#%d %s -> %s%s", e->num_jogadas,jog1,col,lin);
+        if (e -> jogador_atual = 1) printf("#%d %s -> %s%s\n", e->num_jogadas,jog1,col,lin);
 
         else printf("#%d %s -> %s%s", e->num_jogadas,jog2,col,lin);
 
 
-        e -> num_jogadas++;
+        e->num_jogadas++;
 
-        COORDENADA c = {*col -'a',*lin -'1'};
+        COORDENADA c = {*col -'a','8' - *lin};
         jogar(e,c);
         mostrar_tabuleiro(e);
 
