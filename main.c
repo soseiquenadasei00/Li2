@@ -9,5 +9,5 @@ int main()
     mostrar_tabuleiro(e);
     interpretador(e);
 
-return 0;
+    return 0;
 }
