@@ -34,8 +34,14 @@ ESTADO *inicializar_estado() {
     int i,j;
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
+<<<<<<< HEAD:camadaDeDados1.c
             e->tab[i][j]=VAZIA;}
         e->tab[3][4]=BRANCA;
         e->tab[0][7]=printf("2");
+=======
+            e->tab[i][j]='.';
+    } e->tab[3][4]='*';
+    e->tab[0][7]=printf("2");
+>>>>>>> ea600e3f497eb002e72aaab5fb7fc1a3b046d0c5:Camada de dados/camadaDeDados1.c
     return e;
 }
