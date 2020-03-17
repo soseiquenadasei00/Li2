@@ -5,24 +5,17 @@
 #define  TAMANHO 1024
 
 
-//criar o tabuleiro com base nas peças
-void pecas (CASA p ){
-    if (p==BRANCA) printf ("*");
-    if (p==PRETA) printf ("#");
-    if (p==VAZIA) printf (".");
-}
 //Imprime o tabuleiro diante do novo estado estabelecido. Sendo sempre alterado pela função jogar
 /*OBS: A numeracao do tabuleiro está invertida, ou seja, de 1 até 8 de cima para baixo e nao de baixo para cima
-        (Pretendemos futuramente quando possível alterar isto)
-*/
+        (Pretendemos futuramente quando possível alterar isto)*/
+
 void mostrar_tabuleiro(ESTADO *e) {
     int i, j;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
-            if (i==0 && j==7) printf("2");
-           else if (i==7 && j==0) printf("1");
-             else pecas(e->tab[i][j]);
-        }putchar('\n');
+            printf ("%c ",e->tab[i][j]);
+        }
+        putchar('\n');
     }
     putchar('\n');
 }
@@ -43,7 +36,7 @@ int interpretador(ESTADO *e){
     printf("Se quiser sair do jogo digite (quit)\n\n");
 
     //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
-        //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
+    //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
 
         if((e -> num_jogadas) % 2 == 0){
@@ -64,7 +57,7 @@ int interpretador(ESTADO *e){
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
         }
-        
+
 
         if (e -> num_jogadas == 64 ){
             num++;

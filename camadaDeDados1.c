@@ -19,12 +19,9 @@ CASA estadoDaPeca (ESTADO *e ,COORDENADA *x){
     int col1,lin2,p;
     col1= x->letra;
     lin2= x->linha;
-    p=e->tab[col1][lin2];
+    p=e->tab[lin2][col1];
     return p;
 }
-
-
-
 //Estado inicial, mapa inicial (sem incluir jogadas do jogador)
 ESTADO *inicializar_estado() {
     ESTADO *e =malloc(sizeof(ESTADO));
@@ -34,14 +31,15 @@ ESTADO *inicializar_estado() {
     int i,j;
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
-<<<<<<< HEAD:camadaDeDados1.c
             e->tab[i][j]=VAZIA;}
-        e->tab[3][4]=BRANCA;
-        e->tab[0][7]=printf("2");
-=======
-            e->tab[i][j]='.';
-    } e->tab[3][4]='*';
-    e->tab[0][7]=printf("2");
->>>>>>> ea600e3f497eb002e72aaab5fb7fc1a3b046d0c5:Camada de dados/camadaDeDados1.c
+    e->tab[3][4]=BRANCA;
+    e->tab[0][7]=DOIS;
+    e->tab[7][0]=UM;
+
+
     return e;
 }
+//Função que pega a casa
+//CASA get_casa(ESTADO *e, int col, int lin);
+//Função que da um valor a casa
+//void set_casa(ESTADO *e, int col, int lin, CASA valor);

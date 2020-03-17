@@ -1,3 +1,4 @@
+
 #ifndef TRABALHOLI2_LOGICA_H
 #define TRABALHOLI2_LOGICA_H
 int jogar(ESTADO *e, COORDENADA c);
