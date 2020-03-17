@@ -1,6 +1,6 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "CamadaDeDados.h"
-#include <stdio.h>
 //Obtem o numero de jogadas
 int numeroJogadas (ESTADO *e){
 int n;
