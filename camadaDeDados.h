@@ -5,6 +5,8 @@
 //Pq não é possivel alterar 'VAZIA' para '.' direto no typedef?
 typedef enum {UM='1',DOIS='2',VAZIA='.',PRETA='#',BRANCA='*'} CASA;
 
+typedef enum {OK,COORDENADA_INVALIDA,JOGADA_INVALIDA,ERRO_LER_TAB,ERRO_ABRIR_FICHEIRO,} ERROS;
+
 //COORDENADA há dois inteiros sendo eles para identificar as colunas=letras (A-H) e as linhas de (1-8) de baixo para cima.
 typedef struct {
     int letra;

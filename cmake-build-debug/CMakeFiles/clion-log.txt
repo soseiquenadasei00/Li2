@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /home/pedro/Documents/Uminho/Li2/ProjetoLI2 Select CMakeLists.txt file...
+/snap/clion/103/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/pedro/Documents/Uminho/Li2/ProjetoLI2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/pedro/Documents/Uminho/Li2/ProjetoLI2/cmake-build-debug
