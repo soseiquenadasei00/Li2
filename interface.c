@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
-#include "CamadaDeDados.h"
-#include "Logica.h"
+#include "camadaDeDados.h"
+#include "logica.h"
 #define  TAMANHO 1024
 
 
@@ -28,20 +28,15 @@ int interpretador(ESTADO *e){
     char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
-    char jog1[15], jog2[15];
-
-    strcpy(jog1, "Jogador (1)");
-    strcpy(jog2, "Jogador (2)");
 
     e->num_jogadas = 1;
 
-    printf("Se quiser sair do jogo digite (quit)\n\n");
 
     //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
 
-        if((e ->num_jogadas) % 2 == 0){
+        if((e -> num_jogadas) % 2 == 0){
             e -> jogador_atual = 2;
         }
 
@@ -60,17 +55,22 @@ int interpretador(ESTADO *e){
             fgets(linha,TAMANHO,stdin);
         }
 
-
+        /*
         if (e -> num_jogadas == 64 ){
             num++;
         }
-
-        if (e -> jogador_atual = 1) printf("#%d %s -> %s%s\n", e->num_jogadas,jog1,col,lin);
-
-        else printf("#%d %s -> %s%s", e->num_jogadas,jog2,col,lin);
+        */
 
 
-        e->num_jogadas++;
+        if (e -> jogador_atual == 1){
+            printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
+        }
+
+        if (e -> jogador_atual == 2) {
+            printf("#%d Jogador(2) -> %s%s\n", e->num_jogadas, col, lin);
+        }
+
+        e-> num_jogadas++;
 
         COORDENADA c = {*col -'a','8' - *lin};
         jogar(e,c);

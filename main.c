@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include "CamadaDeDados.h"
-#include "Interface.h"
+#include "camadaDeDados.h"
+#include "interface.h"
 
 int main()
 {
     ESTADO *e = inicializar_estado();
-    printf("Este é o tabuleiro inicial:\n\n");
+    printf("Se quiser sair do jogo digite (Q)\n\nEste é o tabuleiro inicial:\n\n");
     mostrar_tabuleiro(e);
     interpretador(e);
 

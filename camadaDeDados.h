@@ -1,6 +1,6 @@
 
-#ifndef TRABALHOLI2_CAMADADEDADOS_H
-#define TRABALHOLI2_CAMADADEDADOS_H
+#ifndef LI2_CAMADADEDADOS_H
+#define LI2_CAMADADEDADOS_H
 
 //Pq não é possivel alterar 'VAZIA' para '.' direto no typedef?
 typedef enum {UM='1',DOIS='2',VAZIA='.',PRETA='#',BRANCA='*'} CASA;
@@ -31,4 +31,4 @@ int JogAtual (ESTADO *e);
 CASA estadoDaPeca (ESTADO *e ,COORDENADA *x);
 ESTADO *inicializar_estado();
 
-#endif //TRABALHOLI2_CAMADADEDADOS_H
+#endif //LI2_CAMADADEDADOS_H
