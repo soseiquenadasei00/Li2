@@ -82,7 +82,6 @@ int interpretador(ESTADO *e){
 
         e-> num_jogadas++;
 
-        //COORDENADA c = {*col -'a','8' - *lin};
         jogar(e,c);
         mostrar_tabuleiro(e);
         e->ultima_jogada.linha = c.linha;
