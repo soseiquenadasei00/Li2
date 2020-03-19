@@ -46,7 +46,8 @@ int interpretador(ESTADO *e){
 
         fgets(linha,TAMANHO,stdin);
 
-        if(linha == "quit") break; //  Nao conseguimos estabelecer este caso de paragem.
+
+        if(!(strncmp(linha,"Quit",4))) break; //  Nao conseguimos estabelecer este caso de paragem.
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
