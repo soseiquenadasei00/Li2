@@ -40,18 +40,18 @@ int interpretador(ESTADO *e){
             e -> jogador_atual = 2;
         }
 
-        if((e -> num_jogadas) % 2 != 0){
+        else{
             e -> jogador_atual = 1;
         }
 
         fgets(linha,TAMANHO,stdin);
 
 
-        if(!(strncmp(linha,"Quit",4))) break; //  Nao conseguimos estabelecer este caso de paragem.
+        if(!(strncmp(linha,"Quit",4))) break;
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
-        while(linha == NULL || strlen(linha) < 3 || strlen(linha) > 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2){
+        while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2){
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
         }
@@ -67,7 +67,7 @@ int interpretador(ESTADO *e){
             printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
         }
 
-        if (e -> jogador_atual == 2) {
+        else {
             printf("#%d Jogador(2) -> %s%s\n", e->num_jogadas, col, lin);
         }
 

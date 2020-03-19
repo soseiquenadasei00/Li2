@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "camadaDeDados.h"
 
 int jogar(ESTADO *e, COORDENADA x) {
@@ -12,4 +13,14 @@ int jogar(ESTADO *e, COORDENADA x) {
     e->tab[x.linha][x.letra] = BRANCA;
 
     return 1;
+}
+
+int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
+{
+    int x, y;
+
+    x = abs(cAntes.linha - cJog.linha);
+    y = abs(cAntes.letra - cJog.letra);
+
+    if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
