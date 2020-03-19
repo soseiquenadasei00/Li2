@@ -51,9 +51,17 @@ int interpretador(ESTADO *e){
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
-        while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2){
+        COORDENADA c = {*col -'a','8' - *lin};
+
+        while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2
+        || (checar_coordenada(e->ultima_jogada, c)) != 1) {
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
+
+            sscanf(linha, "%[a-h]%[1-8]", col, lin);
+
+            c.letra = *col -'a';
+            c.linha = '8'- *lin;
         }
 
         /*
@@ -73,7 +81,7 @@ int interpretador(ESTADO *e){
 
         e-> num_jogadas++;
 
-        COORDENADA c = {*col -'a','8' - *lin};
+        //COORDENADA c = {*col -'a','8' - *lin};
         jogar(e,c);
         mostrar_tabuleiro(e);
         e->ultima_jogada.linha = c.linha;
