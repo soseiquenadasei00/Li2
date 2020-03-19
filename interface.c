@@ -63,14 +63,17 @@ int interpretador(ESTADO *e){
             c.letra = *col -'a';
             c.linha = '8'- *lin;
         }
-
         if(!(strncmp(linha,"Quit",4))) break;
 
-        if (e -> num_jogadas == 64){
-            num++;
+        if (e -> tab[c.linha][c.letra] == UM) {
+            printf("Parabéns Jogador 1!! Você ganhou!!");
+            break;
         }
 
-
+        if (e -> tab[c.linha][c.letra] == DOIS){
+            printf("Parabéns Jogador 2!! Você ganhou!!");
+            break;
+        }
 
         if (e -> jogador_atual == 1){
             printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
