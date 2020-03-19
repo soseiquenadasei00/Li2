@@ -75,6 +75,8 @@ int interpretador(ESTADO *e){
         COORDENADA c = {*col -'a','8' - *lin};
         jogar(e,c);
         mostrar_tabuleiro(e);
+        e->ultima_jogada.linha = c.linha;
+        e->ultima_jogada.letra = c.letra;
 
     }
 
