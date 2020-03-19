@@ -9,9 +9,7 @@ int jogar(ESTADO *e, COORDENADA x) {
     int i = e->ultima_jogada.linha;
     int j = e->ultima_jogada.letra;
     e->tab[i][j] = PRETA;
-
     e->tab[x.linha][x.letra] = BRANCA;
-
     return 1;
 }
 
