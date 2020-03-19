@@ -6,3 +6,8 @@ int jogar(ESTADO *e, COORDENADA x) {
     e->tab[x.linha][x.letra]='*';
     return 1;
 }
+
+/*int pecaPreta (ESTADO *e COORDENADA c){
+    e->C='#';
+    return 1;
+}*/

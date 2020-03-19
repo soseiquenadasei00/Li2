@@ -26,6 +26,7 @@ typedef struct {
     JOGADAS jogadas;
     int num_jogadas;
     int jogador_atual;
+    COORDENADA ultima_jogada;
 } ESTADO;
 //Funções
 int numeroJogadas (ESTADO *e);
