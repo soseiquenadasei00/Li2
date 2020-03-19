@@ -35,7 +35,8 @@ ESTADO *inicializar_estado() {
     e->tab[3][4]=BRANCA;
     e->tab[0][7]=DOIS;
     e->tab[7][0]=UM;
-    e->ultima_jogada[3][4];
+    e->ultima_jogada.letra = 4;
+    e->ultima_jogada.linha = 3;
 
 
     return e;
