@@ -47,7 +47,6 @@ int interpretador(ESTADO *e){
         fgets(linha,TAMANHO,stdin);
 
 
-        if(!(strncmp(linha,"Quit",4))) break;
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
@@ -58,12 +57,15 @@ int interpretador(ESTADO *e){
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
 
+            if(!(strncmp(linha,"Quit",4))) break;
+
             sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
             c.letra = *col -'a';
             c.linha = '8'- *lin;
         }
 
+        if(!(strncmp(linha,"Quit",4))) break;
         /*
         if (e -> num_jogadas == 64 ){
             num++;
