@@ -46,14 +46,13 @@ int interpretador(ESTADO *e){
 
         fgets(linha,TAMANHO,stdin);
 
-
-
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
         COORDENADA c = {*col -'a','8' - *lin};
 
         while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2
-        || (checar_coordenada(e->ultima_jogada, c)) != 1) {
+        || (checar_coordenada(e->ultima_jogada, c)) != 1
+        || e->tab[c.linha][c.letra] == PRETA) {
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
 
@@ -66,11 +65,11 @@ int interpretador(ESTADO *e){
         }
 
         if(!(strncmp(linha,"Quit",4))) break;
-        /*
-        if (e -> num_jogadas == 64 ){
+
+        if (e -> num_jogadas == 64){
             num++;
         }
-        */
+
 
 
         if (e -> jogador_atual == 1){
