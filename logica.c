@@ -16,7 +16,8 @@ int jogar(ESTADO *e, COORDENADA x) {
 
 //int possiveis_jogadas(COORDENADA utljog){
 
-}
+//int validacao_jog (COORDENADA cAntes, COORDENADA cJog)
+
 
 
 

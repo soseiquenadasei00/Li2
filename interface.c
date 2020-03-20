@@ -28,11 +28,9 @@ int interpretador(ESTADO *e){
     char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
-    char parabens1;
-    char parabens2;
 
-    strcpy(parabens1,"Parabéns Jogador 1!! Você venceu!!");
-    strcpy(parabens2,"Parabéns Jogador 2!! Você venceu!!");
+    char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
+    char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
 
     e->num_jogadas = 1;
 
@@ -54,7 +52,7 @@ int interpretador(ESTADO *e){
             else printf("%s", parabens1);
             break;
         }
-         */
+        */
 
         fgets(linha,TAMANHO,stdin);
 
