@@ -44,7 +44,7 @@ int possiveis_jogadas(ESTADO *e)
     return count;
 
 }
-int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
+int casa_viz(COORDENADA cAntes, COORDENADA cJog)
 {
     int x, y;
 
@@ -54,3 +54,4 @@ int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
 
+casa_livre//ver se tem peça branca ou preta

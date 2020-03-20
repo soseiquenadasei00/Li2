@@ -11,9 +11,9 @@
         (Pretendemos futuramente quando possível alterar isto)*/
 
 void savetab(ESTADO *e, char *tab_file){
-    FILE *f = fopen(tab_file, "w");
+    FILE *f= fopen(tab_file, "w");
     mostrar_tabuleiro(e,tab_file);
-    fclose(tab_file);
+    fclose(f);
 }
 void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     int i, j;
@@ -32,7 +32,7 @@ void mostrar_tabuleiro(ESTADO *e, FILE *f) {
 
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 int interpretador(ESTADO *e){
-
+    char file_name[TAMANHO];
     char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
@@ -60,22 +60,19 @@ int interpretador(ESTADO *e){
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
         COORDENADA c = {*col -'a','8' - *lin};
 
-        while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2 || (checar_coordenada(e->ultima_jogada, c)) != 1
-        || e->tab[c.linha][c.letra] == PRETA) {
-
-            printf("Jogada Inválida, tente novamente: \n");
-            fgets(linha,TAMANHO,stdin);
-
-            if(!(strncmp(linha,"Quit",4))) break;
-
-            sscanf(linha, "%[a-h]%[1-8]", col, lin);
-
+        if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             c.letra = *col -'a';
             c.linha = '8'- *lin;
+            if (casa_viz(e->ultima_jogada, c)) && casa_livre(e,c)){
+
+            jogar(e,c);
         }
         if(!(strncmp(linha,"Quit",4))) break;
-
-        if (e -> tab[c.linha][c.letra] == UM) {
+        if(sscanf(linha, "gr %s",file_name) == 1) {
+            savetab(e, file_name);
+        }
+        // dentro do jogar, se o jogo acabou
+        /*if (e -> tab[c.linha][c.letra] == UM) {
             printf("%s",parabens1);
             break;
         }
@@ -88,10 +85,10 @@ int interpretador(ESTADO *e){
         }
         else {
             printf("#%d Jogador(2) -> %s%s\n", e->num_jogadas, col, lin);
-        }
-        e-> num_jogadas++;
-        jogar(e,c);
+        }*/
+
         mostrar_tabuleiro(e,stdout);
+        //passa para dentro do jogar
         e->ultima_jogada.linha = c.linha;
         e->ultima_jogada.letra = c.letra;
     }
