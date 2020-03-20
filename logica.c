@@ -47,11 +47,6 @@ int possiveis_jogadas(ESTADO *e)
 
 }
 
-//int validacao_jog (COORDENADA cAntes, COORDENADA cJog)
-
-
-
-
 int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
 {
     int x, y;

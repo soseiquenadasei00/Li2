@@ -9,17 +9,17 @@
 /*OBS: A numeracao do tabuleiro está invertida, ou seja, de 1 até 8 de cima para baixo e nao de baixo para cima
         (Pretendemos futuramente quando possível alterar isto)*/
 
-void mostrar_tabuleiro(ESTADO *e) {
+void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     int i, j;
     int c = 8;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
-            printf ("%c ",e->tab[i][j]);
+            fprintf (f,"%c ",e->tab[i][j]);
         }
-        printf("  %d\n", c);
+        fprintf(f,"  %d\n", c);
         c--;
     }
-    printf("\nA B C D E F G H\n");
+    fprintf(f,"\nA B C D E F G H\n");
 }
 
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
