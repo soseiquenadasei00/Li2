@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "camadaDeDados.h"
+#include "interface.h"
 
 int jogar(ESTADO *e, COORDENADA x) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
@@ -45,6 +46,11 @@ int possiveis_jogadas(ESTADO *e)
     }
     return count;
 
+}
+
+void savetab(ESTADO *e, FILE *file){
+    mostrar_tabuleiro(e,file);
+    fclose(file);
 }
 
 int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)

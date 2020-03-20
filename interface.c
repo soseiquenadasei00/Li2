@@ -23,11 +23,12 @@ void mostrar_tabuleiro(ESTADO *e, FILE *f) {
 }
 
 // I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
-int interpretador(ESTADO *e){
+int interpretador(ESTADO *e, FILE *file){
 
     char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
+
 
     char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
     char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
@@ -58,6 +59,8 @@ int interpretador(ESTADO *e){
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
         COORDENADA c = {*col -'a','8' - *lin};
+
+        if (sscanf(linha, "gr %s", file))
 
         while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2
         || (checar_coordenada(e->ultima_jogada, c)) != 1
@@ -96,7 +99,7 @@ int interpretador(ESTADO *e){
         e-> num_jogadas++;
 
         jogar(e,c);
-        mostrar_tabuleiro(e);
+        mostrar_tabuleiro(e, stdout);
         e->ultima_jogada.linha = c.linha;
         e->ultima_jogada.letra = c.letra;
 
