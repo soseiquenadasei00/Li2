@@ -58,9 +58,14 @@ int interpretador(ESTADO *e, FILE *file){
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
 
+        if (col == 'g' && lin == 'r'){
+            char tab_file[TAMANHO];
+            FILE *f = fopen(tab_file, "w");
+            savetab(e,f);
+        }
+
         COORDENADA c = {*col -'a','8' - *lin};
 
-        if (sscanf(linha, "gr %s", file))
 
         while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2
         || (checar_coordenada(e->ultima_jogada, c)) != 1
