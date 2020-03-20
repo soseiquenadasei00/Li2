@@ -13,6 +13,13 @@ int jogar(ESTADO *e, COORDENADA x) {
     return 1;
 }
 
+
+//int possiveis_jogadas(COORDENADA utljog){
+
+}
+
+
+
 int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
 {
     int x, y;

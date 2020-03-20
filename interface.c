@@ -28,9 +28,13 @@ int interpretador(ESTADO *e){
     char linha[TAMANHO];
     char col[2],lin[2];
     int num = 0;
+    char parabens1;
+    char parabens2;
+
+    strcpy(parabens1,"Parabéns Jogador 1!! Você venceu!!");
+    strcpy(parabens2,"Parabéns Jogador 2!! Você venceu!!");
 
     e->num_jogadas = 1;
-
 
     //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
@@ -44,6 +48,14 @@ int interpretador(ESTADO *e){
             e -> jogador_atual = 1;
         }
 
+        /*
+        if((possiveis_jogadas (e -> ultima_jogada)) == 0) {
+            if (e->jogador_atual == 1)("%s", parabens2);
+            else printf("%s", parabens1);
+            break;
+        }
+         */
+
         fgets(linha,TAMANHO,stdin);
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
@@ -53,6 +65,7 @@ int interpretador(ESTADO *e){
         while(linha == NULL || strlen(linha) != 3 || sscanf(linha, "%[a-h]%[1-8]", col, lin) != 2
         || (checar_coordenada(e->ultima_jogada, c)) != 1
         || e->tab[c.linha][c.letra] == PRETA) {
+
             printf("Jogada Inválida, tente novamente: \n");
             fgets(linha,TAMANHO,stdin);
 
@@ -66,12 +79,12 @@ int interpretador(ESTADO *e){
         if(!(strncmp(linha,"Quit",4))) break;
 
         if (e -> tab[c.linha][c.letra] == UM) {
-            printf("Parabéns Jogador 1!! Você ganhou!!");
+            printf("%s",parabens1);
             break;
         }
 
         if (e -> tab[c.linha][c.letra] == DOIS){
-            printf("Parabéns Jogador 2!! Você ganhou!!");
+            printf("%s",parabens2);
             break;
         }
 
