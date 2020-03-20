@@ -41,7 +41,4 @@ ESTADO *inicializar_estado() {
 
     return e;
 }
-//Função que pega a casa
-//CASA get_casa(ESTADO *e, int col, int lin);
-//Função que da um valor a casa
-//void set_casa(ESTADO *e, int col, int lin, CASA valor);
+

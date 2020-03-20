@@ -11,21 +11,18 @@ int jogar(ESTADO *e, COORDENADA x) {
     int j = e->ultima_jogada.letra;
     e->tab[i][j] = PRETA;
     e->tab[x.linha][x.letra] = BRANCA;
-    return 1;
-}
+    return 1;}
 
 int max (int x, int y)
 {
     if (x >= y) return x;
     else return y;
 }
-
 int min (int x, int y)
 {
     if (x <= y) return x;
     else return y;
 }
-
 
 int possiveis_jogadas(ESTADO *e)
 {
@@ -47,12 +44,6 @@ int possiveis_jogadas(ESTADO *e)
     return count;
 
 }
-
-void savetab(ESTADO *e, FILE *file){
-    mostrar_tabuleiro(e,file);
-    fclose(file);
-}
-
 int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
 {
     int x, y;
@@ -62,3 +53,4 @@ int checar_coordenada(COORDENADA cAntes, COORDENADA cJog)
 
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
+
