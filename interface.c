@@ -38,6 +38,13 @@ int interpretador(ESTADO *e){
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
 
+        if((possiveis_jogadas (e)) == 0) {
+            if (e->jogador_atual == 1) printf("%s", parabens1);
+            else printf("%s", parabens2);
+            break;
+        }
+
+
         if((e -> num_jogadas) % 2 == 0){
             e -> jogador_atual = 2;
         }
@@ -45,14 +52,6 @@ int interpretador(ESTADO *e){
         else{
             e -> jogador_atual = 1;
         }
-
-        /*
-        if((possiveis_jogadas (e -> ultima_jogada)) == 0) {
-            if (e->jogador_atual == 1)("%s", parabens2);
-            else printf("%s", parabens1);
-            break;
-        }
-        */
 
         fgets(linha,TAMANHO,stdin);
 

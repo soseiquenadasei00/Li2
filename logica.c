@@ -13,8 +13,39 @@ int jogar(ESTADO *e, COORDENADA x) {
     return 1;
 }
 
+int max (int x, int y)
+{
+    if (x >= y) return x;
+    else return y;
+}
 
-//int possiveis_jogadas(COORDENADA utljog){
+int min (int x, int y)
+{
+    if (x <= y) return x;
+    else return y;
+}
+
+
+int possiveis_jogadas(ESTADO *e)
+{
+    int count = 0, i, j;
+
+    i = max((e->ultima_jogada.linha - 1), 0);
+    j = max((e->ultima_jogada.letra - 1), 0);
+
+    while (i <= min((e->ultima_jogada.linha + 1), 7))
+    {
+        while( j <= min((e->ultima_jogada.letra + 1), 7))
+        {
+            if (e->tab[i][j] == VAZIA) count++;
+            j++;
+        }
+        i++;
+        j = max((e->ultima_jogada.letra - 1), 0);
+    }
+    return count;
+
+}
 
 //int validacao_jog (COORDENADA cAntes, COORDENADA cJog)
 
