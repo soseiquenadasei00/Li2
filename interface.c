@@ -36,7 +36,9 @@ void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     if (f==stdout) printf("\nA B C D E F G H\n");
 }
 
-// I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
+/**
+\brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
+*/
 int interpretador(ESTADO *e){
     char file_name[TAMANHO];
     char linha[TAMANHO];
@@ -45,13 +47,19 @@ int interpretador(ESTADO *e){
     char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
     char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
 
+
+    /**
+    \brief Contadores de movimentos:
+           cmov para trocar o jogador atual e movs para todos os movimentos
+    */
     int cmov = 1;
     int movs = 1;
 
     e->num_jogadas = 0;
 
-    //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
-    //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
+    /**
+    \brief Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
+    */
     while (num == 0){
 
         if((possiveis_jogadas (e)) == 0) {
@@ -59,6 +67,10 @@ int interpretador(ESTADO *e){
             else printf("%s", parabens2);
             break;
         }
+
+        /**
+        \brief Condições para trocar o jogador atual
+         */
         if(cmov % 2 == 0){
             e -> jogador_atual = 2;
         }
@@ -66,11 +78,15 @@ int interpretador(ESTADO *e){
             e -> jogador_atual = 1;
         }
 
+        /** Condição para aumentar o número de jogadas */
         if (cmov == 3){
             e->num_jogadas++;
             cmov = 1;
         }
 
+        /**
+        \brief Contato com o utilizador
+        */
         fgets(linha,TAMANHO,stdin);
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
@@ -78,6 +94,9 @@ int interpretador(ESTADO *e){
         c.letra = *col -'a';
         c.linha = '8'- *lin;
 
+        /**
+        \brief Parabeniza o Jogador caso ele consiga chegar na casa 1 ou 2
+         */
         if (e -> tab[c.linha][c.letra] == UM) {
             printf("%s",parabens1);
             break;
@@ -86,6 +105,11 @@ int interpretador(ESTADO *e){
             printf("%s",parabens2);
             break;
         }
+
+
+        /**
+        \brief Validação de jogadas
+        */
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
@@ -100,6 +124,8 @@ int interpretador(ESTADO *e){
                 cmov++;
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
+
+        /** Caso o jogador digite "Quit" o jogo acaba*/
         if(!(strncmp(linha,"Quit",4))) break;
 
         if(sscanf(linha, "gr %s",file_name) == 1) {

@@ -1,7 +1,11 @@
 #include <stdlib.h>
 #include "camadaDeDados.h"
 
-
+/**
+\brief Faz a mudança de estado e realiza a jogada
+ * @param e Estado atual do jogo
+ * @param c A coordenada
+ */
 int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
     e->tab[c.linha][c.letra]='*';
