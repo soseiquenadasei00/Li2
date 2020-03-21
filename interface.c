@@ -63,9 +63,10 @@ int interpretador(ESTADO *e){
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             c.letra = *col -'a';
             c.linha = '8'- *lin;
-            if (casa_viz(e->ultima_jogada, c)) && casa_livre(e,c)){
-
+            if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
+            {
             jogar(e,c);
+        }
         }
         if(!(strncmp(linha,"Quit",4))) break;
         if(sscanf(linha, "gr %s",file_name) == 1) {
@@ -88,9 +89,7 @@ int interpretador(ESTADO *e){
         }*/
 
         mostrar_tabuleiro(e,stdout);
-        //passa para dentro do jogar
-        e->ultima_jogada.linha = c.linha;
-        e->ultima_jogada.letra = c.letra;
+
     }
     return 0;
 }

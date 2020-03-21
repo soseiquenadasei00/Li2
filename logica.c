@@ -3,14 +3,22 @@
 #include "camadaDeDados.h"
 #include "interface.h"
 
-int jogar(ESTADO *e, COORDENADA x) {
+int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
-    e->tab[x.linha][x.letra]='*';
+    char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
+    char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
+
+    e->tab[c.linha][c.letra]='*';
 
     int i = e->ultima_jogada.linha;
     int j = e->ultima_jogada.letra;
     e->tab[i][j] = PRETA;
-    e->tab[x.linha][x.letra] = BRANCA;
+    e->tab[c.linha][c.letra] = BRANCA;
+
+    e->ultima_jogada.linha = c.linha;
+    e->ultima_jogada.letra = c.letra;
+
+
     return 1;}
 
 int max (int x, int y)
@@ -54,4 +62,7 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
 
-casa_livre//ver se tem peça branca ou preta
+int casa_livre (ESTADO *e, COORDENADA c)
+{
+    if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;
+}
