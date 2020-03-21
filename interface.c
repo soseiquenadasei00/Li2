@@ -98,7 +98,17 @@ int interpretador(ESTADO *e){
         if(sscanf(linha, "gr %s",file_name) == 1) {
             savetab(e, file_name);
         }
-        // dentro do jogar, se o jogo acabou
+        if(e->tab[7][0] == BRANCA)
+        {
+            printf("%s", parabens1);
+            break;
+        }
+
+        if(e->tab[0][7] == BRANCA)
+        {
+            printf("%s", parabens2);
+            break;
+        }
 
         mostrar_tabuleiro(e,stdout);
 
