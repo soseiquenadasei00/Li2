@@ -1,26 +1,25 @@
-
 #ifndef LI2_CAMADADEDADOS_H
 #define LI2_CAMADADEDADOS_H
 
-//Pq não é possivel alterar 'VAZIA' para '.' direto no typedef?
+/**
+ * Typedef para valores da CASA, todos são char
+ */
 typedef enum {UM='1',DOIS='2',VAZIA='.',PRETA='#',BRANCA='*'} CASA;
-
-typedef enum {OK,COORDENADA_INVALIDA,JOGADA_INVALIDA,ERRO_LER_TAB,ERRO_ABRIR_FICHEIRO,} ERROS;
-
-//COORDENADA há dois inteiros sendo eles para identificar as colunas=letras (A-H) e as linhas de (1-8) de baixo para cima.
+/**COORDENADA há dois inteiros sendo eles para identificar as colunas=letras (A-H) e as linhas de (1-8).*/
 typedef struct {
     int letra;
     int linha;
 } COORDENADA;
 
-//Typedef no qual busca quais as coordenas que o jogador 1 ou jogador 2
+/**Typedef no qual busca quais as coordenas que o jogador 1 ou jogador 2*/
 typedef struct {
     COORDENADA jogador1;
     COORDENADA jogador2;
 } JOGADA;
 
+/**Typedef para jogadas,sendo limitadas em 32 jogadas total */
 typedef JOGADA JOGADAS[32];
-//Informações do estado tab(tabuleiro), numero de jogadas (começa no 0), jogador atual (começa no jogador 1)
+/**Informações do estado tab(tabuleiro), numero de jogadas (começa no 0), jogador atual (começa no jogador 1)*/
 typedef struct {
     CASA tab[8][8];
     JOGADAS jogadas;
@@ -28,7 +27,7 @@ typedef struct {
     int jogador_atual;
     COORDENADA ultima_jogada;
 } ESTADO;
-//Funções
+/** Funções feita no .c*/
 int numeroJogadas (ESTADO *e);
 int JogAtual (ESTADO *e);
 CASA estadoDaPeca (ESTADO *e ,COORDENADA *x);

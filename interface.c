@@ -4,17 +4,23 @@
 #include "logica.h"
 #include "interface.h"
 #define  TAMANHO 1024
-
-
-//Imprime o tabuleiro diante do novo estado estabelecido. Sendo sempre alterado pela função jogar
-/*OBS: A numeracao do tabuleiro está invertida, ou seja, de 1 até 8 de cima para baixo e nao de baixo para cima
-        (Pretendemos futuramente quando possível alterar isto)*/
-
+/**
+ * \brief
+ * @param e é o estado
+ * @param tab_file nome dado ao ficheiro no qual será gerado
+ * Função que gera um arquivo
+ */
 void savetab(ESTADO *e, char *tab_file){
     FILE *f= fopen(tab_file, "w");
     mostrar_tabuleiro(e,f);
     fclose(f);
 }
+/**
+ * \brief
+ * @param e é o estado
+ * @param tab_file nome dado ao ficheiro que será lido
+ * Função que le o arquivo gerado
+ */
 void lertab(ESTADO *e, char *tab_file){
     FILE *f=fopen(tab_file,"r");
     mostrar_tabuleiro(e,f);
@@ -37,7 +43,6 @@ void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     }
     if (f==stdout) printf("\nA B C D E F G H\n");
 }
-
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
@@ -48,8 +53,6 @@ int interpretador(ESTADO *e){
     int num = 0;
     char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
     char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
-
-
     /**
     \brief Contadores de movimentos:
            cmov para trocar o jogador atual e movs para todos os movimentos
@@ -58,12 +61,10 @@ int interpretador(ESTADO *e){
     int movs = 1;
 
     e->num_jogadas = 0;
-
     /**
     \brief Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
     */
     while (num == 0){
-
         /**
          *\brief Condições para encerrar o jogo quando um jogador for encurralado
          */
@@ -72,7 +73,6 @@ int interpretador(ESTADO *e){
             else printf("%s", parabens2);
             break;
         }
-
         /**
         \brief Condições para trocar o jogador atual
          */
@@ -88,17 +88,14 @@ int interpretador(ESTADO *e){
             e->num_jogadas++;
             cmov = 1;
         }
-
         /**
         \brief Contato com o utilizador
         */
         fgets(linha,TAMANHO,stdin);
-
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
         COORDENADA c = {*col -'a','8' - *lin};
         c.letra = *col -'a';
         c.linha = '8'- *lin;
-
         /**
         \brief Parabeniza o Jogador caso ele consiga chegar na casa 1 ou 2
          */
@@ -110,8 +107,6 @@ int interpretador(ESTADO *e){
             printf("%s",parabens2);
             break;
         }
-
-
         /**
         \brief Validação de jogadas
         */
@@ -133,9 +128,11 @@ int interpretador(ESTADO *e){
         /** Caso o jogador digite "Quit" o jogo acaba*/
         if(!(strncmp(linha,"Quit",4))) break;
 
+        /**Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
         if(sscanf(linha, "gr %s",file_name) == 1) {
             savetab(e, file_name);
         }
+        /**Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==1){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);

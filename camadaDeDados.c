@@ -1,19 +1,26 @@
 #include <stdlib.h>
 #include "camadaDeDados.h"
-//Obtem o numero de jogadas
+/**
+ * Função criada para dar o numero do jogador
+ * @param e -estado
+ * @return retorna quem é o jogador
+ */
 int numeroJogadas (ESTADO *e){
 int n;
 n=e->num_jogadas;
 return n;
 }
-//Obter o jogador atual
+/**
+ * Função no qual devolve quem é o jogador da vez
+ * @param e -estado
+ * @return -retorna o jogador atual
+ */
 int JogAtual (ESTADO *e){
 int j;
 j=e->jogador_atual;
 return j;
 }
-
-//Estado da peca sendo ela (PRETA,BRANCA,VAZIA) em uma coordenada especifica
+/** Da o estado atual da peça sendo ela (BRANCA,PRETA ou VAZIA)*/
 CASA estadoDaPeca (ESTADO *e ,COORDENADA *x){
     int col1,lin2,p;
     col1= x->letra;
@@ -21,7 +28,8 @@ CASA estadoDaPeca (ESTADO *e ,COORDENADA *x){
     p=e->tab[lin2][col1];
     return p;
 }
-//Estado inicial, mapa inicial (sem incluir jogadas do jogador)
+/**Função que inicializa o estado,ou seja, aloca uma memoria e gera o tabuleiro inicial
+ */
 ESTADO *inicializar_estado() {
     ESTADO *e =malloc(sizeof(ESTADO));
     e->jogador_atual = 1;
@@ -36,8 +44,6 @@ ESTADO *inicializar_estado() {
     e->tab[7][0]=UM;
     e->ultima_jogada.letra = 4;
     e->ultima_jogada.linha = 3;
-
-
     return e;
 }
 
