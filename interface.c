@@ -12,12 +12,12 @@
 
 void savetab(ESTADO *e, char *tab_file){
     FILE *f= fopen(tab_file, "w");
-    mostrar_tabuleiro(e,tab_file);
+    mostrar_tabuleiro(e,f);
     fclose(f);
 }
 void lertab(ESTADO *e, char *tab_file){
     FILE *f=fopen(tab_file,"r");
-    mostrar_tabuleiro(e,tab_file);
+    mostrar_tabuleiro(e,f);
     fclose(f);
 }
 
@@ -109,8 +109,6 @@ int interpretador(ESTADO *e){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);
         }
-
-
         if(e->tab[7][0] == BRANCA)
         {
             printf("%s", parabens1);
@@ -122,7 +120,6 @@ int interpretador(ESTADO *e){
             break;
         }
         mostrar_tabuleiro(e,stdout);
-
     }
     return 0;
 }
