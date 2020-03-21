@@ -1,7 +1,6 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "camadaDeDados.h"
-#include "interface.h"
+
 
 int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
