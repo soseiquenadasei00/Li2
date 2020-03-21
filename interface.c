@@ -39,17 +39,25 @@ int interpretador(ESTADO *e){
     char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
     char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
 
-    e->num_jogadas = 1;
+    int cmov = 1;
+    int movs = 1;
+
+    e->num_jogadas = 0;
 
     //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
+        if (cmov > 2){
+            e->num_jogadas++;
+            cmov = 1;
+        }
+
         if((possiveis_jogadas (e)) == 0) {
             if (e->jogador_atual == 1) printf("%s", parabens1);
             else printf("%s", parabens2);
             break;
         }
-        if((e -> num_jogadas) % 2 == 0){
+        if(cmov % 2 == 0){
             e -> jogador_atual = 2;
         }
         else{
@@ -59,22 +67,31 @@ int interpretador(ESTADO *e){
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
         COORDENADA c = {*col -'a','8' - *lin};
+        c.letra = *col -'a';
+        c.linha = '8'- *lin;
 
+        if (e -> tab[c.linha][c.letra] == UM) {
+            printf("%s",parabens1);
+            break;
+        }
+        if (e -> tab[c.linha][c.letra] == DOIS){
+            printf("%s",parabens2);
+            break;
+        }
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
-            c.letra = *col -'a';
-            c.linha = '8'- *lin;
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
-            jogar(e,c);
-        }
+                jogar(e,c);
+                prompt(e,col,lin,movs);
+                movs++;
+                cmov++;
+            }
         }
         if(!(strncmp(linha,"Quit",4))) break;
         if(sscanf(linha, "gr %s",file_name) == 1) {
             savetab(e, file_name);
         }
         // dentro do jogar, se o jogo acabou
-        if(jogar(e,c) == 0) break;
-
         if (e -> jogador_atual == 1){
             printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
         }
