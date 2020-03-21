@@ -73,20 +73,14 @@ int interpretador(ESTADO *e){
             savetab(e, file_name);
         }
         // dentro do jogar, se o jogo acabou
-        /*if (e -> tab[c.linha][c.letra] == UM) {
-            printf("%s",parabens1);
-            break;
-        }
-        if (e -> tab[c.linha][c.letra] == DOIS){
-            printf("%s",parabens2);
-            break;
-        }
+        if(jogar(e,c) == 0) break;
+
         if (e -> jogador_atual == 1){
             printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
         }
         else {
             printf("#%d Jogador(2) -> %s%s\n", e->num_jogadas, col, lin);
-        }*/
+        }
 
         mostrar_tabuleiro(e,stdout);
 

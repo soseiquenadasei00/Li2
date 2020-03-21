@@ -5,6 +5,7 @@
 
 int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
+
     char parabens1[] = "Parabéns Jogador 1!! Você venceu!!" ;
     char parabens2[] = "Parabéns Jogador 2!! Você venceu!!";
 
@@ -18,8 +19,17 @@ int jogar(ESTADO *e, COORDENADA c) {
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 
+    if (e -> tab[7][0] == BRANCA) {
+        printf("%s",parabens1);
+        return 0;
+    }
+    if (e -> tab[0][7] == BRANCA){
+        printf("%s",parabens2);
+        return 0;
+    }
 
-    return 1;}
+    return 1;
+}
 
 int max (int x, int y)
 {
