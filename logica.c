@@ -77,12 +77,6 @@ int casa_livre (ESTADO *e, COORDENADA c)
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;
 }
 
-void prompt(ESTADO *e, char col, char lin, int movs) {
 
 
-    if (e->jogador_atual == 1) {
-        printf("#%d Jogador.%d (%d) -> %s%s\n",movs, e->jogador_atual,e->num_jogadas, col, lin);
-    } else {
-        printf("#%d Jogador.%d (%d) -> %s%s\n",movs, e->jogador_atual,e->num_jogadas, col, lin);
-    }
-}
+

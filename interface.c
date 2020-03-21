@@ -60,9 +60,9 @@ int interpretador(ESTADO *e){
             e -> jogador_atual = 1;
         }
 
-        if (cmov == 2){
+        if (cmov == 3){
             e->num_jogadas++;
-            cmov = 0;
+            cmov = 1;
         }
 
         fgets(linha,TAMANHO,stdin);
@@ -84,7 +84,12 @@ int interpretador(ESTADO *e){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
                 jogar(e,c);
-                prompt(e,col,lin,movs);
+                if (e->jogador_atual == 1) {
+                    printf("#%d Jogador.%d (%d) -> %s%s\n",movs, e->jogador_atual,e->num_jogadas, col, lin);
+                }
+                else {
+                    printf("#%d Jogador.%d (%d) -> %s%s\n",movs, e->jogador_atual,e->num_jogadas, col, lin);
+                }
                 movs++;
                 cmov++;
             }
@@ -94,12 +99,6 @@ int interpretador(ESTADO *e){
             savetab(e, file_name);
         }
         // dentro do jogar, se o jogo acabou
-        if (e -> jogador_atual == 1){
-            printf("#%d Jogador(1) -> %s%s\n", e->num_jogadas,col,lin);
-        }
-        else {
-            printf("#%d Jogador(2) -> %s%s\n", e->num_jogadas, col, lin);
-        }
 
         mostrar_tabuleiro(e,stdout);
 
