@@ -15,6 +15,12 @@ void savetab(ESTADO *e, char *tab_file){
     mostrar_tabuleiro(e,tab_file);
     fclose(f);
 }
+void lertab(ESTADO *e, char *tab_file){
+    FILE *f=fopen(tab_file,"r");
+    mostrar_tabuleiro(e,tab_file);
+    fclose(f);
+}
+
 void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     int i, j;
     int c = 8;
@@ -95,21 +101,26 @@ int interpretador(ESTADO *e){
             }
         }
         if(!(strncmp(linha,"Quit",4))) break;
+
         if(sscanf(linha, "gr %s",file_name) == 1) {
             savetab(e, file_name);
         }
+        if (sscanf(linha,"ler %s",file_name)==1){
+            if(file_name==NULL) printf("Arquivo não existe");
+            else lertab(e,file_name);
+        }
+
+
         if(e->tab[7][0] == BRANCA)
         {
             printf("%s", parabens1);
             break;
         }
-
         if(e->tab[0][7] == BRANCA)
         {
             printf("%s", parabens2);
             break;
         }
-
         mostrar_tabuleiro(e,stdout);
 
     }
