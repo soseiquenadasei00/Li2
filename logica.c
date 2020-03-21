@@ -20,19 +20,26 @@ int jogar(ESTADO *e, COORDENADA c) {
 
     return 1;
 }
-
-
+/**
+  \brief Função auxiliar que compara o maior número de 2 inteiros
+ */
 int max (int x, int y)
 {
     if (x >= y) return x;
     else return y;
 }
+/**
+  \brief Função auxiliar que compara o menor número de 2 inteiros
+ */
 int min (int x, int y)
 {
     if (x <= y) return x;
     else return y;
 }
-
+/**
+ \brief Função que conta quantas possíveis jogadas existem no momento
+ * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
+ */
 int possiveis_jogadas(ESTADO *e)
 {
     int count = 0, i, j;
@@ -53,6 +60,11 @@ int possiveis_jogadas(ESTADO *e)
     return count;
 
 }
+/**
+ \brief Função que garante se duas coordenadas são vizinhas no tabuleiro
+ * @param cAntes última coordenada jogada no tabuleiro
+ * @param cJog coordenada jogada pelo jogador
+ */
 int casa_viz(COORDENADA cAntes, COORDENADA cJog)
 {
     int x, y;
@@ -63,6 +75,11 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
 
+/**
+ \brief Função que confer se a casa específica está livre para jogar
+ * @param e Estado que nos dará o tabuleiro com os estados das suas casas
+ * @param c coordenada da casa que queremos conferir o estado
+ */
 int casa_livre (ESTADO *e, COORDENADA c)
 {
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;

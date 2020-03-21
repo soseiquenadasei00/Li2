@@ -20,7 +20,9 @@ void lertab(ESTADO *e, char *tab_file){
     mostrar_tabuleiro(e,f);
     fclose(f);
 }
-
+/**
+ \brief Função que mostra a tabuleiro no ecrã.
+ */
 void mostrar_tabuleiro(ESTADO *e, FILE *f) {
     int i, j;
     int c = 8;
@@ -62,6 +64,9 @@ int interpretador(ESTADO *e){
     */
     while (num == 0){
 
+        /**
+         *\brief Condições para encerrar o jogo quando um jogador for encurralado
+         */
         if((possiveis_jogadas (e)) == 0) {
             if (e->jogador_atual == 1) printf("%s", parabens1);
             else printf("%s", parabens2);
@@ -135,6 +140,9 @@ int interpretador(ESTADO *e){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);
         }
+        /**
+         \brief Caso a peça branca chegue nas coordenadas da casa 1 ou 2, imprime a mensagem com o vencedor
+         */
         if(e->tab[7][0] == BRANCA)
         {
             printf("%s", parabens1);
