@@ -98,7 +98,7 @@ int interpretador(ESTADO *e){
                 }
                 movs++;
                 cmov++;
-            }
+            } else printf("Jogada invalida,tente novamente!!\n\n");
         }
         if(!(strncmp(linha,"Quit",4))) break;
 
