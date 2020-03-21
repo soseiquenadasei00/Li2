@@ -47,10 +47,6 @@ int interpretador(ESTADO *e){
     //Ciclo que para cada jogada efeituada alterna o jogador, atualiza o número de jogadas, imprime o tabuleiro com a nova coordenada da jogada.
     //O ciclo acaba quando o utilizador escreve "quit" ou quando atinge ao número máx de jogadas (64).
     while (num == 0){
-        if (cmov > 2){
-            e->num_jogadas++;
-            cmov = 1;
-        }
 
         if((possiveis_jogadas (e)) == 0) {
             if (e->jogador_atual == 1) printf("%s", parabens1);
@@ -63,6 +59,12 @@ int interpretador(ESTADO *e){
         else{
             e -> jogador_atual = 1;
         }
+
+        if (cmov == 2){
+            e->num_jogadas++;
+            cmov = 0;
+        }
+
         fgets(linha,TAMANHO,stdin);
 
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
