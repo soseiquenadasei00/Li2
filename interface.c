@@ -96,17 +96,7 @@ int interpretador(ESTADO *e){
         COORDENADA c = {*col -'a','8' - *lin};
         c.letra = *col -'a';
         c.linha = '8'- *lin;
-        /**
-        \brief Parabeniza o Jogador caso ele consiga chegar na casa 1 ou 2
-         */
-        if (e -> tab[c.linha][c.letra] == UM) {
-            printf("%s",parabens1);
-            break;
-        }
-        if (e -> tab[c.linha][c.letra] == DOIS){
-            printf("%s",parabens2);
-            break;
-        }
+
         /**
         \brief Validação de jogadas
         */
