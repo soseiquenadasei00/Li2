@@ -2,7 +2,6 @@
 #include <string.h>
 #include "camadaDeDados.h"
 #include "logica.h"
-#include "interface.h"
 #define  TAMANHO 1024
 /**
  * \brief
@@ -10,16 +9,14 @@
  * @param tab_file nome dado ao ficheiro no qual será gerado
  * Função que gera um arquivo
  */
-void savetab(ESTADO *e, char *tab_file){
-    FILE *f= fopen(tab_file, "w");
+void savetab(ESTADO *e, char *tabuleiro){
+    FILE *f= fopen(tabuleiro, "w");
     int i, j;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++)
             fprintf(f,"%c",e->tab[i][j]);
-    }
-    fprintf(f,"\n");
-    fclose(f);
-}//tabuleiro
+    } fprintf(f,"\n");
+    fclose(f);}
 
 /**
  * \brief
@@ -27,9 +24,9 @@ void savetab(ESTADO *e, char *tab_file){
  * @param tab_file nome dado ao ficheiro que será lido
  * Função que le o arquivo gerado
  */
-void lertab(ESTADO *e, char *tab_file){
-    FILE *f=fopen(tab_file,"r");
-
+void lertab(ESTADO *e, char *tabuleiro){
+    FILE *f=fopen(tabuleiro,"r");
+//    fscanf()
     fclose(f);
 }
 /**
@@ -62,8 +59,7 @@ int interpretador(ESTADO *e){
 
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
-            break;
-        }
+            break;}
 
         if((e->count_jog) % 2 == 0){
             e -> jogador_atual = 2;
@@ -76,16 +72,12 @@ int interpretador(ESTADO *e){
             e->num_jogadas++;
             e->count_jog = 1;
         }
-
         fgets(linha,TAMANHO,stdin);
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
         COORDENADA c = {*col -'a','8' - *lin};
         c.letra = *col -'a';
         c.linha = '8'- *lin;
-
-        /*
-        Validação de jogadas
-        */
+        /*Validação de jogadas*/
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
@@ -96,16 +88,16 @@ int interpretador(ESTADO *e){
         /* Caso o jogador digite "Quit" o jogo acaba*/
         if(!(strncmp(linha,"Quit",4))) break;
 
+
         /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
-        if(sscanf(linha, "gr %s",file_name) == 1) {
-            savetab(e, file_name);
+        if(sscanf(linha, "gr %s",file_name)==1) {
+            savetab(e,file_name);
         }
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==1){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);
         }
-
         if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;
