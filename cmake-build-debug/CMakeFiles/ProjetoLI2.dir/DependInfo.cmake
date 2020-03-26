@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/lelis_vitor/CLionProjects/Li2/camadaDeDados.c" "/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o"
-  "/home/lelis_vitor/CLionProjects/Li2/interface.c" "/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/interface.c.o"
-  "/home/lelis_vitor/CLionProjects/Li2/logica.c" "/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/logica.c.o"
-  "/home/lelis_vitor/CLionProjects/Li2/main.c" "/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/main.c.o"
+  "/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c" "/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o"
+  "/home/pedro/Documents/Uminho/Li2/Li2/interface.c" "/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/interface.c.o"
+  "/home/pedro/Documents/Uminho/Li2/Li2/logica.c" "/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/logica.c.o"
+  "/home/pedro/Documents/Uminho/Li2/Li2/main.c" "/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

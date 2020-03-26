@@ -12,7 +12,12 @@
  */
 void savetab(ESTADO *e, char *tab_file){
     FILE *f= fopen(tab_file, "w");
-    mostrar_tabuleiro(e,f);
+    int i, j;
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 8; j++)
+            fprintf(f,"%c",e->tab[i][j]);
+    }
+    fprintf(f,"\n");
     fclose(f);
 }
 /**
@@ -23,25 +28,23 @@ void savetab(ESTADO *e, char *tab_file){
  */
 void lertab(ESTADO *e, char *tab_file){
     FILE *f=fopen(tab_file,"r");
-    mostrar_tabuleiro(e,f);
+
     fclose(f);
 }
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */
-void mostrar_tabuleiro(ESTADO *e, FILE *f) {
+void mostrar_tabuleiro(ESTADO *e) {
     int i, j;
     int c = 8;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
-           if (f==stdout) printf ("%c ",e->tab[i][j]);
-           else fprintf(f,"%c",e->tab[i][j]);
+          printf ("%c ",e->tab[i][j]);
         }
-        if (f==stdout) printf("  %d\n", c);
-        else fprintf(f,"\n");
+        printf("  %d\n", c);
         c--;
     }
-    if (f==stdout) printf("\nA B C D E F G H\n");
+    printf("\nA B C D E F G H\n");
 }
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
@@ -140,7 +143,7 @@ int interpretador(ESTADO *e){
             printf("%s", parabens2);
             break;
         }
-        mostrar_tabuleiro(e,stdout);
+        mostrar_tabuleiro(e);
     }
     return 0;
 }

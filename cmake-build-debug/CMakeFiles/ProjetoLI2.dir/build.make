@@ -43,10 +43,10 @@ RM = /snap/clion/107/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/lelis_vitor/CLionProjects/Li2
+CMAKE_SOURCE_DIR = /home/pedro/Documents/Uminho/Li2/Li2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/lelis_vitor/CLionProjects/Li2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/ProjetoLI2.dir/depend.make
@@ -59,55 +59,55 @@ include CMakeFiles/ProjetoLI2.dir/flags.make
 
 CMakeFiles/ProjetoLI2.dir/main.c.o: CMakeFiles/ProjetoLI2.dir/flags.make
 CMakeFiles/ProjetoLI2.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ProjetoLI2.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/main.c.o   -c /home/lelis_vitor/CLionProjects/Li2/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/ProjetoLI2.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/main.c.o   -c /home/pedro/Documents/Uminho/Li2/Li2/main.c
 
 CMakeFiles/ProjetoLI2.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjetoLI2.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lelis_vitor/CLionProjects/Li2/main.c > CMakeFiles/ProjetoLI2.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pedro/Documents/Uminho/Li2/Li2/main.c > CMakeFiles/ProjetoLI2.dir/main.c.i
 
 CMakeFiles/ProjetoLI2.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjetoLI2.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lelis_vitor/CLionProjects/Li2/main.c -o CMakeFiles/ProjetoLI2.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pedro/Documents/Uminho/Li2/Li2/main.c -o CMakeFiles/ProjetoLI2.dir/main.c.s
 
 CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o: CMakeFiles/ProjetoLI2.dir/flags.make
 CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o: ../camadaDeDados.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o   -c /home/lelis_vitor/CLionProjects/Li2/camadaDeDados.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o   -c /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c
 
 CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lelis_vitor/CLionProjects/Li2/camadaDeDados.c > CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c > CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.i
 
 CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lelis_vitor/CLionProjects/Li2/camadaDeDados.c -o CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c -o CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.s
 
 CMakeFiles/ProjetoLI2.dir/interface.c.o: CMakeFiles/ProjetoLI2.dir/flags.make
 CMakeFiles/ProjetoLI2.dir/interface.c.o: ../interface.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ProjetoLI2.dir/interface.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/interface.c.o   -c /home/lelis_vitor/CLionProjects/Li2/interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/ProjetoLI2.dir/interface.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/interface.c.o   -c /home/pedro/Documents/Uminho/Li2/Li2/interface.c
 
 CMakeFiles/ProjetoLI2.dir/interface.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjetoLI2.dir/interface.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lelis_vitor/CLionProjects/Li2/interface.c > CMakeFiles/ProjetoLI2.dir/interface.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pedro/Documents/Uminho/Li2/Li2/interface.c > CMakeFiles/ProjetoLI2.dir/interface.c.i
 
 CMakeFiles/ProjetoLI2.dir/interface.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjetoLI2.dir/interface.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lelis_vitor/CLionProjects/Li2/interface.c -o CMakeFiles/ProjetoLI2.dir/interface.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pedro/Documents/Uminho/Li2/Li2/interface.c -o CMakeFiles/ProjetoLI2.dir/interface.c.s
 
 CMakeFiles/ProjetoLI2.dir/logica.c.o: CMakeFiles/ProjetoLI2.dir/flags.make
 CMakeFiles/ProjetoLI2.dir/logica.c.o: ../logica.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ProjetoLI2.dir/logica.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/logica.c.o   -c /home/lelis_vitor/CLionProjects/Li2/logica.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/ProjetoLI2.dir/logica.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/ProjetoLI2.dir/logica.c.o   -c /home/pedro/Documents/Uminho/Li2/Li2/logica.c
 
 CMakeFiles/ProjetoLI2.dir/logica.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ProjetoLI2.dir/logica.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/lelis_vitor/CLionProjects/Li2/logica.c > CMakeFiles/ProjetoLI2.dir/logica.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/pedro/Documents/Uminho/Li2/Li2/logica.c > CMakeFiles/ProjetoLI2.dir/logica.c.i
 
 CMakeFiles/ProjetoLI2.dir/logica.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ProjetoLI2.dir/logica.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/lelis_vitor/CLionProjects/Li2/logica.c -o CMakeFiles/ProjetoLI2.dir/logica.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/pedro/Documents/Uminho/Li2/Li2/logica.c -o CMakeFiles/ProjetoLI2.dir/logica.c.s
 
 # Object files for target ProjetoLI2
 ProjetoLI2_OBJECTS = \
@@ -125,7 +125,7 @@ ProjetoLI2: CMakeFiles/ProjetoLI2.dir/interface.c.o
 ProjetoLI2: CMakeFiles/ProjetoLI2.dir/logica.c.o
 ProjetoLI2: CMakeFiles/ProjetoLI2.dir/build.make
 ProjetoLI2: CMakeFiles/ProjetoLI2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ProjetoLI2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable ProjetoLI2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ProjetoLI2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -138,6 +138,6 @@ CMakeFiles/ProjetoLI2.dir/clean:
 .PHONY : CMakeFiles/ProjetoLI2.dir/clean
 
 CMakeFiles/ProjetoLI2.dir/depend:
-	cd /home/lelis_vitor/CLionProjects/Li2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lelis_vitor/CLionProjects/Li2 /home/lelis_vitor/CLionProjects/Li2 /home/lelis_vitor/CLionProjects/Li2/cmake-build-debug /home/lelis_vitor/CLionProjects/Li2/cmake-build-debug /home/lelis_vitor/CLionProjects/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pedro/Documents/Uminho/Li2/Li2 /home/pedro/Documents/Uminho/Li2/Li2 /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/ProjetoLI2.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ProjetoLI2.dir/depend
 
