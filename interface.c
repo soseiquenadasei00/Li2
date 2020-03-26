@@ -89,7 +89,7 @@ int interpretador(ESTADO *e){
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
-                jogar(e,c);
+                jogar(e,c,col,lin);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
 

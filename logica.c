@@ -8,15 +8,13 @@
  * @param e Estado atual do jogo
  * @param c A coordenada
  */
-int jogar(ESTADO *e, COORDENADA c) {
+int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
     e->tab[c.linha][c.letra]='*';
-
     int i = e->ultima_jogada.linha;
     int j = e->ultima_jogada.letra;
     e->tab[i][j] = PRETA;
     e->tab[c.linha][c.letra] = BRANCA;
-
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 
@@ -29,6 +27,10 @@ int jogar(ESTADO *e, COORDENADA c) {
         parabens(2); e->num++;
     }
 
+    //PROMPT
+    printf("#%d Jogador %d (%d) -> %s%s\n", e->count_mov,e->jogador_atual,e->num_jogadas,col,lin);
+    e->count_mov++;
+    e->count_jog++;
     return 1;
 }
 /**

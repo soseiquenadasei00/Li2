@@ -48,10 +48,10 @@ RM = /snap/clion/107/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pedro/Documents/Uminho/Li2/Li2
+CMAKE_SOURCE_DIR = /home/pedro/CLionProjects/Li2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug
+CMAKE_BINARY_DIR = /home/pedro/CLionProjects/Li2/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles /home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ProjetoLI2
+# Target rules for targets named Li2
 
 # Build rule for target.
-ProjetoLI2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ProjetoLI2
-.PHONY : ProjetoLI2
+Li2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Li2
+.PHONY : Li2
 
 # fast build rule for target.
-ProjetoLI2/fast:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/build
-.PHONY : ProjetoLI2/fast
+Li2/fast:
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/build
+.PHONY : Li2/fast
 
 camadaDeDados.o: camadaDeDados.c.o
 
@@ -129,7 +129,7 @@ camadaDeDados.o: camadaDeDados.c.o
 
 # target to build an object file
 camadaDeDados.c.o:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.o
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/camadaDeDados.c.o
 .PHONY : camadaDeDados.c.o
 
 camadaDeDados.i: camadaDeDados.c.i
@@ -138,7 +138,7 @@ camadaDeDados.i: camadaDeDados.c.i
 
 # target to preprocess a source file
 camadaDeDados.c.i:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.i
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/camadaDeDados.c.i
 .PHONY : camadaDeDados.c.i
 
 camadaDeDados.s: camadaDeDados.c.s
@@ -147,7 +147,7 @@ camadaDeDados.s: camadaDeDados.c.s
 
 # target to generate assembly for a file
 camadaDeDados.c.s:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/camadaDeDados.c.s
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/camadaDeDados.c.s
 .PHONY : camadaDeDados.c.s
 
 interface.o: interface.c.o
@@ -156,7 +156,7 @@ interface.o: interface.c.o
 
 # target to build an object file
 interface.c.o:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/interface.c.o
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/interface.c.o
 .PHONY : interface.c.o
 
 interface.i: interface.c.i
@@ -165,7 +165,7 @@ interface.i: interface.c.i
 
 # target to preprocess a source file
 interface.c.i:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/interface.c.i
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/interface.c.i
 .PHONY : interface.c.i
 
 interface.s: interface.c.s
@@ -174,7 +174,7 @@ interface.s: interface.c.s
 
 # target to generate assembly for a file
 interface.c.s:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/interface.c.s
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/interface.c.s
 .PHONY : interface.c.s
 
 logica.o: logica.c.o
@@ -183,7 +183,7 @@ logica.o: logica.c.o
 
 # target to build an object file
 logica.c.o:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/logica.c.o
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/logica.c.o
 .PHONY : logica.c.o
 
 logica.i: logica.c.i
@@ -192,7 +192,7 @@ logica.i: logica.c.i
 
 # target to preprocess a source file
 logica.c.i:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/logica.c.i
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/logica.c.i
 .PHONY : logica.c.i
 
 logica.s: logica.c.s
@@ -201,7 +201,7 @@ logica.s: logica.c.s
 
 # target to generate assembly for a file
 logica.c.s:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/logica.c.s
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/logica.c.s
 .PHONY : logica.c.s
 
 main.o: main.c.o
@@ -210,7 +210,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/main.c.o
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -219,7 +219,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/main.c.i
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -228,7 +228,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) -f CMakeFiles/ProjetoLI2.dir/build.make CMakeFiles/ProjetoLI2.dir/main.c.s
+	$(MAKE) -f CMakeFiles/Li2.dir/build.make CMakeFiles/Li2.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -238,7 +238,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... ProjetoLI2"
+	@echo "... Li2"
 	@echo "... edit_cache"
 	@echo "... camadaDeDados.o"
 	@echo "... camadaDeDados.i"
