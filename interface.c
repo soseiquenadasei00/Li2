@@ -52,13 +52,13 @@ int interpretador(ESTADO *e){
     char file_name[TAMANHO];
     char linha[TAMANHO];
     char col[2],lin[2];
-    int num = 0;
 
+    e->num = 0;
     e->count_jog = 1;
     e->count_mov = 1;
     e->num_jogadas = 0;
 
-    while (num == 0){
+    while (e->num == 0){
 
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
@@ -106,17 +106,7 @@ int interpretador(ESTADO *e){
             else lertab(e,file_name);
         }
 
-        if(e->tab[7][0] == BRANCA)
-        {
-            parabens(1);
-            break;
-        }
-        if(e->tab[0][7] == BRANCA)
-        {
-            parabens(2);
-            break;
-        }
-        mostrar_tabuleiro(e);
+        if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;
 }

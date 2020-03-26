@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "camadaDeDados.h"
+#include "logica.h"
 
 /**
 \brief Faz a mudança de estado e realiza a jogada
@@ -18,6 +19,15 @@ int jogar(ESTADO *e, COORDENADA c) {
 
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
+
+    if(e->tab[7][0] == BRANCA)
+    {
+        parabens(1); e->num++;
+    }
+    if(e->tab[0][7] == BRANCA)
+    {
+        parabens(2); e->num++;
+    }
 
     return 1;
 }
