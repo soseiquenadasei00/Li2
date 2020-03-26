@@ -13,9 +13,9 @@ void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
     int i, j;
     for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++)
+        for (j = 0; j < 8; j++){
             fprintf(f,"%c",e->tab[i][j]);
-    } fprintf(f,"\n");
+    } fprintf(f,"\n");}
     fclose(f);}
 
 /**
@@ -26,9 +26,12 @@ void savetab(ESTADO *e, char *tabuleiro){
  */
 void lertab(ESTADO *e, char *tabuleiro){
     FILE *f=fopen(tabuleiro,"r");
-//    fscanf()
-    fclose(f);
-}
+    int i,j;
+    for(i=0;i<8;i++){
+        for(j=0;j<8;j++){
+            fscanf(f,"%c",e->tab[i][j]);
+        } fscanf(f,"\n");}
+    fclose(f);}
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */
@@ -41,7 +44,7 @@ void mostrar_tabuleiro(ESTADO *e) {
         printf("  %d\n", c);
         c--;}
     printf("\nA B C D E F G H\n");
-}
+}//teste
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
@@ -60,14 +63,12 @@ int interpretador(ESTADO *e){
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
             break;}
-
         if((e->count_jog) % 2 == 0){
             e -> jogador_atual = 2;
         }
         else{
             e -> jogador_atual = 1;
         }
-
         if ((e->count_jog) == 3){
             e->num_jogadas++;
             e->count_jog = 1;
@@ -87,7 +88,6 @@ int interpretador(ESTADO *e){
 
         /* Caso o jogador digite "Quit" o jogo acaba*/
         if(!(strncmp(linha,"Quit",4))) break;
-
 
         /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
         if(sscanf(linha, "gr %s",file_name)==1) {
