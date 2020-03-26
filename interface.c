@@ -19,7 +19,8 @@ void savetab(ESTADO *e, char *tab_file){
     }
     fprintf(f,"\n");
     fclose(f);
-}
+}//tabuleiro
+
 /**
  * \brief
  * @param e é o estado
@@ -39,11 +40,9 @@ void mostrar_tabuleiro(ESTADO *e) {
     int c = 8;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++) {
-          printf ("%c ",e->tab[i][j]);
-        }
+          printf ("%c ",e->tab[i][j]);}
         printf("  %d\n", c);
-        c--;
-    }
+        c--;}
     printf("\nA B C D E F G H\n");
 }
 /**
