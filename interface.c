@@ -62,8 +62,7 @@ int interpretador(ESTADO *e){
     while (num == 0){
 
         if((possiveis_jogadas (e)) == 0) {
-            if (e->jogador_atual == 1) printf("%s", parabens1);
-            else printf("%s", parabens2);
+            parabens(e->jogador_atual);
             break;
         }
 
@@ -110,12 +109,12 @@ int interpretador(ESTADO *e){
 
         if(e->tab[7][0] == BRANCA)
         {
-            printf("%s", parabens1);
+            parabens(1);
             break;
         }
         if(e->tab[0][7] == BRANCA)
         {
-            printf("%s", parabens2);
+            parabens(2);
             break;
         }
         mostrar_tabuleiro(e);

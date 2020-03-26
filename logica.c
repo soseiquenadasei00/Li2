@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "camadaDeDados.h"
 
@@ -85,6 +86,7 @@ int casa_livre (ESTADO *e, COORDENADA c)
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;
 }
 
-
-
-
+void parabens(int jogador)
+{
+    printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
+}
