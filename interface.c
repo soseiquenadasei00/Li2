@@ -59,14 +59,17 @@ void savetab(ESTADO *e, char *tabuleiro){
  * @param tab_file nome dado ao ficheiro que será lido
  * Função que le o arquivo gerado
  */
+
 void lertab(ESTADO *e, char *tabuleiro){
     FILE *f=fopen(tabuleiro,"r");
-    int i,j;
-    for(i=0;i<8;i++){
-        for(j=0;j<8;j++){
-            fscanf(f,"%c",e->tab[i][j]);
-        } fscanf(f,"\n");}
-    fclose(f);}
+    char charaux;
+    int i, j;
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 8; j++){
+            fscanf(f,"%c",&charaux);
+            e->tab[i][j]=charaux;
+            } fscanf(f,"\n");}
+        fclose(f);}
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */

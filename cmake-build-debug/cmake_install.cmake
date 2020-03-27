@@ -1,4 +1,4 @@
-# Install script for directory: /home/pedro/CLionProjects/Li2
+# Install script for directory: /home/pedro/Documents/Uminho/Li2/Li2
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
