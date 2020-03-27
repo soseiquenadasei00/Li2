@@ -3,6 +3,22 @@
 #include "camadaDeDados.h"
 #include "logica.h"
 #define  TAMANHO 1024
+
+void movs(ESTADO *e, COORDENADA c)
+{
+    if (e->jogador_atual == 1)
+    {
+        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
+        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
+    }
+
+    if (e->jogador_atual == 2)
+    {
+        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
+        e->jogadas[e->num_jogadas].jogador2.linha = c.linha;
+    }
+}
+
 /**
  * \brief
  * @param e é o estado
@@ -44,7 +60,7 @@ void mostrar_tabuleiro(ESTADO *e) {
         printf("  %d\n", c);
         c--;}
     printf("\nA B C D E F G H\n");
-}//teste
+}
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
