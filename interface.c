@@ -28,10 +28,29 @@ void movs(ESTADO *e, COORDENADA c)
 void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
     int i, j;
+    int movi = 1, jogs = 1, numjog = 1;
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++){
             fprintf(f,"%c",e->tab[i][j]);
     } fprintf(f,"\n");}
+    while(movi < (e->count_mov)){
+        if (jogs > 2){
+            numjog++;
+            jogs = 1;
+        }
+        if (movi % 2 == 0){
+            fprintf(f, "%d%d\n",e->jogadas[(numjog-1)].jogador2.letra,e->jogadas[(numjog-1)].jogador2.linha);
+        }
+        else {
+            if (numjog > 9){
+                fprintf(f, "%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
+            }
+            fprintf(f,"0%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
+        }
+        movi++;
+        jogs++;
+    }
+
     fclose(f);}
 
 /**
@@ -98,6 +117,7 @@ int interpretador(ESTADO *e){
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
+                movs(e,c);
                 jogar(e,c,col,lin);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
