@@ -102,3 +102,17 @@ void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
+void movs(ESTADO *e, COORDENADA c)
+{
+    if (e->jogador_atual == 1)
+    {
+        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
+        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
+    }
+
+    if (e->jogador_atual == 2)
+    {
+        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
+        e->jogadas[e->num_jogadas].jogador2.linha = c.linha;
+    }
+}

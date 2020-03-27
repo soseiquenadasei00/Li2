@@ -4,21 +4,6 @@
 #include "logica.h"
 #define  TAMANHO 1024
 
-void movs(ESTADO *e, COORDENADA c)
-{
-    if (e->jogador_atual == 1)
-    {
-        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
-    }
-
-    if (e->jogador_atual == 2)
-    {
-        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador2.linha = c.linha;
-    }
-}
-
 /**
  * \brief
  * @param e é o estado
@@ -67,8 +52,8 @@ void lertab(ESTADO *e, char *tabuleiro){
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++){
             fscanf(f,"%c",&charaux);
-            e->tab[i][j]=charaux;
-            } fscanf(f,"\n");}
+           e->tab[i][j]=charaux;
+        } fscanf(f,"\n");}
         fclose(f);}
 /**
  \brief Função que mostra a tabuleiro no ecrã.
