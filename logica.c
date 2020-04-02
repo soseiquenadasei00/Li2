@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "camadaDeDados.h"
@@ -101,24 +102,24 @@ void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
-/**
- * Comando movs, ou seja, quando o jogador escrever movs deve devolver todos os movimentos feito até o atual momento
- * @param e estado atual
- * @param c coordenadas que foram salvas
- */
 
+/**
+ * Funcao salvar_movs, armazena na lista de jogadas o ultimo movimento feito
+ * @param e Estado atuaç
+ * @param c coordenada imserida
+ */
 void movs(ESTADO *e, COORDENADA c)
 {
     if (e->jogador_atual == 1)
     {
         e->jogadas[e->num_jogadas].jogador1.letrinha = c.letrinha;
-        e->jogadas[e->num_jogadas].jogador1.linha = c.linha+1;
+        e->jogadas[e->num_jogadas].jogador1.linha = 8 - c.linha;
     }
 
     if (e->jogador_atual == 2)
     {
         e->jogadas[e->num_jogadas].jogador2.letrinha = c.letrinha;
-        e->jogadas[e->num_jogadas].jogador2.linha = c.linha+1;
+        e->jogadas[e->num_jogadas].jogador2.linha =  8 - c.linha;
     }
 }
 
