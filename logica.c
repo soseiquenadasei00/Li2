@@ -128,7 +128,7 @@ void movs(ESTADO *e, COORDENADA c)
  * @param f ficheiro
  */
 
-void prompt_mov(ESTADO *e, FILE *f){
+void aux_mov(ESTADO *e){
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_mov)){
         if (jogs > 2){
@@ -136,15 +136,17 @@ void prompt_mov(ESTADO *e, FILE *f){
             jogs = 1;
         }
         if (movi % 2 == 0){
-            fprintf(f, "%d%d\n",e->jogadas[(numjog-1)].jogador2.letra,e->jogadas[(numjog-1)].jogador2.linha);
+            printf( "%d%d\n",e->jogadas[(numjog-1)].jogador2.letra,e->jogadas[(numjog-1)].jogador2.linha);
         }
         else {
             if (numjog > 9){
-                fprintf(f, "%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
+                printf("%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
             }
-            fprintf(f,"0%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
+            printf("0%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
         }
+
         movi++;
         jogs++;
     }
+    putchar('\n\n');
 }

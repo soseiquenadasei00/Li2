@@ -17,7 +17,6 @@ void savetab(ESTADO *e, char *tabuleiro){
         for (j = 0; j < 8; j++){
             fprintf(f,"%c",e->tab[i][j]);
         } fprintf(f,"\n");}
-    prompt_mov(e,f);
     fclose(f);}
 
 /**
@@ -105,7 +104,7 @@ int interpretador(ESTADO *e){
             else lertab(e,file_name);
         }
         if (sscanf(linha,"movs %s")==(-1)){
-               movs(e,c);
+               aux_mov(e);
         }
 
 

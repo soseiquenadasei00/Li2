@@ -7,7 +7,7 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog);
 int casa_livre (ESTADO *e, COORDENADA c);
 int possiveis_jogadas(ESTADO *e);
 void parabens(int jogador);
-void prompt_mov(ESTADO *e,FILE *f);
+void aux_mov(ESTADO *e);
 
 
 #endif //LI2_LOGICA_H
