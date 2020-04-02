@@ -17,8 +17,19 @@ void savetab(ESTADO *e, char *tabuleiro){
         for (j = 0; j < 8; j++){
             fprintf(f,"%c",e->tab[i][j]);
         } fprintf(f,"\n");}
-    fclose(f);}
+    fclose(f);
+}
 
+void posf(ESTADO *e, char *tabuleiro){
+    FILE *f= fopen(tabuleiro, "w");
+    int i, j;
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 8; j++){
+            fprintf(f,"%c",e->tab[i][j]);
+        } fprintf(f,"\n");}
+    aux_mov1(e,f);
+    fclose(f);
+}
 /**
  * \brief
  * @param e é o estado
@@ -106,6 +117,10 @@ int interpretador(ESTADO *e){
         }
         if (sscanf(linha,"movs %s")==(-1)){
                aux_mov(e);
+        }
+        //printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha, "pos %s",file_name) );
+        if (sscanf(linha,"pos %s",file_name)==1){
+            posf(e,file_name);
         }
 
 
