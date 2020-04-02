@@ -98,6 +98,7 @@ int interpretador(ESTADO *e){
         /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
         if(sscanf(linha, "gr %s",file_name)==1) {
             savetab(e,file_name);
+            gravar_jog(e);
         }
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==1){
