@@ -111,14 +111,14 @@ void movs(ESTADO *e, COORDENADA c)
 {
     if (e->jogador_atual == 1)
     {
-        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
+        e->jogadas[e->num_jogadas].jogador1.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas].jogador1.linha = c.linha+1;
     }
 
     if (e->jogador_atual == 2)
     {
-        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador2.linha = c.linha;
+        e->jogadas[e->num_jogadas].jogador2.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas].jogador2.linha = c.linha+1;
     }
 }
 
@@ -136,13 +136,10 @@ void aux_mov(ESTADO *e){
             jogs = 1;
         }
         if (movi % 2 == 0){
-            printf( "%d%d\n",e->jogadas[(numjog-1)].jogador2.letra,e->jogadas[(numjog-1)].jogador2.linha);
+            printf( "%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,e->jogadas[(numjog-1)].jogador2.linha);
         }
         else {
-            if (numjog > 9){
-                printf("%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
-            }
-            printf("0%d: %d%d ",numjog,e->jogadas[(numjog-1)].jogador1.letra,e->jogadas[(numjog-1)].jogador1.linha);
+            printf("%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,e->jogadas[(numjog-1)].jogador1.linha);
         }
 
         movi++;

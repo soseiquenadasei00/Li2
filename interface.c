@@ -82,6 +82,7 @@ int interpretador(ESTADO *e){
         COORDENADA c = {*col -'a','8' - *lin};
         c.letra = *col -'a';
         c.linha = '8'- *lin;
+        c.letrinha = col[0];
         /*Validação de jogadas*/
         if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
