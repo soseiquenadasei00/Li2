@@ -104,10 +104,10 @@ int interpretador(ESTADO *e){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);
         }
-        if (sscanf(linha,"movs %s",file_name)==1){
-
+        if (sscanf(linha,"movs %s")==(-1)){
+               movs(e,c);
         }
-            //movs?? savetab??
+
 
         if (e->num == 0) mostrar_tabuleiro(e);
     }

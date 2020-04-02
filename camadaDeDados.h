@@ -9,6 +9,7 @@ typedef enum {UM='1',DOIS='2',VAZIA='.',PRETA='#',BRANCA='*'} CASA;
 typedef struct {
     int letra;
     int linha;
+    char letrinha;
 } COORDENADA;
 
 /**Typedef no qual busca quais as coordenas que o jogador 1 ou jogador 2*/
