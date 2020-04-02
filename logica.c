@@ -149,22 +149,16 @@ void aux_mov(ESTADO *e){
     putchar('\n\n');
 }
 
-void aux_mov1(ESTADO *e,FILE *f){
-    int movi = 1, jogs = 1, numjog = 1;
-    while(movi < (e->count_mov)){
-        if (jogs > 2){
-            numjog++;
-            jogs = 1;
-        }
-        if (movi % 2 == 0){
-            fprintf(f, "%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,e->jogadas[(numjog-1)].jogador2.linha);
-        }
-        else {
-            fprintf(f,"%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,e->jogadas[(numjog-1)].jogador1.linha);
-        }
+void gravar_jog(ESTADO *e)
+{
+    int i = 0;
 
-        movi++;
-        jogs++;
+    for(i; i < 32; i++)
+    {
+        e->jogs_gravadas[i].jogador1.letrinha = e->jogadas[i].jogador1.letrinha;
+        e->jogs_gravadas[i].jogador2.letrinha = e->jogadas[i].jogador2.letrinha;
+        e->jogs_gravadas[i].jogador1.linha = e->jogadas[i].jogador1.linha;
+        e->jogs_gravadas[i].jogador2.linha = e->jogadas[i].jogador2.linha;
     }
-    putchar('\n\n');
+    e->num_jog_grav = e->num_jogadas;
 }

@@ -24,6 +24,8 @@ typedef JOGADA JOGADAS[32];
 typedef struct {
     CASA tab[8][8];
     JOGADAS jogadas;
+    JOGADAS jogs_gravadas;
+    int num_jog_grav;
     int num_jogadas;
     int jogador_atual;
     int count_jog;
