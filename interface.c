@@ -34,7 +34,7 @@ void lertab(ESTADO *e, char *tabuleiro){
     for (i = 0; i < 8; i++) {
         for (j = 0; j < 8; j++){
             fscanf(f,"%c",&charaux);
-           e->tab[i][j]=charaux;
+            e->tab[i][j]=charaux;
         } fscanf(f,"\n");}
         fclose(f);}
 /**
@@ -104,6 +104,11 @@ int interpretador(ESTADO *e){
             if(file_name==NULL) printf("Arquivo não existe");
             else lertab(e,file_name);
         }
+        if (sscanf(linha,"movs %s",file_name)==1){
+
+        }
+            //movs?? savetab??
+
         if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;

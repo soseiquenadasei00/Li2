@@ -1,3 +1,3 @@
-/home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles/Li2.dir
-/home/pedro/CLionProjects/Li2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/Li2.dir
+/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/CMakeFiles/edit_cache.dir

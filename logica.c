@@ -26,7 +26,6 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
     {
         parabens(2); e->num++;
     }
-
     //PROMPT
     printf("#%d Jogador %d (%d) -> %s%s\n", e->count_mov,e->jogador_atual,e->num_jogadas,col,lin);
     e->count_mov++;
@@ -102,6 +101,12 @@ void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
+/**
+ * Comando movs, ou seja, quando o jogador escrever movs deve devolver todos os movimentos feito até o atual momento
+ * @param e estado atual
+ * @param c coordenadas que foram salvas
+ */
+
 void movs(ESTADO *e, COORDENADA c)
 {
     if (e->jogador_atual == 1)
@@ -116,6 +121,13 @@ void movs(ESTADO *e, COORDENADA c)
         e->jogadas[e->num_jogadas].jogador2.linha = c.linha;
     }
 }
+
+/**
+ * Função desenvolvida para ser o prompt do jogo (Estados do jogo)
+ * @param e estado atual
+ * @param f ficheiro
+ */
+
 void prompt_mov(ESTADO *e, FILE *f){
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_mov)){
