@@ -19,6 +19,8 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 
+    prompt(e,col,lin);
+
     if(e->tab[7][0] == BRANCA)
     {
         parabens(1); e->num++;
@@ -27,12 +29,17 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
     {
         parabens(2); e->num++;
     }
-    //PROMPT
-    printf("#%d Jogador %d (%d) -> %s%s\n", e->count_mov,e->jogador_atual,e->num_jogadas,col,lin);
+}
+
+/**
+ * \brief Prompt do jogo
+ */
+void prompt(ESTADO *e, char col [2], char lin [2]) {
+    printf("#%d Jogador %d (%d) -> %s%s\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
     e->count_mov++;
     e->count_jog++;
-    return 1;
 }
+
 /**
   \brief Função auxiliar que compara o maior número de 2 inteiros
  */

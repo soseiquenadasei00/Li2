@@ -2,6 +2,7 @@
 #define LI2_LOGICA_H
 
 void movs(ESTADO *e, COORDENADA c);
+void prompt(ESTADO *e,char col [2], char lin [2]);
 int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]);
 int casa_viz(COORDENADA cAntes, COORDENADA cJog);
 int casa_livre (ESTADO *e, COORDENADA c);
