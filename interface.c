@@ -29,37 +29,15 @@ void posf(ESTADO *e, char *tabuleiro){
  * Função que le o arquivo gerado
  */
 
-void lertab(ESTADO *e) {
-    int i = 0;
-    int xa, xb, ya, yb;
-
-    tabuleiro_inicial(e);
-
-    e->tab[3][4] = PRETA;
-
-    while (i < e->num_jog_grav)
-    {
-        xa = e->jogs_gravadas[i].jogador1.letra;
-        xb = e->jogs_gravadas[i].jogador1.linha;
-        ya = e->jogs_gravadas[i].jogador2.letra;
-        yb = e->jogs_gravadas[i].jogador2.linha;
-
-        e->tab[xb][xa] = PRETA;
-        e->tab[yb][ya] = PRETA;
-
-        i++;
+void lertab(ESTADO *e,char *tabuleiro) {
+    FILE *f= fopen(tabuleiro,"r");
+    for (int y = 0; y < 8; fgetc(f),y++) {
+        for (int x = 0; x < 8; x++) {
+            char c = fgetc(f);
+            chegaCasa(e, (COORDENADA) {y,x}, c);
+        }
     }
-
-    xa = e->ult_jog_grav.letra;
-    xb = e->ult_jog_grav.linha;
-
-    e->tab[xb][xa] = BRANCA;
-
-    e->ultima_jogada.linha = e->ult_jog_grav.linha;
-    e->ultima_jogada.letra = e->ult_jog_grav.letra;
-
-}
-
+    fclose(f);}
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */
@@ -123,8 +101,8 @@ int interpretador(ESTADO *e){
         }
 
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
-        if (sscanf(linha,"ler %s")==(1)){
-            lertab(e);
+        if (sscanf(linha,"ler %s",file_name)==(1)){
+            lertab(e,file_name);
         }
         if (sscanf(linha,"movs %s")==(-1)){
                aux_mov(e);

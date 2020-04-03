@@ -40,5 +40,6 @@ int JogAtual (ESTADO *e);
 CASA estadoDaPeca (ESTADO *e ,COORDENADA *x);
 ESTADO *inicializar_estado();
 void tabuleiro_inicial(ESTADO *e);
+void chegaCasa (ESTADO *e, COORDENADA c, CASA h);
 
 #endif //LI2_CAMADADEDADOS_H
