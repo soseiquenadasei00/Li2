@@ -38,16 +38,18 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
  */
 int max (int x, int y)
 {
-    if (x >= y) return x;
-    else return y;
+    int z;
+    z = (x >= y) ?  x : y;
+    return z;
 }
 /**
   \brief Função auxiliar que compara o menor número de 2 inteiros
  */
 int min (int x, int y)
 {
-    if (x <= y) return x;
-    else return y;
+    int z;
+    z = (x <= y) ? x : y;
+    return z;
 }
 /**
  \brief Função que conta quantas possíveis jogadas existem no momento

@@ -78,12 +78,9 @@ int interpretador(ESTADO *e){
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
             break;}
-        if((e->count_jog) % 2 == 0){
-            e -> jogador_atual = 2;
-        }
-        else{
-            e -> jogador_atual = 1;
-        }
+
+        e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
+
         if ((e->count_jog) == 3){
             e->num_jogadas++;
             e->count_jog = 1;
@@ -113,8 +110,8 @@ int interpretador(ESTADO *e){
         }
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==1){
-            if(file_name==NULL) printf("Arquivo não existe");
-            else lertab(e,file_name);
+            (file_name==NULL) ? printf("Arquivo não existe"): lertab(e,file_name);
+
         }
         if (sscanf(linha,"movs %s")==(-1)){
                aux_mov(e);
