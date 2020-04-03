@@ -132,12 +132,14 @@ void movs(ESTADO *e, COORDENADA c)
     if (e->jogador_atual == 1)
     {
         e->jogadas[e->num_jogadas].jogador1.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
         e->jogadas[e->num_jogadas].jogador1.linha = 8 - c.linha;
     }
 
     if (e->jogador_atual == 2)
     {
         e->jogadas[e->num_jogadas].jogador2.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
         e->jogadas[e->num_jogadas].jogador2.linha =  8 - c.linha;
     }
 }
@@ -190,14 +192,20 @@ void aux_mov1(ESTADO *e,FILE *f){
 
 void gravar_jog(ESTADO *e)
 {
-    int i = 0;
+    int i;
 
-    for(i; i < 32; i++)
+    for(i = 0; i < 32; i++)
     {
         e->jogs_gravadas[i].jogador1.letrinha = e->jogadas[i].jogador1.letrinha;
         e->jogs_gravadas[i].jogador2.letrinha = e->jogadas[i].jogador2.letrinha;
+
+        e->jogs_gravadas[i].jogador1.letra = e->jogadas[i].jogador1.letra;
+        e->jogs_gravadas[i].jogador2.letra = e->jogadas[i].jogador2.letra;
+
         e->jogs_gravadas[i].jogador1.linha = e->jogadas[i].jogador1.linha;
         e->jogs_gravadas[i].jogador2.linha = e->jogadas[i].jogador2.linha;
     }
     e->num_jog_grav = e->num_jogadas;
+    e->ult_jog_grav.linha = e->ultima_jogada.linha;
+    e->ult_jog_grav.letra = e->ultima_jogada.letra;
 }

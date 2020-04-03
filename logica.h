@@ -12,4 +12,5 @@ void parabens(int jogador);
 void aux_mov(ESTADO *e);
 void gravar_jog(ESTADO *e);
 void aux_mov1(ESTADO *e,FILE *f);
+
 #endif //LI2_LOGICA_H

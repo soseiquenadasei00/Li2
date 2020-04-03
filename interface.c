@@ -30,12 +30,34 @@ void posf(ESTADO *e, char *tabuleiro){
  */
 
 void lertab(ESTADO *e) {
-    int i, j;
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++) {
-           printf("%c",e->jogs_gravadas);
-        }printf("\n");
+    int i = 0;
+    int xa, xb, ya, yb;
+
+    tabuleiro_inicial(e);
+
+    e->tab[3][4] = PRETA;
+
+    while (i < e->num_jog_grav)
+    {
+        xa = e->jogs_gravadas[i].jogador1.letra;
+        xb = e->jogs_gravadas[i].jogador1.linha;
+        ya = e->jogs_gravadas[i].jogador2.letra;
+        yb = e->jogs_gravadas[i].jogador2.linha;
+
+        e->tab[xb][xa] = PRETA;
+        e->tab[yb][ya] = PRETA;
+
+        i++;
     }
+
+    xa = e->ult_jog_grav.letra;
+    xb = e->ult_jog_grav.linha;
+
+    e->tab[xb][xa] = BRANCA;
+
+    e->ultima_jogada.linha = e->ult_jog_grav.linha;
+    e->ultima_jogada.letra = e->ult_jog_grav.letra;
+
 }
 
 /**
@@ -101,7 +123,7 @@ int interpretador(ESTADO *e){
         }
 
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
-        if (sscanf(linha,"ler %s")==(-1)){
+        if (sscanf(linha,"ler %s")==(1)){
             lertab(e);
         }
         if (sscanf(linha,"movs %s")==(-1)){

@@ -32,6 +32,7 @@ typedef struct {
     int count_mov;
     int num;
     COORDENADA ultima_jogada;
+    COORDENADA ult_jog_grav;
 } ESTADO;
 /** Funções feita no .c*/
 int numeroJogadas (ESTADO *e);
