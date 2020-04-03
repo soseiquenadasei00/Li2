@@ -29,16 +29,15 @@ void posf(ESTADO *e, char *tabuleiro){
  * Função que le o arquivo gerado
  */
 
-void lertab(ESTADO *e, char *tabuleiro){
-    FILE *f=fopen(tabuleiro,"r");
-    char charaux;
+void lertab(ESTADO *e) {
     int i, j;
     for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++){
-            fscanf(f,"%c",&charaux);
-            e->tab[i][j]=charaux;
-        } fscanf(f,"\n");}
-        fclose(f);}
+        for (j = 0; j < 8; j++) {
+           printf("%c",e->jogs_gravadas);
+        }printf("\n");
+    }
+}
+
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */
@@ -100,10 +99,10 @@ int interpretador(ESTADO *e){
             savetab(e,file_name);
             gravar_jog(e);
         }
-        /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
-        if (sscanf(linha,"ler %s",file_name)==1){
-            (file_name==NULL) ? printf("Arquivo não existe"): lertab(e,file_name);
 
+        /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
+        if (sscanf(linha,"ler %s")==(-1)){
+            lertab(e);
         }
         if (sscanf(linha,"movs %s")==(-1)){
                aux_mov(e);
@@ -112,7 +111,6 @@ int interpretador(ESTADO *e){
         if (sscanf(linha,"pos %s",file_name)==1){
             posf(e,file_name);
         }
-
 
         if (e->num == 0) mostrar_tabuleiro(e);
     }
