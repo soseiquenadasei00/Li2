@@ -9,7 +9,7 @@
  * @param e Estado atual do jogo
  * @param c A coordenada
  */
-int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
+int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
     e->tab[c.linha][c.letra]='*';
     int i = e->ultima_jogada.linha;
@@ -19,7 +19,7 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 
-    prompt(e,col,lin);
+    prompt(e,c);
 
     if(e->tab[7][0] == BRANCA)
     {
@@ -34,8 +34,11 @@ int jogar(ESTADO *e, COORDENADA c, char col[2], char lin[2]) {
 /**
  * \brief Prompt do jogo
  */
-void prompt(ESTADO *e, char col [2], char lin [2]) {
-    printf("#%d Jogador %d (%d) -> %s%s\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
+void prompt(ESTADO *e, COORDENADA c) {
+    char col = c.letrinha;
+    int lin = 8 - c.linha;
+
+    printf("#%d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
     e->count_mov++;
     e->count_jog++;
 }

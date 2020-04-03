@@ -97,7 +97,7 @@ int interpretador(ESTADO *e){
             if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
             {
                 movs(e,c);
-                jogar(e,c,col,lin);
+                jogar(e,c);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
 
