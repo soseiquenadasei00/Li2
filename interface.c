@@ -31,10 +31,10 @@ void posf(ESTADO *e, char *tabuleiro){
 
 void lertab(ESTADO *e,char *tabuleiro) {
     FILE *f= fopen(tabuleiro,"r");
-    for (int y = 0; y < 8; fgetc(f),y++) {
-        for (int x = 0; x < 8; x++) {
+    for (int i = 0; i < 8; fgetc(f),i++) {
+        for (int j = 0; j < 8; j++) {
             char c = fgetc(f);
-            chegaCasa(e, (COORDENADA) {y,x}, c);
+            checaCasa(e, (COORDENADA) {i,j}, c);
         }
     }
     fclose(f);}

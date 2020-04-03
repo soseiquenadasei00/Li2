@@ -57,6 +57,6 @@ void tabuleiro_inicial(ESTADO *e){
     e->tab[7][0]=UM;
 }
 
-void chegaCasa (ESTADO *e, COORDENADA c, CASA h){
+void checaCasa (ESTADO *e, COORDENADA c, CASA h){
     e->tab[c.letra][c.linha]=h;
 }
