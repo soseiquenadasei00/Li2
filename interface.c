@@ -35,7 +35,7 @@ void lertab(ESTADO *e,char *tabuleiro) {
     FILE *f= fopen(tabuleiro,"r");
     for (int i = 0; i < 8; fgetc(f),i++) {
         for (int j = 0; j < 8; j++) {
-            char c = fgetc(f);
+            char c = fgetc(f);  // fgetc =lê o primeiro caractere e automaticamente já se posiciona no próximo.
             checaCasa(e, (COORDENADA) {i,j}, c);
         }
     }
@@ -44,9 +44,13 @@ void lertab(ESTADO *e,char *tabuleiro) {
         char j1[2], j2[2];
         int jogadas = fscanf(f, "%*e %s %s", j1, j2);
         if (jogadas==2){
-               }
+            jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
+            jogar(e,(COORDENADA) {j2[0]-'a',8-(j2[1]-'1')});
+        }
+        else if (jogadas==1){
+            jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
+        }
     }
-
     fclose(f);}
 /**
  \brief Função que mostra a tabuleiro no ecrã.
