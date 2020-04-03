@@ -24,15 +24,12 @@ typedef JOGADA JOGADAS[32];
 typedef struct {
     CASA tab[8][8];
     JOGADAS jogadas;
-    JOGADAS jogs_gravadas;
-    int num_jog_grav;
     int num_jogadas;
     int jogador_atual;
     int count_jog;
     int count_mov;
     int num;
     COORDENADA ultima_jogada;
-    COORDENADA ult_jog_grav;
 } ESTADO;
 /** Funções feita no .c*/
 int numeroJogadas (ESTADO *e);

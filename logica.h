@@ -10,7 +10,6 @@ int casa_livre (ESTADO *e, COORDENADA c);
 int possiveis_jogadas(ESTADO *e);
 void parabens(int jogador);
 void aux_mov(ESTADO *e);
-void gravar_jog(ESTADO *e);
 void aux_mov1(ESTADO *e,FILE *f);
 
 #endif //LI2_LOGICA_H

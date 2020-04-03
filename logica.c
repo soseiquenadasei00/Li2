@@ -19,16 +19,6 @@ int jogar(ESTADO *e, COORDENADA c) {
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 
-    prompt(e,c);
-
-    if(e->tab[7][0] == BRANCA)
-    {
-        parabens(1); e->num++;
-    }
-    if(e->tab[0][7] == BRANCA)
-    {
-        parabens(2); e->num++;
-    }
 }
 
 /**
@@ -191,24 +181,4 @@ void aux_mov1(ESTADO *e,FILE *f){
         jogs++;
     }
     putchar('\n');
-}
-
-void gravar_jog(ESTADO *e)
-{
-    int i;
-
-    for(i = 0; i < 32; i++)
-    {
-        e->jogs_gravadas[i].jogador1.letrinha = e->jogadas[i].jogador1.letrinha;
-        e->jogs_gravadas[i].jogador2.letrinha = e->jogadas[i].jogador2.letrinha;
-
-        e->jogs_gravadas[i].jogador1.letra = e->jogadas[i].jogador1.letra;
-        e->jogs_gravadas[i].jogador2.letra = e->jogadas[i].jogador2.letra;
-
-        e->jogs_gravadas[i].jogador1.linha = e->jogadas[i].jogador1.linha;
-        e->jogs_gravadas[i].jogador2.linha = e->jogadas[i].jogador2.linha;
-    }
-    e->num_jog_grav = e->num_jogadas;
-    e->ult_jog_grav.linha = e->ultima_jogada.linha;
-    e->ult_jog_grav.letra = e->ultima_jogada.letra;
 }
