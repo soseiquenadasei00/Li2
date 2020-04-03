@@ -47,3 +47,12 @@ ESTADO *inicializar_estado() {
     return e;
 }
 
+void tabuleiro_inicial(ESTADO *e){
+    int i,j;
+    for (i=0;i<8;i++){
+        for(j=0;j<8;j++)
+            e->tab[i][j]=VAZIA;}
+    e->tab[3][4]=BRANCA;
+    e->tab[0][7]=DOIS;
+    e->tab[7][0]=UM;
+}
