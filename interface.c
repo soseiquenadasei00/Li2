@@ -12,21 +12,13 @@
  */
 void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
-    int i, j;
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++){
-            fprintf(f,"%c",e->tab[i][j]);
-        } fprintf(f,"\n");}
+    show_tab(f,e);
     fclose(f);
 }
 
 void posf(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
-    int i, j;
-    for (i = 0; i < 8; i++) {
-        for (j = 0; j < 8; j++){
-            fprintf(f,"%c",e->tab[i][j]);
-        } fprintf(f,"\n");}
+    show_tab(f,e);
     aux_mov1(e,f);
     fclose(f);
 }

@@ -41,6 +41,16 @@ void prompt(ESTADO *e, char col [2], char lin [2]) {
 }
 
 /**
+ * Cria o tabuleiro no file
+ */
+void show_tab(FILE *f, ESTADO *e){
+    int i, j;
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 8; j++){
+            fprintf(f,"%c",e->tab[i][j]);
+        } fprintf(f,"\n");}
+}
+/**
   \brief Função auxiliar que compara o maior número de 2 inteiros
  */
 int max (int x, int y)
