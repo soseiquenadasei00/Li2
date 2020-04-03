@@ -13,6 +13,8 @@
 void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
     show_tab(f,e);
+    fprintf(f,"\n");
+    aux_mov1(e,f);
     fclose(f);
 }
 

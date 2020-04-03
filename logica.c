@@ -187,7 +187,7 @@ void aux_mov1(ESTADO *e,FILE *f){
         movi++;
         jogs++;
     }
-    putchar('\n\n');
+    putchar('\n');
 }
 
 void gravar_jog(ESTADO *e)
