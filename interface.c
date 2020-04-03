@@ -18,6 +18,12 @@ void savetab(ESTADO *e, char *tabuleiro){
     fclose(f);
 }
 
+/**
+ * \brief
+ * Função que gera um arquivo com o tabuleiro e jogadas feita até o atual momento
+ * @param e estado
+ * @param tabuleiro
+ */
 void posf(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
     show_tab(f,e);
@@ -39,7 +45,7 @@ void lertab(ESTADO *e,char *tabuleiro) {
             checaCasa(e, (COORDENADA) {i,j}, c);
         }
     }
-    fseek(f, 1, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
+    fseek(f, 2, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
     for (int i = 0, c; c != EOF; c = getc(f), i++) {     // EOF (end of file)
         char j1[2], j2[2];
         int jogadas = fscanf(f, "%*e %s %s", j1, j2);
@@ -117,11 +123,11 @@ int interpretador(ESTADO *e){
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==(1)){
             lertab(e,file_name);
-        }
+        }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
         if (sscanf(linha,"movs %s")==(-1)){
                aux_mov(e);
         }
-        //printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha, "pos %s",file_name) );
+        //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha,"pos %s",file_name)==1){
             posf(e,file_name);
         }
