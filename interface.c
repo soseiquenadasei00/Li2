@@ -45,8 +45,8 @@ void lertab(ESTADO *e,char *tabuleiro) {
             checaCasa(e, (COORDENADA) {i,j}, c);
         }
     }
-    fseek(f, 2, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
-    for (int i = 0, c; c != EOF; c = getc(f), i++) {     // EOF (end of file)
+    fseek(f, 1, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
+    for (int c; c != EOF; c = getc(f)) {     // EOF (end of file) c=caracter para ver se esta no final do ficheiro
         char j1[2], j2[2];
         int jogadas = fscanf(f, "%*e %s %s", j1, j2);
         if (jogadas==2){

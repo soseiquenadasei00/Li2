@@ -160,7 +160,7 @@ void aux_mov(ESTADO *e){
         movi++;
         jogs++;
     }
-    putchar('\n\n');
+    putchar('\n');
 }
 
 void aux_mov1(ESTADO *e,FILE *f){
