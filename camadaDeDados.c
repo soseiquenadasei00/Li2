@@ -49,12 +49,16 @@ ESTADO *inicializar_estado() {
 
 void tabuleiro_inicial(ESTADO *e){
     int i,j;
+    e->jogador_atual = 1;
+    e->num_jogadas = 0;
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
             e->tab[i][j]=VAZIA;}
     e->tab[3][4]=BRANCA;
     e->tab[0][7]=DOIS;
     e->tab[7][0]=UM;
+    e->ultima_jogada.letra = 4;
+    e->ultima_jogada.linha = 3;
 }
 
 void checaCasa (ESTADO *e, COORDENADA c, CASA h){

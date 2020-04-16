@@ -124,7 +124,7 @@ int interpretador(ESTADO *e){
                aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
-        if (sscanf(linha,"pos %d",x)==1){
+        if (sscanf(linha,"pos %d", &x)==1){
             posf(e,x);
         }
 

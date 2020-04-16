@@ -183,16 +183,7 @@ void aux_mov1(ESTADO *e,FILE *f){
     putchar('\n');
 }
 
-void posf(ESTADO *e, int x){
-   int i;
-   COORDENADA k;
+void posf(ESTADO *e, int x) {
 
-    inicializar_estado(e);
-
-    e->jogador_atual = 1;
-
-    for(i = 0; i < x; i++)
-    {
-
-    }
+    tabuleiro_inicial(e);
 }
