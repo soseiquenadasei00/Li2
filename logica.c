@@ -11,6 +11,8 @@
  */
 int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
+    e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
+
     e->tab[c.linha][c.letra]='*';
     int i = e->ultima_jogada.linha;
     int j = e->ultima_jogada.letra;
@@ -18,7 +20,6 @@ int jogar(ESTADO *e, COORDENADA c) {
     e->tab[c.linha][c.letra] = BRANCA;
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
-
 }
 
 /**
@@ -180,4 +181,18 @@ void aux_mov1(ESTADO *e,FILE *f){
         jogs++;
     }
     putchar('\n');
+}
+
+void posf(ESTADO *e, int x){
+   int i;
+   COORDENADA k;
+
+    inicializar_estado(e);
+
+    e->jogador_atual = 1;
+
+    for(i = 0; i < x; i++)
+    {
+
+    }
 }

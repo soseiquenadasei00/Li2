@@ -24,12 +24,7 @@ void savetab(ESTADO *e, char *tabuleiro){
  * @param e estado
  * @param tabuleiro
  */
-void posf(ESTADO *e, char *tabuleiro){
-    FILE *f= fopen(tabuleiro, "w");
-    show_tab(f,e);
-    aux_mov1(e,f);
-    fclose(f);
-}
+
 /**
  * \brief
  * @param e é o estado
@@ -78,6 +73,7 @@ int interpretador(ESTADO *e){
     char file_name[TAMANHO];
     char linha[TAMANHO];
     char col[2],lin[2];
+    int x;
 
     e->num = 0;
     e->count_jog = 1;
@@ -90,7 +86,7 @@ int interpretador(ESTADO *e){
             parabens(e->jogador_atual);
             break;}
 
-        e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
+        //e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
 
         if ((e->count_jog) == 3){
             e->num_jogadas++;
@@ -128,8 +124,8 @@ int interpretador(ESTADO *e){
                aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
-        if (sscanf(linha,"pos %s",file_name)==1){
-            posf(e,file_name);
+        if (sscanf(linha,"pos %d",x)==1){
+            posf(e,x);
         }
 
         if(e->tab[7][0] == BRANCA)

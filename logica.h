@@ -11,5 +11,6 @@ int possiveis_jogadas(ESTADO *e);
 void parabens(int jogador);
 void aux_mov(ESTADO *e);
 void aux_mov1(ESTADO *e,FILE *f);
+void posf(ESTADO *e, int x);
 
 #endif //LI2_LOGICA_H
