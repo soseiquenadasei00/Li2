@@ -11,8 +11,6 @@
  */
 int jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
-    e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
-
     e->tab[c.linha][c.letra]='*';
     int i = e->ultima_jogada.linha;
     int j = e->ultima_jogada.letra;
@@ -126,14 +124,14 @@ void movs(ESTADO *e, COORDENADA c)
     {
         e->jogadas[e->num_jogadas].jogador1.letrinha = c.letrinha;
         e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador1.linha = 8 - c.linha;
+        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
     }
 
     if (e->jogador_atual == 2)
     {
         e->jogadas[e->num_jogadas].jogador2.letrinha = c.letrinha;
         e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador2.linha =  8 - c.linha;
+        e->jogadas[e->num_jogadas].jogador2.linha =  c.linha;
     }
 }
 
@@ -151,10 +149,10 @@ void aux_mov(ESTADO *e){
             jogs = 1;
         }
         if (movi % 2 == 0){
-            printf( "%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,e->jogadas[(numjog-1)].jogador2.linha);
+            printf( "%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);
         }
         else {
-            printf("%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,e->jogadas[(numjog-1)].jogador1.linha);
+            printf("%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);
         }
 
         movi++;
@@ -171,10 +169,10 @@ void aux_mov1(ESTADO *e,FILE *f){
             jogs = 1;
         }
         if (movi % 2 == 0){
-            fprintf(f,"%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,e->jogadas[(numjog-1)].jogador2.linha);
+            fprintf(f,"%c%d\n",e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);
         }
         else {
-            fprintf(f,"%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,e->jogadas[(numjog-1)].jogador1.linha);
+            fprintf(f,"%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);
         }
 
         movi++;
@@ -184,6 +182,24 @@ void aux_mov1(ESTADO *e,FILE *f){
 }
 
 void posf(ESTADO *e, int x) {
+    int i;
+
+    printf("#%d Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
 
     tabuleiro_inicial(e);
+
+    e->num_jogadas = x;
+
+    for (i = 0; i < x; i++) {
+        jogar(e, e->jogadas[i].jogador1);
+        jogar(e, e->jogadas[i].jogador2);
+    }
+
+    if(e->jogador_atual == 1)
+    {
+        jogar(e, e->jogadas[i].jogador1);
+        jogar(e, e->jogadas[i].jogador2);
+    }
+    else jogar(e, e->jogadas[i].jogador1);
+
 }

@@ -86,12 +86,14 @@ int interpretador(ESTADO *e){
             parabens(e->jogador_atual);
             break;}
 
-        //e->jogador_atual = ((e->count_jog) % 2 == 0) ? 2 : 1;
+        e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
 
-        if ((e->count_jog) == 3){
-            e->num_jogadas++;
-            e->count_jog = 1;
-        }
+       if (e->count_jog == 3)
+       {
+           e->num_jogadas++;
+           e->count_jog = 1;
+       }
+
         fgets(linha,TAMANHO,stdin);
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
         COORDENADA c = {*col -'a','8' - *lin};
@@ -105,6 +107,7 @@ int interpretador(ESTADO *e){
                 movs(e,c);
                 jogar(e,c);
                 prompt(e,c);
+                e->count_mov++;
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
 
@@ -126,6 +129,7 @@ int interpretador(ESTADO *e){
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha,"pos %d", &x)==1){
             posf(e,x);
+            e->count_mov++;
         }
 
         if(e->tab[7][0] == BRANCA)
@@ -139,7 +143,7 @@ int interpretador(ESTADO *e){
 
         if (e->num == 0) mostrar_tabuleiro(e);
 
-        e->count_mov++;
+        //e->count_jog++;
     }
     return 0;
 }

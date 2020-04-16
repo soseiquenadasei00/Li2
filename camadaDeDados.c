@@ -49,7 +49,6 @@ ESTADO *inicializar_estado() {
 
 void tabuleiro_inicial(ESTADO *e){
     int i,j;
-    e->jogador_atual = 1;
     e->num_jogadas = 0;
     for (i=0;i<8;i++){
         for(j=0;j<8;j++)
