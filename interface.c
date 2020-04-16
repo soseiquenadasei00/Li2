@@ -142,6 +142,8 @@ int interpretador(ESTADO *e){
         }
 
         if (e->num == 0) mostrar_tabuleiro(e);
+
+        e->count_mov++;
     }
     return 0;
 }

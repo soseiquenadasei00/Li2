@@ -29,7 +29,6 @@ void prompt(ESTADO *e, COORDENADA c) {
     int lin = 8 - c.linha;
 
     printf("#%d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
-    e->count_mov++;
     e->count_jog++;
 }
 
