@@ -4,6 +4,7 @@
 #include "lista.h"
 int main()
 {
+    LISTA criar_lista();
     LISTA d = criar_lista();
     ESTADO *e = inicializar_estado();
     printf("Se quiser sair do jogo digite (Quit)\n\nEste é o tabuleiro inicial:\n\n");

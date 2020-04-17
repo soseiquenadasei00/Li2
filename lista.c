@@ -5,7 +5,8 @@
 
 
 LISTA criar_lista(){
-   LISTA d = NULL;
+   LISTA d;
+   d=NULL;
    return d;
 }
 
@@ -24,6 +25,10 @@ void *devolve_cabeca(LISTA L){
     d->prox=NULL;
     return d;
 
+LISTA insere_cabeca(LISTA L, void *valor){
+ LISTA d = malloc(sizeof (struct lista));
+
+}
 }
 LISTA proximo(LISTA L){
     LISTA r = L -> prox;

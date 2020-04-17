@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "camadaDeDados.h"
 #include "logica.h"
-
+#include "lista.h"
 /**
 \brief Faz a mudança de estado e realiza a jogada
  * @param e Estado atual do jogo
@@ -212,3 +212,9 @@ void troca_jog(ESTADO *e){
     }
 }
 
+jogs (ESTADO *e, COORDENADA c,CASA h){
+    LISTA *d;
+    if (checaCasa(e,c,h)==VAZIA){
+        *d=c;
+    }
+}

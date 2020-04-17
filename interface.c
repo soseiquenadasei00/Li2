@@ -124,6 +124,10 @@ int interpretador(ESTADO *e){
             e->count_mov++;
             e->count_jog = 2;
         }
+        if (sscanf(linha,"jog %s")==(-1)){
+            jogs(e,c);
+        }
+
         if(e->tab[7][0] == BRANCA)
         {
             parabens(1); e->num++;
