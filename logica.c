@@ -27,8 +27,8 @@ void prompt(ESTADO *e, COORDENADA c) {
     char col = c.letrinha;
     int lin = 8 - c.linha;
 
-    printf("#%d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
-    e->count_jog++;
+    printf("#%02d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
+
 }
 
 /**
@@ -142,8 +142,9 @@ void movs(ESTADO *e, COORDENADA c)
  */
 
 void aux_mov(ESTADO *e){
+    printf("#%02d Jogador %d (%d) -> movs\n", e->count_mov, e->jogador_atual, e->num_jogadas);
     int movi = 1, jogs = 1, numjog = 1;
-    while(movi < (e->count_mov)){
+    while(movi < (e->count_movs)){
         if (jogs > 2){
             numjog++;
             jogs = 1;
@@ -161,9 +162,9 @@ void aux_mov(ESTADO *e){
     putchar('\n');
 }
 
-void aux_mov1(ESTADO *e,FILE *f){
+void aux_movf(ESTADO *e,FILE *f){
     int movi = 1, jogs = 1, numjog = 1;
-    while(movi < (e->count_mov)){
+    while(movi < (e->count_movs)){
         if (jogs > 2){
             numjog++;
             jogs = 1;
@@ -183,23 +184,41 @@ void aux_mov1(ESTADO *e,FILE *f){
 
 void posf(ESTADO *e, int x) {
     int i;
-
-    printf("#%d Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
-
+    printf("#%02d: Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
     tabuleiro_inicial(e);
 
+    if((e->num_jogadas) == x) {
+        for (i = 1; i <= x; i++) {
+            if (i == x) {
+                if (e->jogador_atual == 1) {
+                    jogar(e, e->jogadas[i - 1].jogador1);
+                    jogar(e, e->jogadas[i - 1].jogador2);
+                    e->count_movs = 2 * x;
+                } else {
+                    jogar(e, e->jogadas[i - 1].jogador1);
+                    e->count_movs = 2 * x +1;
+                }
+            } else {
+                jogar(e, e->jogadas[i - 1].jogador1);
+                jogar(e, e->jogadas[i - 1].jogador2);
+            }
+        }
+    }
+    else{
+        for(i = 1;i <= x;i++){
+            jogar(e, e->jogadas[i - 1].jogador1);
+            jogar(e, e->jogadas[i - 1].jogador2);
+        }
+        e->count_movs = 2*x+1;
+    }
     e->num_jogadas = x;
+}
 
-    for (i = 0; i < x; i++) {
-        jogar(e, e->jogadas[i].jogador1);
-        jogar(e, e->jogadas[i].jogador2);
+void troca_jog(ESTADO *e){
+    e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
+
+    if ((e->count_jog) == 3) {
+        e->num_jogadas++;
+        e->count_jog = 1;
     }
-
-    if(e->jogador_atual == 1)
-    {
-        jogar(e, e->jogadas[i].jogador1);
-        jogar(e, e->jogadas[i].jogador2);
-    }
-    else jogar(e, e->jogadas[i].jogador1);
-
 }

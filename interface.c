@@ -14,7 +14,7 @@ void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
     show_tab(f,e);
     fprintf(f,"\n");
-    aux_mov1(e,f);
+    aux_movf(e,f);
     fclose(f);
 }
 
@@ -78,24 +78,18 @@ int interpretador(ESTADO *e){
     e->num = 0;
     e->count_jog = 1;
     e->count_mov = 1;
-    e->num_jogadas = 0;
+    e->count_movs = 1;
+    e->num_jogadas = 1;
 
     while (e->num == 0){
 
+        troca_jog(e);
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
             break;}
 
-        e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
-
-       if (e->count_jog == 3)
-       {
-           e->num_jogadas++;
-           e->count_jog = 1;
-       }
-
         fgets(linha,TAMANHO,stdin);
-        sscanf(linha, "%[a-h]%[1-8]", col, lin);
+        sscanf(linha, "%[a-h]%[1-8]", col,lin);
         COORDENADA c = {*col -'a','8' - *lin};
         c.letra = *col -'a';
         c.linha = '8'- *lin;
@@ -107,7 +101,9 @@ int interpretador(ESTADO *e){
                 movs(e,c);
                 jogar(e,c);
                 prompt(e,c);
+                e->count_jog++;
                 e->count_mov++;
+                e->count_movs++;
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
 
@@ -124,12 +120,14 @@ int interpretador(ESTADO *e){
             lertab(e,file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
         if (sscanf(linha,"movs %s")==(-1)){
-               aux_mov(e);
+            aux_mov(e);
+
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha,"pos %d", &x)==1){
             posf(e,x);
             e->count_mov++;
+            e->count_jog = 2;
         }
 
         if(e->tab[7][0] == BRANCA)
@@ -143,7 +141,6 @@ int interpretador(ESTADO *e){
 
         if (e->num == 0) mostrar_tabuleiro(e);
 
-        //e->count_jog++;
     }
     return 0;
 }

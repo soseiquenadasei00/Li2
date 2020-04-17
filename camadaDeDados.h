@@ -28,6 +28,7 @@ typedef struct {
     int jogador_atual;
     int count_jog;
     int count_mov;
+    int count_movs;
     int num;
     COORDENADA ultima_jogada;
 } ESTADO;
