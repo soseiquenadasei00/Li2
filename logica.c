@@ -122,16 +122,16 @@ void movs(ESTADO *e, COORDENADA c)
 {
     if (e->jogador_atual == 1)
     {
-        e->jogadas[e->num_jogadas].jogador1.letrinha = c.letrinha;
-        e->jogadas[e->num_jogadas].jogador1.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador1.linha = c.linha;
+        e->jogadas[e->num_jogadas-1].jogador1.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas-1].jogador1.letra = c.letra;
+        e->jogadas[e->num_jogadas-1].jogador1.linha = c.linha;
     }
 
     if (e->jogador_atual == 2)
     {
-        e->jogadas[e->num_jogadas].jogador2.letrinha = c.letrinha;
-        e->jogadas[e->num_jogadas].jogador2.letra = c.letra;
-        e->jogadas[e->num_jogadas].jogador2.linha =  c.linha;
+        e->jogadas[e->num_jogadas-1].jogador2.letrinha = c.letrinha;
+        e->jogadas[e->num_jogadas-1].jogador2.letra = c.letra;
+        e->jogadas[e->num_jogadas-1].jogador2.linha =  c.linha;
     }
 }
 
