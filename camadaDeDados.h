@@ -32,6 +32,7 @@ typedef struct {
     int num;
     COORDENADA ultima_jogada;
 } ESTADO;
+
 /** Funções feita no .c*/
 int numeroJogadas (ESTADO *e);
 int JogAtual (ESTADO *e);

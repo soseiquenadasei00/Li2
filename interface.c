@@ -106,22 +106,17 @@ int interpretador(ESTADO *e){
                 e->count_movs++;
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
-
         /* Caso o jogador digite "Quit" o jogo acaba*/
         if(!(strncmp(linha,"Quit",4))) break;
-
         /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
         if(sscanf(linha, "gr %s",file_name)==1) {
-            savetab(e,file_name);
-        }
-
+            savetab(e,file_name);}
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
         if (sscanf(linha,"ler %s",file_name)==(1)){
             lertab(e,file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
         if (sscanf(linha,"movs %s")==(-1)){
             aux_mov(e);
-
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha,"pos %d", &x)==1){
@@ -129,7 +124,6 @@ int interpretador(ESTADO *e){
             e->count_mov++;
             e->count_jog = 2;
         }
-
         if(e->tab[7][0] == BRANCA)
         {
             parabens(1); e->num++;
@@ -138,9 +132,7 @@ int interpretador(ESTADO *e){
         {
             parabens(2); e->num++;
         }
-
         if (e->num == 0) mostrar_tabuleiro(e);
-
     }
     return 0;
 }

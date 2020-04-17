@@ -63,3 +63,4 @@ void tabuleiro_inicial(ESTADO *e){
 void checaCasa (ESTADO *e, COORDENADA c, CASA h){
     e->tab[c.letra][c.linha]=h;
 }
+

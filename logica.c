@@ -19,7 +19,6 @@ int jogar(ESTADO *e, COORDENADA c) {
     e->ultima_jogada.linha = c.linha;
     e->ultima_jogada.letra = c.letra;
 }
-
 /**
  * \brief Prompt do jogo
  */
@@ -30,7 +29,6 @@ void prompt(ESTADO *e, COORDENADA c) {
     printf("#%02d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
 
 }
-
 /**
  * Cria o tabuleiro no file
  */
@@ -97,7 +95,6 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
 
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
 }
-
 /**
  \brief Função que confer se a casa específica está livre para jogar
  * @param e Estado que nos dará o tabuleiro com os estados das suas casas
@@ -107,12 +104,10 @@ int casa_livre (ESTADO *e, COORDENADA c)
 {
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;
 }
-
 void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
-
 /**
  * Funcao salvar_movs, armazena na lista de jogadas o ultimo movimento feito
  * @param e Estado atuaç
@@ -126,7 +121,6 @@ void movs(ESTADO *e, COORDENADA c)
         e->jogadas[e->num_jogadas-1].jogador1.letra = c.letra;
         e->jogadas[e->num_jogadas-1].jogador1.linha = c.linha;
     }
-
     if (e->jogador_atual == 2)
     {
         e->jogadas[e->num_jogadas-1].jogador2.letrinha = c.letrinha;
@@ -134,13 +128,11 @@ void movs(ESTADO *e, COORDENADA c)
         e->jogadas[e->num_jogadas-1].jogador2.linha =  c.linha;
     }
 }
-
 /**
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo)
  * @param e estado atual
  * @param f ficheiro
  */
-
 void aux_mov(ESTADO *e){
     printf("#%02d Jogador %d (%d) -> movs\n", e->count_mov, e->jogador_atual, e->num_jogadas);
     int movi = 1, jogs = 1, numjog = 1;
@@ -159,9 +151,9 @@ void aux_mov(ESTADO *e){
         movi++;
         jogs++;
     }
+    //printf(" %c%d %c%d \n",e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha,e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);
     putchar('\n');
 }
-
 void aux_movf(ESTADO *e,FILE *f){
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_movs)){
@@ -175,13 +167,11 @@ void aux_movf(ESTADO *e,FILE *f){
         else {
             fprintf(f,"%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);
         }
-
         movi++;
         jogs++;
     }
     putchar('\n');
 }
-
 void posf(ESTADO *e, int x) {
     int i;
     printf("#%02d: Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
@@ -213,7 +203,6 @@ void posf(ESTADO *e, int x) {
     }
     e->num_jogadas = x;
 }
-
 void troca_jog(ESTADO *e){
     e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
 
@@ -222,3 +211,4 @@ void troca_jog(ESTADO *e){
         e->count_jog = 1;
     }
 }
+
