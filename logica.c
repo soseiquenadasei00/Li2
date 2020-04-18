@@ -1,9 +1,8 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "camadaDeDados.h"
 #include "logica.h"
-#include "lista.h"
 /**
 \brief Faz a mudança de estado e realiza a jogada
  * @param e Estado atual do jogo
@@ -72,7 +71,11 @@ int possiveis_jogadas(ESTADO *e)
     {
         while( j <= min((e->ultima_jogada.letra + 1), 7))
         {
-            if (e->tab[i][j] == VAZIA) count++;
+            if (e->tab[i][j] == VAZIA) {
+                //insere_cabeca(l,&(e->tab[i][j]));
+                count++;
+
+            }
             j++;
         }
         i++;
@@ -151,9 +154,10 @@ void aux_mov(ESTADO *e){
         movi++;
         jogs++;
     }
-    //printf(" %c%d %c%d \n",e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha,e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);
+
     putchar('\n');
 }
+
 void aux_movf(ESTADO *e,FILE *f){
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_movs)){
@@ -211,14 +215,44 @@ void troca_jog(ESTADO *e){
         e->count_jog = 1;
     }
 }
-
-void acresList (ESTADO *e,COORDENADA c,LISTA d){
-
+/*int printRandoms (int lower, int upper, int count)
+{
+    int i, num;
+    for (i=0; i < count; i++)
+    {
+        num = (rand ()) %
+              (upper - lower + 1) + lower;
+    }
+    return num;
 }
+*/
 
-jogs (ESTADO *e,COORDENADA c){
 
-}
+/*void jogs(ESTADO *e,LISTA l){
+    int max = possiveis_jogadas(e,l);
+    char col[2],lin[2];
+    srand(time(0));
+    int num = printRandoms(0,max,1);
+    int i;
+    for (i = 0; i < num; i++){
+        l = l->prox;
+    }
+    sscanf((l->valor), "%[a-h]%[1-8]", col,lin);
+    COORDENADA c = {*col -'a','8' - *lin};
+    c.letra = *col -'a';
+    c.linha = '8'- *lin;
+    c.letrinha = col[0];
+    jogar(e,c);
+*/
+
+
+
+
+
+
+
+
+
 void iniciar_estado(ESTADO *e) {
     e->num = 0;
     e->count_jog = 1;

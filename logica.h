@@ -1,6 +1,8 @@
 #ifndef LI2_LOGICA_H
 #define LI2_LOGICA_H
 
+#include "lista.h"
+
 void movs(ESTADO *e, COORDENADA c);
 void show_tab(FILE *f, ESTADO *e);
 void prompt(ESTADO *e,COORDENADA c);
@@ -15,5 +17,6 @@ void posf(ESTADO *e, int x);
 void troca_jog(ESTADO *e);
 void iniciar_estado(ESTADO *e);
 void mudar_estado(ESTADO *e);
-void acresList (ESTADO *e,COORDENADA c,LISTA d);
+//int printRandoms (int lower, int upper, int count);
+//void jogs(ESTADO *e,LISTA l);
 #endif //LI2_LOGICA_H
