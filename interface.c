@@ -34,11 +34,8 @@ void lertab(ESTADO *e,char *tabuleiro) {
         }
     }
     fseek(f, 1, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
-    char j1[2], j2[2];
-    fscanf(f, " %*e%*c %s%s",j1, j2);
-    printf("%s \n",j2);
     for (int c; c != EOF; c = getc(f)) {     // EOF (end of file) c=caracter para ver se esta no final do ficheiro
-        //char j1[2], j2[2];
+        char j1[2], j2[2];
         int jogadas = fscanf(f, "%*e %s %s", j1, j2);
         if (jogadas==2){
             jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
@@ -71,12 +68,7 @@ int interpretador(ESTADO *e){
     char col[2],lin[2];
     int x;
 
-    e->num = 0;
-    e->count_jog = 1;
-    e->count_mov = 1;
-    e->count_movs = 1;
-    e->num_jogadas = 1;
-
+    iniciar_estado(e);
     while (e->num == 0){
 
         troca_jog(e);
@@ -97,9 +89,7 @@ int interpretador(ESTADO *e){
                 movs(e,c);
                 jogar(e,c);
                 prompt(e,c);
-                e->count_jog++;
-                e->count_mov++;
-                e->count_movs++;
+                mudar_estado(e);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
         /* Caso o jogador digite "Quit" o jogo acaba*/

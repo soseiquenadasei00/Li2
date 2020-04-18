@@ -212,13 +212,23 @@ void troca_jog(ESTADO *e){
     }
 }
 
-acresList (ESTADO *e,COORDENADA c,LISTA d){
+void acresList (ESTADO *e,COORDENADA c,LISTA d){
 
 }
 
 jogs (ESTADO *e,COORDENADA c){
-    LISTA *d;
-    if (checaCasa(e,c,h)==VAZIA){
-        *d=c;
-    }
+
+}
+void iniciar_estado(ESTADO *e) {
+    e->num = 0;
+    e->count_jog = 1;
+    e->count_mov = 1;
+    e->count_movs = 1;
+    e->num_jogadas = 1;
+}
+
+void mudar_estado(ESTADO *e){
+    e->count_jog++;
+    e->count_mov++;
+    e->count_movs++;
 }
