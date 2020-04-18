@@ -1,8 +1,6 @@
 #ifndef LI2_LOGICA_H
 #define LI2_LOGICA_H
 
-#include "lista.h"
-
 void movs(ESTADO *e, COORDENADA c);
 void show_tab(FILE *f, ESTADO *e);
 void prompt(ESTADO *e,COORDENADA c);

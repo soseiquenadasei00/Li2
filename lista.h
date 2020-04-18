@@ -6,7 +6,7 @@ typedef struct lista {
     struct lista *prox;
 }*LISTA;
 
-
+// Função criada para a struct do bot
 LISTA criar_lista();
 LISTA insere_cabeca(LISTA L, void *valor);
 void *devolve_cabeca(LISTA L);

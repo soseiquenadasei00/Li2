@@ -74,8 +74,7 @@ int interpretador(ESTADO *e){
         troca_jog(e);
         if((possiveis_jogadas (e)) == 0) {
             parabens(e->jogador_atual);
-            break;
-        }
+            break;}
 
         fgets(linha,TAMANHO,stdin);
         sscanf(linha, "%[a-h]%[1-8]", col,lin);
@@ -102,7 +101,7 @@ int interpretador(ESTADO *e){
         if (sscanf(linha,"ler %s",file_name)==(1)){
             lertab(e,file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-        if (sscanf(linha,"movs %s")==(-1)){
+        if (sscanf(linha,"movs")==(-1)){
             aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
@@ -111,11 +110,10 @@ int interpretador(ESTADO *e){
             e->count_mov++;
             e->count_jog = 2;
         }
+        //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
         /*if (sscanf(linha,"jog")==0){
-            //jogs(e,d);
-        }
-        */
-
+            jogs(e,c);
+        }*/
         if(e->tab[7][0] == BRANCA)
         {
             parabens(1); e->num++;
