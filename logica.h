@@ -15,5 +15,5 @@ void posf(ESTADO *e, int x);
 void troca_jog(ESTADO *e);
 void iniciar_estado(ESTADO *e);
 void mudar_estado(ESTADO *e);
-void acresList (ESTADO *e,COORDENADA c,LISTA d);
+//void acresList (ESTADO *e,COORDENADA c,LISTA d);
 #endif //LI2_LOGICA_H

@@ -154,6 +154,11 @@ void aux_mov(ESTADO *e){
     //printf(" %c%d %c%d \n",e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha,e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);
     putchar('\n');
 }
+/**
+ * Função desenvolvida para ser o prompt do jogo (Estados do jogo), feita para ser gravada no ficheiro
+ * @param e
+ * @param f
+ */
 void aux_movf(ESTADO *e,FILE *f){
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_movs)){
@@ -172,7 +177,12 @@ void aux_movf(ESTADO *e,FILE *f){
     }
     putchar('\n');
 }
-void posf(ESTADO *e, int x) {
+/**
+ * Função para o comando pos,no qual retornar a jogada específica no índice declado
+ * @param e estado
+ * @param x índice
+ */
+void posf (ESTADO *e, int x) {
     int i;
     printf("#%02d: Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
     tabuleiro_inicial(e);
@@ -203,6 +213,10 @@ void posf(ESTADO *e, int x) {
     }
     e->num_jogadas = x;
 }
+/**
+ * Função no qual alternar os jogadores ao decorrer das jogadas efetuadas
+ * @param e Estado
+ */
 void troca_jog(ESTADO *e){
     e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
 
@@ -212,13 +226,15 @@ void troca_jog(ESTADO *e){
     }
 }
 
-void acresList (ESTADO *e,COORDENADA c,LISTA d){
-
+/*void acresList (ESTADO *e,COORDENADA c,LISTA d){
 }
-
 jogs (ESTADO *e,COORDENADA c){
+}*/
 
-}
+/**
+ * Função criada apenas para inicir o estado devidamente
+ * @param e
+ */
 void iniciar_estado(ESTADO *e) {
     e->num = 0;
     e->count_jog = 1;
@@ -226,7 +242,10 @@ void iniciar_estado(ESTADO *e) {
     e->count_movs = 1;
     e->num_jogadas = 1;
 }
-
+/**
+ * Função que altera o estado com atualização das jogadas feita
+ * @param e
+ */
 void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_mov++;
