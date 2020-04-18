@@ -20,13 +20,6 @@ void savetab(ESTADO *e, char *tabuleiro){
 
 /**
  * \brief
- * Função que gera um arquivo com o tabuleiro e jogadas feita até o atual momento
- * @param e estado
- * @param tabuleiro
- */
-
-/**
- * \brief
  * @param e é o estado
  * @param tab_file nome dado ao ficheiro que será lido
  * Função que le o arquivo gerado
@@ -41,8 +34,11 @@ void lertab(ESTADO *e,char *tabuleiro) {
         }
     }
     fseek(f, 1, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
+    char j1[2], j2[2];
+    fscanf(f, " %*e%*c %s%s",j1, j2);
+    printf("%s \n",j2);
     for (int c; c != EOF; c = getc(f)) {     // EOF (end of file) c=caracter para ver se esta no final do ficheiro
-        char j1[2], j2[2];
+        //char j1[2], j2[2];
         int jogadas = fscanf(f, "%*e %s %s", j1, j2);
         if (jogadas==2){
             jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
@@ -124,7 +120,7 @@ int interpretador(ESTADO *e){
             e->count_mov++;
             e->count_jog = 2;
         }
-        if (sscanf(linha,"jog %s")==(-1)){
+        if (sscanf(linha,"jog")==0){
             jogs(e,c);
         }
 

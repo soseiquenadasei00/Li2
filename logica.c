@@ -212,7 +212,11 @@ void troca_jog(ESTADO *e){
     }
 }
 
-jogs (ESTADO *e, COORDENADA c,CASA h){
+acresList (ESTADO *e,COORDENADA c,LISTA d){
+
+}
+
+jogs (ESTADO *e,COORDENADA c){
     LISTA *d;
     if (checaCasa(e,c,h)==VAZIA){
         *d=c;
