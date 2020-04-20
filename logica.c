@@ -190,32 +190,17 @@ void posf (ESTADO *e, int x) {
     printf("#%02d: Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
     tabuleiro_inicial(e);
 
-    if((e->num_jogadas) == x) {
-        for (i = 1; i <= x; i++) {
-            if (i == x) {
-                if (e->jogador_atual == 1) {
-                    jogar(e, e->jogadas[i - 1].jogador1);
-                    jogar(e, e->jogadas[i - 1].jogador2);
-                    e->count_movs = 2 * x;
-                } else {
-                    jogar(e, e->jogadas[i - 1].jogador1);
-                    e->count_movs = 2 * x +1;
-                }
-            } else {
-                jogar(e, e->jogadas[i - 1].jogador1);
-                jogar(e, e->jogadas[i - 1].jogador2);
-            }
-        }
+    iniciar_estado(e);
+    for (i = 1; i <= x; i++) {
+        troca_jog(e);
+        jogar(e, e->jogadas[i - 1].jogador1);
+        mudar_estado(e);
+        troca_jog(e);
+        jogar(e, e->jogadas[i - 1].jogador2);
+        mudar_estado(e);
     }
-    else{
-        for(i = 1;i <= x;i++){
-            jogar(e, e->jogadas[i - 1].jogador1);
-            jogar(e, e->jogadas[i - 1].jogador2);
-        }
-        e->count_movs = 2*x+1;
-    }
-    e->num_jogadas = x;
 }
+
 /**
  * Função no qual alternar os jogadores ao decorrer das jogadas efetuadas
  * @param e Estado
@@ -228,6 +213,28 @@ void troca_jog(ESTADO *e){
         e->count_jog = 1;
     }
 }
+/**
+ * Função criada apenas para inicir o estado devidamente
+ * @param e
+ */
+void iniciar_estado(ESTADO *e) {
+    e->num = 0;
+    e->count_jog = 1;
+    e->count_mov = 1;
+    e->count_movs = 1;
+    e->num_jogadas = 1;
+}
+/**
+ * Função que altera o estado com atualização das jogadas feita
+ * @param e
+ */
+void mudar_estado(ESTADO *e){
+    e->count_jog++;
+    e->count_mov++;
+    e->count_movs++;
+}
+
+
 /*int printRandoms (int lower, int upper, int count)
 {
     int i, num;
@@ -257,25 +264,3 @@ void troca_jog(ESTADO *e){
     c.letrinha = col[0];
     jogar(e,c);
 */
-
-
-/**
- * Função criada apenas para inicir o estado devidamente
- * @param e
- */
-void iniciar_estado(ESTADO *e) {
-    e->num = 0;
-    e->count_jog = 1;
-    e->count_mov = 1;
-    e->count_movs = 1;
-    e->num_jogadas = 1;
-}
-/**
- * Função que altera o estado com atualização das jogadas feita
- * @param e
- */
-void mudar_estado(ESTADO *e){
-    e->count_jog++;
-    e->count_mov++;
-    e->count_movs++;
-}
