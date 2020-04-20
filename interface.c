@@ -76,6 +76,7 @@ int interpretador(ESTADO *e){
             parabens(e->jogador_atual);
             break;}
 
+        prompt(e);
         fgets(linha,TAMANHO,stdin);
         sscanf(linha, "%[a-h]%[1-8]", col,lin);
         COORDENADA c = {*col -'a','8' - *lin};
@@ -88,7 +89,6 @@ int interpretador(ESTADO *e){
             {
                 movs(e,c);
                 jogar(e,c);
-                prompt(e,c);
                 mudar_estado(e);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
@@ -120,6 +120,7 @@ int interpretador(ESTADO *e){
         {
             parabens(2); e->num++;
         }
+
         if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;

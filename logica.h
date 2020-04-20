@@ -3,7 +3,7 @@
 
 void movs(ESTADO *e, COORDENADA c);
 void show_tab(FILE *f, ESTADO *e);
-void prompt(ESTADO *e,COORDENADA c);
+void prompt(ESTADO *e);
 int jogar(ESTADO *e, COORDENADA c);
 int casa_viz(COORDENADA cAntes, COORDENADA cJog);
 int casa_livre (ESTADO *e, COORDENADA c);

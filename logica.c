@@ -22,11 +22,8 @@ int jogar(ESTADO *e, COORDENADA c) {
 /**
  * \brief Prompt do jogo
  */
-void prompt(ESTADO *e, COORDENADA c) {
-    char col = c.letrinha;
-    int lin = 8 - c.linha;
-
-    printf("#%02d Jogador %d (%d) -> %c%d\n", e->count_mov, e->jogador_atual, e->num_jogadas, col, lin);
+void prompt(ESTADO *e){
+    printf("#%02d Jogador %d (%d) -> ", e->count_mov, e->jogador_atual, e->num_jogadas);
 
 }
 /**
@@ -137,7 +134,6 @@ void movs(ESTADO *e, COORDENADA c)
  * @param f ficheiro
  */
 void aux_mov(ESTADO *e){
-    printf("#%02d Jogador %d (%d) -> movs\n", e->count_mov, e->jogador_atual, e->num_jogadas);
     int movi = 1, jogs = 1, numjog = 1;
     while(movi < (e->count_movs)){
         if (jogs > 2){
@@ -187,7 +183,6 @@ void aux_movf(ESTADO *e,FILE *f){
  */
 void posf (ESTADO *e, int x) {
     int i;
-    printf("#%02d: Jogador %d (%d) -> pos %d\n", e->count_mov, e->jogador_atual, e->num_jogadas, x);
     tabuleiro_inicial(e);
 
     iniciar_estado(e);
