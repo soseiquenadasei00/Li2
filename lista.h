@@ -1,6 +1,6 @@
 #ifndef LI2_LISTA_H
 #define LI2_LISTA_H
-#include "camadaDeDados.h"
+
 typedef struct lista {
     void *valor;
     struct lista *prox;

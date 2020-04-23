@@ -27,25 +27,42 @@ void savetab(ESTADO *e, char *tabuleiro){
 
 void lertab(ESTADO *e,char *tabuleiro) {
     FILE *f= fopen(tabuleiro,"r");
-    for (int i = 0; i < 8; fgetc(f),i++) {
-        for (int j = 0; j < 8; j++) {
-            char c = fgetc(f);  // fgetc =lê o primeiro caractere e automaticamente já se posiciona no próximo.
-            checaCasa(e, (COORDENADA) {i,j}, c);
-        }
+    if (f == NULL){
+        printf("ERROR\n");
     }
-    fseek(f, 1, SEEK_CUR);// SEEK_CUR :Posição atual do fluxo
-    for (int c; c != EOF; c = getc(f)) {     // EOF (end of file) c=caracter para ver se esta no final do ficheiro
-        char j1[2], j2[2];
-        int jogadas = fscanf(f, "%*e %s %s", j1, j2);
-        if (jogadas==2){
+    iniciar_estado(e);
+    char j1[2], j2[2],j[2],js[8];
+    int jogadas;
+    for (int i = 0; i < 8;i++) {
+        fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
+
+    //jogadas = fscanf(f, "%s %s %s\n",j, j1, j2);
+    //printf("%s, %d\n",j1,jogadas);
+    while ((fscanf(f, "%*s %s %s\n",j1, j2))!= EOF) {
+        printf("LIDO:%s %s\n",j1, j2);
+        //jogadas = fscanf(f, "%*s %s %s\n", j1, j2);
+        /*if (jogadas==2){
+            troca_jog(e);
+            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
             jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
+            mudar_estado(e);
+
+            troca_jog(e);
+            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
             jogar(e,(COORDENADA) {j2[0]-'a',8-(j2[1]-'1')});
+            mudar_estado(e);
         }
         else if (jogadas==1){
+            troca_jog(e);
+            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
             jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
+            mudar_estado(e);
         }
     }
-    fclose(f);}
+     */
+    }
+    fclose(f);
+    }
 /**
  \brief Função que mostra a tabuleiro no ecrã.
  */
