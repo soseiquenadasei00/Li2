@@ -58,7 +58,7 @@ int min (int x, int y)
  \brief Função que conta quantas possíveis jogadas existem no momento
  * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
  */
-int possiveis_jogadas(ESTADO *e)
+int possiveis_jogadas(ESTADO *e, LISTA d)
 {
     int count = 0, i, j;
 
@@ -70,7 +70,7 @@ int possiveis_jogadas(ESTADO *e)
         while( j <= min((e->ultima_jogada.letra + 1), 7))
         {
             if (e->tab[i][j] == VAZIA) {
-                //insere_cabeca(l,&(e->tab[i][j]));
+                //insere_cabeca(d,&);
                 count++;
             }
             j++;
@@ -201,7 +201,7 @@ void posf (ESTADO *e, int x) {
  * @param e Estado
  */
 void troca_jog(ESTADO *e){
-    e->jogador_atual = ((e->count_mov) % 2 == 0) ? 2 : 1;
+    e->jogador_atual = ((e->count_movs) % 2 == 0) ? 2 : 1;
 
     if ((e->count_jog) == 3) {
         e->num_jogadas++;
@@ -225,7 +225,6 @@ void iniciar_estado(ESTADO *e) {
  */
 void mudar_estado(ESTADO *e){
     e->count_jog++;
-    e->count_mov++;
     e->count_movs++;
 }
 

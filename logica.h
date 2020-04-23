@@ -1,5 +1,6 @@
 #ifndef LI2_LOGICA_H
 #define LI2_LOGICA_H
+#include "lista.h"
 
 void movs(ESTADO *e, COORDENADA c);
 void show_tab(FILE *f, ESTADO *e);
@@ -7,7 +8,7 @@ void prompt(ESTADO *e);
 int jogar(ESTADO *e, COORDENADA c);
 int casa_viz(COORDENADA cAntes, COORDENADA cJog);
 int casa_livre (ESTADO *e, COORDENADA c);
-int possiveis_jogadas(ESTADO *e);
+int possiveis_jogadas(ESTADO *e,LISTA d);
 void parabens(int jogador);
 void aux_mov(ESTADO *e);
 void aux_movf(ESTADO *e,FILE *f);

@@ -1,7 +1,9 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include "camadaDeDados.h"
 #include "logica.h"
+#include "lista.h"
 #define  TAMANHO 1024
 
 /**
@@ -27,36 +29,46 @@ void savetab(ESTADO *e, char *tabuleiro){
 
     void lertab(ESTADO *e,char *tabuleiro) {
         FILE *f= fopen(tabuleiro,"r");
+        int jogadas;
         if (f == NULL){
             printf("ERROR\n");
         }
+        tabuleiro_inicial(e);
         iniciar_estado(e);
-        char j1[3],j2[3],j[4];
+        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
         for (int i = 0; i < 8;i++) {
             fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
 
-        while ((fscanf(f,"%s %s %s\n",j,j1,j2))!= EOF) {
-            printf("LIDO:  %s %s\n",j1,j2);
-        //jogadas = fscanf(f, "%*s %s %s\n", j1, j2);
-        /*if (jogadas==2){
-            troca_jog(e);
-            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
-            jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
-            mudar_estado(e);
+        while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
+            sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
+            COORDENADA c1 = {*col1 -'a','8' - *lin1};
+            c1.letra = *col1 -'a';
+            c1.linha = '8'- *lin1;
+            c1.letrinha = col1[0];
 
-            troca_jog(e);
-            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
-            jogar(e,(COORDENADA) {j2[0]-'a',8-(j2[1]-'1')});
-            mudar_estado(e);
+            sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
+            COORDENADA c2 = {*col2 -'a','8' - *lin2};
+            c2.letra = *col2 -'a';
+            c2.linha = '8'- *lin2;
+            c2.letrinha = col2[0];
+
+            if (jogadas==2){
+                troca_jog(e);
+                movs(e,c1);
+                jogar(e,c1);
+                mudar_estado(e);
+
+                troca_jog(e);
+                movs(e,c2);
+                jogar(e,c2);
+                mudar_estado(e);
+             }
+            else if (jogadas==1){
+                troca_jog(e);
+                movs(e,c1);
+                jogar(e,c1);
+                mudar_estado(e);
         }
-        else if (jogadas==1){
-            troca_jog(e);
-            movs(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
-            jogar(e,(COORDENADA) {j1[0]-'a',8-(j1[1]-'1')});
-            mudar_estado(e);
-        }
-    }
-     */
     }
     fclose(f);
     }
@@ -82,11 +94,16 @@ int interpretador(ESTADO *e){
     char col[2],lin[2];
     int x;
 
+    LISTA d = criar_lista();
     iniciar_estado(e);
     while (e->num == 0){
 
+        //d = insere_cabeca(d,&e->count_jog);
+        //printf("cabeça: %d\n",*(int *)d->valor);
+
+
         troca_jog(e);
-        if((possiveis_jogadas (e)) == 0) {
+        if((possiveis_jogadas (e,d)) == 0) {
             parabens(e->jogador_atual);
             break;}
 
@@ -136,6 +153,7 @@ int interpretador(ESTADO *e){
         }
 
         if (e->num == 0) mostrar_tabuleiro(e);
+        e->count_mov++;
     }
     return 0;
 }
