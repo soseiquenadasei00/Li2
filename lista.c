@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "camadaDeDados.h"
 #include "lista.h"
 
 /**
@@ -32,18 +31,8 @@ LISTA insere_cabeca(LISTA L, void *valor) {
  * @return
  */
 void *devolve_cabeca(LISTA L){
-    LISTA d = malloc(sizeof(struct lista));
-    d->valor = L->valor;
-    d->prox=NULL;
-    return d;
-/**
- * Insere na cabeça da lista o valor
- */
-LISTA insere_cabeca(LISTA L, void *valor){
- LISTA d = malloc(sizeof (struct lista));
+    return L->valor;}
 
-}
-}
 /**
  * Da o proximo valor da lista
  * @param L
