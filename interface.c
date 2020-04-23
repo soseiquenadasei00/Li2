@@ -25,21 +25,18 @@ void savetab(ESTADO *e, char *tabuleiro){
  * Função que le o arquivo gerado
  */
 
-void lertab(ESTADO *e,char *tabuleiro) {
-    FILE *f= fopen(tabuleiro,"r");
-    if (f == NULL){
-        printf("ERROR\n");
-    }
-    iniciar_estado(e);
-    char j1[2], j2[2],j[2],js[8];
-    int jogadas;
-    for (int i = 0; i < 8;i++) {
-        fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
+    void lertab(ESTADO *e,char *tabuleiro) {
+        FILE *f= fopen(tabuleiro,"r");
+        if (f == NULL){
+            printf("ERROR\n");
+        }
+        iniciar_estado(e);
+        char j1[3],j2[3],j[4];
+        for (int i = 0; i < 8;i++) {
+            fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
 
-    //jogadas = fscanf(f, "%s %s %s\n",j, j1, j2);
-    //printf("%s, %d\n",j1,jogadas);
-    while ((fscanf(f, "%*s %s %s\n",j1, j2))!= EOF) {
-        printf("LIDO:%s %s\n",j1, j2);
+        while ((fscanf(f,"%s %s %s\n",j,j1,j2))!= EOF) {
+            printf("LIDO:  %s %s\n",j1,j2);
         //jogadas = fscanf(f, "%*s %s %s\n", j1, j2);
         /*if (jogadas==2){
             troca_jog(e);
