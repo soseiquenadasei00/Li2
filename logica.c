@@ -1,6 +1,7 @@
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 #include "camadaDeDados.h"
 #include "logica.h"
 #include "lista.h"
@@ -60,7 +61,8 @@ int min (int x, int y)
  */
 int possiveis_jogadas(ESTADO *e, LISTA d)
 {
-    int count = 0, i, j;
+    int count = 0, i, j,coord;
+
 
     i = max((e->ultima_jogada.linha - 1), 0);
     j = max((e->ultima_jogada.letra - 1), 0);
@@ -70,7 +72,8 @@ int possiveis_jogadas(ESTADO *e, LISTA d)
         while( j <= min((e->ultima_jogada.letra + 1), 7))
         {
             if (e->tab[i][j] == VAZIA) {
-                //insere_cabeca(d,&);
+                coord = concat(i,j);
+                insere_cabeca(d,&coord);
                 count++;
             }
             j++;
@@ -78,6 +81,8 @@ int possiveis_jogadas(ESTADO *e, LISTA d)
         i++;
         j = max((e->ultima_jogada.letra - 1), 0);
     }
+    //printl2(d);
+    printf("\n");
     return count;
 
 }
@@ -227,9 +232,15 @@ void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_movs++;
 }
+void printl2(LISTA a) {
+    while(a != NULL) { //while(a)
+        printf("%d, ",*(int *) a->valor);
+        a = a->prox;
+    }
+    printf("\n");
+}
 
-
-/*int printRandoms (int lower, int upper, int count)
+int printRandoms (int lower, int upper, int count)
 {
     int i, num;
     for (i=0; i < count; i++)
@@ -239,22 +250,37 @@ void mudar_estado(ESTADO *e){
     }
     return num;
 }
-*/
-
-
-/*void jogs(ESTADO *e,LISTA l){
-    int max = possiveis_jogadas(e,l);
-    char col[2],lin[2];
-    srand(time(0));
-    int num = printRandoms(0,max,1);
+int tamanho_list(LISTA d){
     int i;
-    for (i = 0; i < num; i++){
+    for(i = 0; d != NULL; i++);
+    return i;
+}
+
+
+void jogs(ESTADO *e,LISTA l) {
+    int max = tamanho_list(l);
+    char col[2], lin[2];
+    srand(time(0));
+    int num = printRandoms(0, max, 1);
+    int i;
+    for (i = 0; i < num; i++) {
         l = l->prox;
     }
-    sscanf((l->valor), "%[a-h]%[1-8]", col,lin);
-    COORDENADA c = {*col -'a','8' - *lin};
-    c.letra = *col -'a';
-    c.linha = '8'- *lin;
+    sscanf((l->valor), "%[a-h]%[1-8]", col, lin);
+    COORDENADA c = {*col - 'a', '8' - *lin};
+    c.letra = *col - 'a';
+    c.linha = '8' - *lin;
     c.letrinha = col[0];
-    jogar(e,c);
-*/
+    jogar(e, c);
+}
+
+int concat(int a, int b)
+{
+    char s1[20];
+    char s2[20];
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+    strcat(s1, s2);
+    int c = atoi(s1);
+    return c;
+    }

@@ -140,9 +140,9 @@ int interpretador(ESTADO *e){
             posf(e,x);
         }
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-        /*if (sscanf(linha,"jog")==0){
-            jogs(e,c);
-        }*/
+        if (sscanf(linha,"jog")==0){
+            jogs(e,d);
+        }
         if(e->tab[7][0] == BRANCA)
         {
             parabens(1); e->num++;

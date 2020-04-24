@@ -16,6 +16,10 @@ void posf(ESTADO *e, int x);
 void troca_jog(ESTADO *e);
 void iniciar_estado(ESTADO *e);
 void mudar_estado(ESTADO *e);
+void printl2(LISTA a);
+int concat(int a, int b);
+int tamanho_list(LISTA d);
+void jogs(ESTADO *e,LISTA l);
 //int printRandoms (int lower, int upper, int count);
 //void jogs(ESTADO *e,LISTA l);
 #endif //LI2_LOGICA_H
