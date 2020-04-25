@@ -63,7 +63,7 @@ void insere_lista(LISTA *a, ESTADO *e) {
         insere_cabeca(a, &(e->possiveis_jog[i]));
     }
 }
-*/
+
 
 void printl2(LISTA a) {
     if (a==NULL) printf("TEM MAIS NADA");
@@ -282,7 +282,7 @@ int printRandoms (int lower, int upper, int count)
     for(i = 0; d != NULL; i++);
     return i;
 }
-*
+
 
 void jogs(ESTADO *e,LISTA l) {
     int max = tamanho_list(l);
@@ -300,3 +300,4 @@ void jogs(ESTADO *e,LISTA l) {
     c.letrinha = col[0];
     jogar(e, c);
 }
+*/
