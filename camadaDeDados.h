@@ -30,6 +30,8 @@ typedef struct {
     int count_mov;
     int count_movs;
     int num;
+    int qntjogs;
+    int possiveis_jog[8];
     COORDENADA ultima_jogada;
     //COORDENADA possivel_jogada;
 } ESTADO;

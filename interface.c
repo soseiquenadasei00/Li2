@@ -27,12 +27,9 @@ void savetab(ESTADO *e, char *tabuleiro){
  * Função que le o arquivo gerado
  */
 
-    void lertab(ESTADO *e,char *tabuleiro) {
+void lertab(ESTADO *e,char *tabuleiro) {
         FILE *f= fopen(tabuleiro,"r");
         int jogadas;
-        if (f == NULL){
-            printf("ERROR\n");
-        }
         tabuleiro_inicial(e);
         iniciar_estado(e);
         char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
@@ -85,75 +82,75 @@ void mostrar_tabuleiro(ESTADO *e) {
         c--;}
     printf("\nA B C D E F G H\n");
 }
+
+
+
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
-int interpretador(ESTADO *e){
+int interpretador(ESTADO *e) {
     char file_name[TAMANHO];
     char linha[TAMANHO];
-    char col[2],lin[2];
+    char col[2], lin[2];
     int x;
-
     LISTA d = criar_lista();
     iniciar_estado(e);
-    while (e->num == 0){
 
-        //d = insere_cabeca(d,&e->count_jog);
-        //printf("cabeça: %d\n",*(int *)d->valor);
-
-
+    while (e->num == 0) {
         troca_jog(e);
-        if((possiveis_jogadas (e,d)) == 0) {
+        if ((possiveis_jogadas(e, &d)) == 0) {
             parabens(e->jogador_atual);
-            break;}
+            break;
+        }
 
         prompt(e);
-        fgets(linha,TAMANHO,stdin);
-        sscanf(linha, "%[a-h]%[1-8]", col,lin);
-        COORDENADA c = {*col -'a','8' - *lin};
-        c.letra = *col -'a';
-        c.linha = '8'- *lin;
+        fgets(linha, TAMANHO, stdin);
+        sscanf(linha, "%[a-h]%[1-8]", col, lin);
+        COORDENADA c = {*col - 'a', '8' - *lin};
+        c.letra = *col - 'a';
+        c.linha = '8' - *lin;
         c.letrinha = col[0];
         /*Validação de jogadas*/
-        if (strlen(linha) == 3  && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2){
-            if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e,c) == 1))
-            {
-                movs(e,c);
-                jogar(e,c);
+        if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+            if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e, c) == 1)) {
+                movs(e, c);
+                jogar(e, c);
                 mudar_estado(e);
             } else printf("Jogada invalida,tente novamente!!\n\n");
         }
         /* Caso o jogador digite "Quit" o jogo acaba*/
-        if(!(strncmp(linha,"Quit",4))) break;
+        if (!(strncmp(linha, "Quit", 4))) break;
         /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
-        if(sscanf(linha, "gr %s",file_name)==1) {
-            savetab(e,file_name);}
+        if (sscanf(linha, "gr %s", file_name) == 1) {
+            savetab(e, file_name);
+        }
         /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
-        if (sscanf(linha,"ler %s",file_name)==(1)){
-            lertab(e,file_name);
+        if (sscanf(linha, "ler %s", file_name) == (1)) {
+            lertab(e, file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-        if (sscanf(linha,"movs %s")==(-1)){
+        if (sscanf(linha, "movs %s") == (-1)) {
             aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
-        if (sscanf(linha,"pos %d", &x)==1){
-            posf(e,x);
+        if (sscanf(linha, "pos %d", &x) == 1) {
+            posf(e, x);
         }
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-        if (sscanf(linha,"jog")==0){
-            jogs(e,d);
+        //if (sscanf(linha,"jog")==0){
+        //    jogs(e,d);
+
+        if (e->tab[7][0] == BRANCA) {
+            parabens(1);
+            e->num++;
         }
-        if(e->tab[7][0] == BRANCA)
-        {
-            parabens(1); e->num++;
-        }
-        if(e->tab[0][7] == BRANCA)
-        {
-            parabens(2); e->num++;
+        if (e->tab[0][7] == BRANCA) {
+            parabens(2);
+            e->num++;
         }
 
         if (e->num == 0) mostrar_tabuleiro(e);
         e->count_mov++;
-    }
+
+        }
     return 0;
 }

@@ -8,10 +8,11 @@ typedef struct lista {
 
 // Função criada para a struct do bot
 LISTA criar_lista();
-LISTA insere_cabeca(LISTA L, void *valor);
+void insere_cabeca(LISTA *l, void *valor);
 void *devolve_cabeca(LISTA L);
 LISTA proximo(LISTA L);
 LISTA remove_cabeca(LISTA L);
 int lista_esta_vazia(LISTA L);
+void freeList(LISTA head);
 
 #endif //LI2_LISTA_H

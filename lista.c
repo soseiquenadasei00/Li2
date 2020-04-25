@@ -7,8 +7,7 @@
  * @return
  */
 LISTA criar_lista(){
-   LISTA d;
-   d=NULL;
+   LISTA d = NULL;
    return d;
 }
 
@@ -18,11 +17,11 @@ LISTA criar_lista(){
  * @param valor void
  * @return
  */
-LISTA insere_cabeca(LISTA L, void *valor) {
+void insere_cabeca(LISTA *l, void *valor) {
     LISTA d = malloc(sizeof(struct lista));
     d->valor = valor;
-    d->prox = L;
-    return d;
+    d->prox = (*l);
+    *l = d;
 }
 
 /**
@@ -60,4 +59,12 @@ LISTA remove_cabeca(LISTA L){
 int lista_esta_vazia(LISTA L){
     if (L == NULL) return 1;
     return 0;
+}
+void freeList(LISTA head)  {
+    LISTA temp;
+    while (head != NULL) {
+        temp = head;
+        head = head->prox;
+        free(temp);
+    }
 }

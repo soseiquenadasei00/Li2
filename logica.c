@@ -55,25 +55,54 @@ int min (int x, int y)
     z = (x <= y) ? x : y;
     return z;
 }
+
+void insere_lista(LISTA *a, ESTADO *e) {
+    int max, i;
+    max = e->qntjogs;
+    for (i = 0; i < max; i++) {
+        insere_cabeca(a, &(e->possiveis_jog[i]));
+    }
+}
+*/
+
+void printl2(LISTA a) {
+    if (a==NULL) printf("TEM MAIS NADA");
+    while(a != NULL) { //while(a)
+        printf("%d, ", *(int*) a->valor);
+        a = a->prox;
+    }
+    printf("\n");
+}
+
+int concat(int a, int b)
+{
+    char s1[20];
+    char s2[20];
+    sprintf(s1, "%d", a);
+    sprintf(s2, "%d", b);
+    strcat(s1, s2);
+    int c = atoi(s1);
+    return c;
+}
 /**
  \brief Função que conta quantas possíveis jogadas existem no momento
  * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
  */
-int possiveis_jogadas(ESTADO *e, LISTA d)
+int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
-    int count = 0, i, j,coord;
-
-
+    int count = 0, i, j,coord,minlin,minlet;
+    minlin = min((e->ultima_jogada.linha + 1), 7);
+    minlet = min((e->ultima_jogada.letra + 1), 7);
     i = max((e->ultima_jogada.linha - 1), 0);
     j = max((e->ultima_jogada.letra - 1), 0);
 
-    while (i <= min((e->ultima_jogada.linha + 1), 7))
+    while (i <= minlin)
     {
-        while( j <= min((e->ultima_jogada.letra + 1), 7))
+        while( j <= minlet)
         {
             if (e->tab[i][j] == VAZIA) {
                 coord = concat(i,j);
-                insere_cabeca(d,&coord);
+                e->possiveis_jog[count]=coord;
                 count++;
             }
             j++;
@@ -81,7 +110,7 @@ int possiveis_jogadas(ESTADO *e, LISTA d)
         i++;
         j = max((e->ultima_jogada.letra - 1), 0);
     }
-    //printl2(d);
+    e->qntjogs = count;
     printf("\n");
     return count;
 
@@ -139,8 +168,9 @@ void movs(ESTADO *e, COORDENADA c)
  * @param f ficheiro
  */
 void aux_mov(ESTADO *e){
-    int movi = 1, jogs = 1, numjog = 1;
-    while(movi < (e->count_movs)){
+    int movi = 1, jogs = 1, numjog = 1, allmovs;
+    allmovs = e->count_movs;
+    while(movi < allmovs){
         if (jogs > 2){
             numjog++;
             jogs = 1;
@@ -158,14 +188,17 @@ void aux_mov(ESTADO *e){
 
     putchar('\n');
 }
+
 /**
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo), feita para ser gravada no ficheiro
  * @param e
  * @param f
  */
 void aux_movf(ESTADO *e,FILE *f){
-    int movi = 1, jogs = 1, numjog = 1;
-    while(movi < (e->count_movs)){
+    int movi = 1, jogs = 1, numjog = 1,allmovs;
+    allmovs = e->count_movs;
+    while(movi < allmovs){
+
         if (jogs > 2){
             numjog++;
             jogs = 1;
@@ -200,7 +233,6 @@ void posf (ESTADO *e, int x) {
         mudar_estado(e);
     }
 }
-
 /**
  * Função no qual alternar os jogadores ao decorrer das jogadas efetuadas
  * @param e Estado
@@ -224,6 +256,7 @@ void iniciar_estado(ESTADO *e) {
     e->count_movs = 1;
     e->num_jogadas = 1;
 }
+
 /**
  * Função que altera o estado com atualização das jogadas feita
  * @param e
@@ -232,14 +265,6 @@ void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_movs++;
 }
-void printl2(LISTA a) {
-    while(a != NULL) { //while(a)
-        printf("%d, ",*(int *) a->valor);
-        a = a->prox;
-    }
-    printf("\n");
-}
-
 int printRandoms (int lower, int upper, int count)
 {
     int i, num;
@@ -250,12 +275,14 @@ int printRandoms (int lower, int upper, int count)
     }
     return num;
 }
-int tamanho_list(LISTA d){
+
+
+/*int tamanho_list(LISTA d){
     int i;
     for(i = 0; d != NULL; i++);
     return i;
 }
-
+*
 
 void jogs(ESTADO *e,LISTA l) {
     int max = tamanho_list(l);
@@ -273,14 +300,3 @@ void jogs(ESTADO *e,LISTA l) {
     c.letrinha = col[0];
     jogar(e, c);
 }
-
-int concat(int a, int b)
-{
-    char s1[20];
-    char s2[20];
-    sprintf(s1, "%d", a);
-    sprintf(s2, "%d", b);
-    strcat(s1, s2);
-    int c = atoi(s1);
-    return c;
-    }
