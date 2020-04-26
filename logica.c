@@ -73,7 +73,12 @@ void printl2(LISTA a) {
     }
     printf("\n");
 }
-
+/**
+ * Função que concatena listas
+ * @param a
+ * @param b
+ * @return
+ */
 int concat(int a, int b)
 {
     char s1[20];
@@ -114,7 +119,6 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
     insere_lista(d,e);
     printf("\n");
     return count;
-
 }
 /**
  \brief Função que garante se duas coordenadas são vizinhas no tabuleiro
@@ -182,14 +186,12 @@ void aux_mov(ESTADO *e){
         else {
             printf("%02d: %c%d ",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);
         }
-
         movi++;
         jogs++;
     }
 
     putchar('\n');
 }
-
 /**
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo), feita para ser gravada no ficheiro
  * @param e
@@ -199,7 +201,6 @@ void aux_movf(ESTADO *e,FILE *f){
     int movi = 1, jogs = 1, numjog = 1,allmovs;
     allmovs = e->count_movs;
     while(movi < allmovs){
-
         if (jogs > 2){
             numjog++;
             jogs = 1;
@@ -266,6 +267,13 @@ void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_movs++;
 }
+/**
+ * Função para gerar numeros aleatorios
+ * @param lower
+ * @param upper
+ * @param count
+ * @return
+ */
 int printRandoms (int lower, int upper, int count)
 {
     int i, num;
@@ -277,26 +285,29 @@ int printRandoms (int lower, int upper, int count)
     return num;
 }
 
-
-/*int tamanho_list(LISTA d){
+/**
+ * Função criada para auxiliar na contagem da lista ligada (Apenas para saber o tamnho que a lista tem)
+ * @param d lista ligada
+ * @return retorna o tamnho da lista
+ */
+int tamanho_list(LISTA d){
     int i;
     for(i = 0; d != NULL; i++);
     return i;
 }
-*/
-
+/**
+ * Função criada para jogar em uma posição de forma aleatoria (Bot)
+ * @param e Estado atual do jogo
+ * @param l lista ligada
+ */
 void jogs(ESTADO *e,LISTA l) {
     int max = e->qntjogs;
-    char col[2];
-    char lin[2];
+    char col[2],lin[2],coord[5];
     srand(time(0));
-    int num = printRandoms(0, max, 1);
-    int i;
-    for (i = 1; i < num; i++) {
-        l = l->prox;
-    }
+    int num = printRandoms(0, max, 1);//Coord sendo gerada de forma aleatoria com base nos segundos passados
+    for (int i = 1; i < num; i++) {
+        l = l->prox;}
     int atual = *(int *)l->valor;
-    char coord[5];
     sprintf(coord, "%d", atual);
     sscanf(coord, "%c%c", col, lin);
     int colint = abs('0' - *col);
@@ -309,3 +320,13 @@ void jogs(ESTADO *e,LISTA l) {
     jogar(e,c);
     mudar_estado(e);
 }
+/**
+ * Função craida para jogar em uma posição de forma mais planejada (Bot)
+ * @param e Estado atual do jogo
+ * @param l lista ligada
+ */
+/*void jogs2 (ESTADO *e,LISTA l){
+ int max= e->qntjogs;
+ char col[2],lin[2];
+
+}*/

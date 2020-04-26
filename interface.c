@@ -132,13 +132,15 @@ int interpretador(ESTADO *e) {
         if (sscanf(linha, "ler %s", file_name) == (1)) {
             lertab(e, file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-        if (sscanf(linha, "movs %s") == (-1)) {
+        //printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha,"movs"));
+        if (sscanf(linha, "movs %s")==(-1)) {
             aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha, "pos %d", &x) == 1) {
             posf(e, x);
         }
+       // printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha,"jog"));
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
         if (sscanf(linha,"jog %s")==(-1)) {
             jogs(e, d);

@@ -46,7 +46,10 @@ ESTADO *inicializar_estado() {
     e->ultima_jogada.linha = 3;
     return e;
 }
-
+/**
+ * Função no qual começamos com um tabuleiro do 0
+ * @param e estado zerado
+ */
 void tabuleiro_inicial(ESTADO *e){
     int i,j;
     e->num_jogadas = 0;
@@ -59,7 +62,12 @@ void tabuleiro_inicial(ESTADO *e){
     e->ultima_jogada.letra = 4;
     e->ultima_jogada.linha = 3;
 }
-
+/**
+ * Função que chega a casa
+ * @param e estado atual da peça
+ * @param c coordenada especifica da casa
+ * @param h valor que a casa toma (BRANCA,VAZIA,PRETA)
+ */
 void checaCasa (ESTADO *e, COORDENADA c, CASA h){
     e->tab[c.letra][c.linha]=h;
 }
