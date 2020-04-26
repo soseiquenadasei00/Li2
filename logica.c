@@ -55,7 +55,11 @@ int min (int x, int y)
     z = (x <= y) ? x : y;
     return z;
 }
-
+/**
+ * Insere na lista ligada as possiveis jogadas
+ * @param a
+ * @param e
+ */
 void insere_lista(LISTA *a, ESTADO *e) {
     int max, i;
     max = e->qntjogs;
@@ -63,8 +67,7 @@ void insere_lista(LISTA *a, ESTADO *e) {
         insere_cabeca(a, &(e->possiveis_jog[i]));
     }
 }
-
-
+//Printa as informações que está dentro da lista ligada
 void printl2(LISTA a) {
     if (a==NULL) printf("TEM MAIS NADA");
     while(a != NULL) { //while(a)
@@ -74,8 +77,8 @@ void printl2(LISTA a) {
     printf("\n");
 }
 /**
- * Função que concatena listas
- * @param a
+ * Função que primeiro transformar em string,concatena as strings e depois passamos de strings para inteiros
+ * @param a inteiro que é a
  * @param b
  * @return
  */
@@ -132,7 +135,8 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
     x = abs(cAntes.linha - cJog.linha);
     y = abs(cAntes.letra - cJog.letra);
 
-    if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0))) return 1;
+    if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0)))
+        return 1;
 }
 /**
  \brief Função que confer se a casa específica está livre para jogar
@@ -141,14 +145,15 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
  */
 int casa_livre (ESTADO *e, COORDENADA c)
 {
-    if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA) return 1;
+    if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA)
+        return 1;
 }
 void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
 /**
- * Funcao salvar_movs, armazena na lista de jogadas o ultimo movimento feito
+ * Função salvar_movs, armazena na lista de jogadas o ultimo movimento feito
  * @param e Estado atuaç
  * @param c coordenada imserida
  */
@@ -189,7 +194,6 @@ void aux_mov(ESTADO *e){
         movi++;
         jogs++;
     }
-
     putchar('\n');
 }
 /**
@@ -224,7 +228,6 @@ void aux_movf(ESTADO *e,FILE *f){
 void posf (ESTADO *e, int x) {
     int i;
     tabuleiro_inicial(e);
-
     iniciar_estado(e);
     for (i = 1; i <= x; i++) {
         troca_jog(e);
@@ -258,7 +261,6 @@ void iniciar_estado(ESTADO *e) {
     e->count_movs = 1;
     e->num_jogadas = 1;
 }
-
 /**
  * Função que altera o estado com atualização das jogadas feita
  * @param e
@@ -279,12 +281,10 @@ int printRandoms (int lower, int upper, int count)
     int i, num;
     for (i=0; i < count; i++)
     {
-        num = (rand ()) %
-              (upper - lower + 1) + lower;
+        num = (rand ()) %(upper - lower + 1) + lower;
     }
     return num;
 }
-
 /**
  * Função criada para auxiliar na contagem da lista ligada (Apenas para saber o tamnho que a lista tem)
  * @param d lista ligada
@@ -328,5 +328,4 @@ void jogs(ESTADO *e,LISTA l) {
 /*void jogs2 (ESTADO *e,LISTA l){
  int max= e->qntjogs;
  char col[2],lin[2];
-
 }*/

@@ -10,7 +10,6 @@ LISTA criar_lista(){
    LISTA d = NULL;
    return d;
 }
-
 /**
  * Insere na cabeça da lista o valor
  * @param L lista ligada
