@@ -60,11 +60,13 @@ int lista_esta_vazia(LISTA L){
     if (L == NULL) return 1;
     return 0;
 }
-void freeList(LISTA head)  {
-    LISTA temp;
-    while (head != NULL) {
-        temp = head;
-        head = head->prox;
-        free(temp);
+void freeList(LISTA *l)  {
+    LISTA current = (*l);
+
+    while (current != NULL)
+    {
+        current = (*l) -> prox;
+        free(*l);
+        (*l) = current;
     }
 }

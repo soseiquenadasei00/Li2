@@ -103,6 +103,10 @@ int interpretador(ESTADO *e) {
             break;
         }
 
+
+
+
+
         prompt(e);
         fgets(linha, TAMANHO, stdin);
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
@@ -136,9 +140,9 @@ int interpretador(ESTADO *e) {
             posf(e, x);
         }
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-        //if (sscanf(linha,"jog")==0){
-        //    jogs(e,d);
-
+        if (sscanf(linha,"jog %s")==(-1)) {
+            jogs(e, d);
+        }
         if (e->tab[7][0] == BRANCA) {
             parabens(1);
             e->num++;
@@ -147,10 +151,9 @@ int interpretador(ESTADO *e) {
             parabens(2);
             e->num++;
         }
-
         if (e->num == 0) mostrar_tabuleiro(e);
+        freeList(&d);
         e->count_mov++;
-
-        }
+    }
     return 0;
 }

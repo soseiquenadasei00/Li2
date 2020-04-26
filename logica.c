@@ -101,7 +101,7 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
         while( j <= minlet)
         {
             if (e->tab[i][j] == VAZIA) {
-                coord = concat(i,j);
+                coord = concat(j,i);
                 e->possiveis_jog[count]=coord;
                 count++;
             }
@@ -111,6 +111,7 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
         j = max((e->ultima_jogada.letra - 1), 0);
     }
     e->qntjogs = count;
+    insere_lista(d,e);
     printf("\n");
     return count;
 
@@ -282,22 +283,29 @@ int printRandoms (int lower, int upper, int count)
     for(i = 0; d != NULL; i++);
     return i;
 }
-
+*/
 
 void jogs(ESTADO *e,LISTA l) {
-    int max = tamanho_list(l);
-    char col[2], lin[2];
+    int max = e->qntjogs;
+    char col[2];
+    char lin[2];
     srand(time(0));
     int num = printRandoms(0, max, 1);
     int i;
-    for (i = 0; i < num; i++) {
+    for (i = 1; i < num; i++) {
         l = l->prox;
     }
-    sscanf((l->valor), "%[a-h]%[1-8]", col, lin);
-    COORDENADA c = {*col - 'a', '8' - *lin};
-    c.letra = *col - 'a';
-    c.linha = '8' - *lin;
-    c.letrinha = col[0];
-    jogar(e, c);
+    int atual = *(int *)l->valor;
+    char coord[5];
+    sprintf(coord, "%d", atual);
+    sscanf(coord, "%c%c", col, lin);
+    int colint = abs('0' - *col);
+    int linint = abs('0' - *lin);
+    COORDENADA c = {abs('0' - *col), abs('0' - *lin)};
+    c.letra = colint;
+    c.linha = linint;
+    c.letrinha = 'a' + (colint-1);
+    movs(e,c);
+    jogar(e,c);
+    mudar_estado(e);
 }
-*/
