@@ -19,6 +19,7 @@ void savetab(ESTADO *e, char *tabuleiro){
     aux_movf(e,f);
     fclose(f);
 }
+
 /**
  * \brief
  * @param e é o estado
@@ -27,36 +28,43 @@ void savetab(ESTADO *e, char *tabuleiro){
  */
 
 void lertab(ESTADO *e,char *tabuleiro) {
-    FILE *f= fopen(tabuleiro,"r");
-    int jogadas;
-    tabuleiro_inicial(e);
-    iniciar_estado(e);
-    char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
-    for (int i = 0; i < 8;i++) {
-        fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
-    while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
-        sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
-        COORDENADA c1 = {*col1 -'a','8' - *lin1};
-        c1.letra = *col1 -'a';c1.linha = '8'- *lin1;c1.letrinha = col1[0];
-        sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
-        COORDENADA c2 = {*col2 -'a','8' - *lin2};
-        c2.letra = *col2 -'a';c2.linha = '8'- *lin2;c2.letrinha = col2[0];
-        if (jogadas==2){
-            troca_jog(e);
-            movs(e,c1);
-            jogar(e,c1);
-            mudar_estado(e);
+        FILE *f= fopen(tabuleiro,"r");
+        int jogadas;
+        tabuleiro_inicial(e);
+        iniciar_estado(e);
+        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
+        for (int i = 0; i < 8;i++) {
+            fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
 
-            troca_jog(e);
-            movs(e,c2);
-            jogar(e,c2);
-            mudar_estado(e);
+        while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
+            sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
+            COORDENADA c1 = {*col1 -'a','8' - *lin1};
+            c1.letra = *col1 -'a';
+            c1.linha = '8'- *lin1;
+            c1.letrinha = col1[0];
+
+            sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
+            COORDENADA c2 = {*col2 -'a','8' - *lin2};
+            c2.letra = *col2 -'a';
+            c2.linha = '8'- *lin2;
+            c2.letrinha = col2[0];
+
+            if (jogadas==2){
+                troca_jog(e);
+                movs(e,c1);
+                jogar(e,c1);
+                mudar_estado(e);
+
+                troca_jog(e);
+                movs(e,c2);
+                jogar(e,c2);
+                mudar_estado(e);
              }
-        else if (jogadas==1){
-            troca_jog(e);
-            movs(e,c1);
-            jogar(e,c1);
-            mudar_estado(e);
+            else if (jogadas==1){
+                troca_jog(e);
+                movs(e,c1);
+                jogar(e,c1);
+                mudar_estado(e);
         }
     }
     fclose(f);
@@ -74,6 +82,9 @@ void mostrar_tabuleiro(ESTADO *e) {
         c--;}
     printf("\nA B C D E F G H\n");
 }
+
+
+
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
@@ -82,13 +93,15 @@ int interpretador(ESTADO *e) {
     char linha[TAMANHO];
     char col[2], lin[2];
     int x;
-    LISTA d = criar_lista(); // Cria uma lista vazia
+    LISTA d = criar_lista();
     iniciar_estado(e);
+
     while (e->num == 0) {
         troca_jog(e);
         if ((possiveis_jogadas(e, &d)) == 0) {
             parabens(e->jogador_atual);
-            break;}
+            break;
+        }
         prompt(e);
         fgets(linha, TAMANHO, stdin);
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
@@ -114,23 +127,18 @@ int interpretador(ESTADO *e) {
         if (sscanf(linha, "ler %s", file_name) == (1)) {
             lertab(e, file_name);
         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-        //printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha,"movs"));
-        if (sscanf(linha, "movs %s")==(-1)) {
+        if (sscanf(linha, "movs %s") == (-1)) {
             aux_mov(e);
         }
         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
         if (sscanf(linha, "pos %d", &x) == 1) {
             posf(e, x);
         }
-       // printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha,"jog"));
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
         if (sscanf(linha,"jog %s")==(-1)) {
             jogs(e, d);
         }
-        //printf("%s e o scanf deu:%d \n\n", linha, sscanf(linha,"jog2"));
-        if (sscanf(linha,"jog2 ")==(-1)){
-           // jogs2(e,d);
-        }
+        freeList(&d);
         if (e->tab[7][0] == BRANCA) {
             parabens(1);
             e->num++;
@@ -139,9 +147,8 @@ int interpretador(ESTADO *e) {
             parabens(2);
             e->num++;
         }
-        if (e->num == 0) mostrar_tabuleiro(e);
-        freeList(&d);
         e->count_mov++;
+        if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;
 }

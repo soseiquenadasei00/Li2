@@ -109,7 +109,7 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
         while( j <= minlet)
         {
             if (e->tab[i][j] == VAZIA) {
-                coord = concat(j,i);
+                coord = concat((i+1),j);
                 e->possiveis_jog[count]=coord;
                 count++;
             }
@@ -309,9 +309,9 @@ void jogs(ESTADO *e,LISTA l) {
         l = l->prox;}
     int atual = *(int *)l->valor;
     sprintf(coord, "%d", atual);
-    sscanf(coord, "%c%c", col, lin);
+    sscanf(coord, "%c%c", lin, col);
     int colint = abs('0' - *col);
-    int linint = abs('0' - *lin);
+    int linint = abs('0' - *lin)-1;
     COORDENADA c = {abs('0' - *col), abs('0' - *lin)};
     c.letra = colint;
     c.linha = linint;
