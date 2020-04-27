@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Li2.dir/main.c.o CMakeFiles/Li2.dir/camadaDeDados.c.o CMakeFiles/Li2.dir/interface.c.o CMakeFiles/Li2.dir/logica.c.o CMakeFiles/Li2.dir/lista.c.o  -o Li2 

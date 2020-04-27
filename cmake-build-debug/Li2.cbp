@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Li2"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Li2">
+				<Option output="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Li2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Li2"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Li2/fast">
+				<Option output="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Li2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 Li2/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/pedro/Documents/Uminho/Li2/Li2/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/interface.c">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/interface.h">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/lista.c">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/lista.h">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/logica.c">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/logica.h">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/main.c">
+			<Option target="Li2"/>
+		</Unit>
+		<Unit filename="/home/pedro/Documents/Uminho/Li2/Li2/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
