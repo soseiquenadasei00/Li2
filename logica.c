@@ -299,14 +299,64 @@ int tamanho_list(LISTA d){
  * @param e Estado atual do jogo
  * @param l lista ligada
  */
-void jogs(ESTADO *e,LISTA l) {
-    int max = e->qntjogs;
+
+int calcula_dist(int linha, int coluna, ESTADO* e){
+    int dist;
+    if (e->jogador_atual == 1){
+        dist = (abs(linha - 7)) + coluna;
+    }
+    else{
+        dist = linha + (abs(coluna - 7));
+    }
+    return dist;
+}
+
+
+COORDENADA melhor_coord(ESTADO *e, LISTA l){
+    COORDENADA melhor;
+    int bestdist = 15;
     char col[2],lin[2],coord[5];
+    int atual,colint,linint, distatual;
+    while (l != NULL){
+        atual = *(int *)l->valor;
+        sprintf(coord, "%d", atual);
+        sscanf(coord, "%c%c", lin, col);
+        colint = abs('0' - *col);
+        linint = abs('0' - *lin)-1;
+        distatual = calcula_dist(linint,colint,e);
+        if (distatual < bestdist){
+            bestdist = distatual;
+            melhor.letra = colint;
+            melhor.linha = linint;
+            melhor.letrinha = 'a' + (colint-1);
+        }
+        l = l->prox;
+    }
+    return melhor;
+}
+
+
+
+void jog01(ESTADO *e, LISTA l){
+    COORDENADA c = melhor_coord(e,l);
+    movs(e,c);
+    jogar(e,c);
+    mudar_estado(e);
+}
+
+
+void jorge(ESTADO *e,LISTA l) {
+    int max = e->qntjogs;
+    char col[2];
+    char lin[2];
     srand(time(0));
-    int num = printRandoms(0, max, 1);//Coord sendo gerada de forma aleatoria com base nos segundos passados
-    for (int i = 1; i < num; i++) {
-        l = l->prox;}
+    int num = printRandoms(0, max, 1);
+    int i;
+    for (i = 1; i < num; i++) {
+        l = l->prox;
+    }
     int atual = *(int *)l->valor;
+    char coord[5];
     sprintf(coord, "%d", atual);
     sscanf(coord, "%c%c", lin, col);
     int colint = abs('0' - *col);
@@ -319,12 +369,3 @@ void jogs(ESTADO *e,LISTA l) {
     jogar(e,c);
     mudar_estado(e);
 }
-/**
- * Função craida para jogar em uma posição de forma mais planejada (Bot)
- * @param e Estado atual do jogo
- * @param l lista ligada
- */
-/*void jogs2 (ESTADO *e,LISTA l){
- int max= e->qntjogs;
- char col[2],lin[2];
-}*/

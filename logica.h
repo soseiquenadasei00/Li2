@@ -21,7 +21,11 @@ int concat(int a, int b);
 int tamanho_list(LISTA d);
 void printl2(LISTA a);
 void jogs(ESTADO *e,LISTA l);
-//void jogs2 (ESTADO *e,LISTA l)
+int calcula_dist(int linha, int coluna, ESTADO* e);
+COORDENADA melhor_coord(ESTADO *e, LISTA l);
+void jog01(ESTADO *e, LISTA l);
+
+
 //int printRandoms (int lower, int upper, int count);
-//void jogs(ESTADO *e,LISTA l);
+//void jorge(ESTADO *e,LISTA l);
 #endif //LI2_LOGICA_H

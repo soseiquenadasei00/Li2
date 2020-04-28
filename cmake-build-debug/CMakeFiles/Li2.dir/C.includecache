@@ -6,11 +6,43 @@
 
 #IncludeRegexTransform: 
 
-/home/lelis_vitor/CLionProjects/Li2/camadaDeDados.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.c
+stdlib.h
+-
+camadaDeDados.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.h
 
-/home/lelis_vitor/CLionProjects/Li2/lista.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.h
 
-/home/lelis_vitor/CLionProjects/Li2/logica.c
+/home/pedro/CLionProjects/Li2/interface.c
+stdlib.h
+-
+stdio.h
+-
+string.h
+-
+camadaDeDados.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.h
+logica.h
+/home/pedro/CLionProjects/Li2/logica.h
+lista.h
+/home/pedro/CLionProjects/Li2/lista.h
+
+/home/pedro/CLionProjects/Li2/interface.h
+lista.h
+/home/pedro/CLionProjects/Li2/lista.h
+
+/home/pedro/CLionProjects/Li2/lista.c
+stdio.h
+-
+stdlib.h
+-
+lista.h
+/home/pedro/CLionProjects/Li2/lista.h
+
+/home/pedro/CLionProjects/Li2/lista.h
+
+/home/pedro/CLionProjects/Li2/logica.c
 stdio.h
 -
 stdlib.h
@@ -20,13 +52,23 @@ string.h
 time.h
 -
 camadaDeDados.h
-/home/lelis_vitor/CLionProjects/Li2/camadaDeDados.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.h
 logica.h
-/home/lelis_vitor/CLionProjects/Li2/logica.h
+/home/pedro/CLionProjects/Li2/logica.h
 lista.h
-/home/lelis_vitor/CLionProjects/Li2/lista.h
+/home/pedro/CLionProjects/Li2/lista.h
 
-/home/lelis_vitor/CLionProjects/Li2/logica.h
+/home/pedro/CLionProjects/Li2/logica.h
 lista.h
-/home/lelis_vitor/CLionProjects/Li2/lista.h
+/home/pedro/CLionProjects/Li2/lista.h
+
+/home/pedro/CLionProjects/Li2/main.c
+stdio.h
+-
+camadaDeDados.h
+/home/pedro/CLionProjects/Li2/camadaDeDados.h
+interface.h
+/home/pedro/CLionProjects/Li2/interface.h
+lista.h
+/home/pedro/CLionProjects/Li2/lista.h
 
