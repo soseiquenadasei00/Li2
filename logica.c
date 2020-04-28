@@ -25,7 +25,6 @@ int jogar(ESTADO *e, COORDENADA c) {
  */
 void prompt(ESTADO *e){
     printf("#%02d Jogador %d (%d) -> ", e->count_mov, e->jogador_atual, e->num_jogadas);
-
 }
 /**
  * Cria o tabuleiro no file
