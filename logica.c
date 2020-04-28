@@ -107,7 +107,7 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
     {
         while( j <= minlet)
         {
-            if (e->tab[i][j] == VAZIA) {
+            if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {
                 coord = concat((i+1),j);
                 e->possiveis_jog[count]=coord;
                 count++;
