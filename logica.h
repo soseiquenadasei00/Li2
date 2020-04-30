@@ -22,9 +22,12 @@ int tamanho_list(LISTA d);
 void printl2(LISTA a);
 void jogs(ESTADO *e,LISTA l);
 int calcula_dist(int linha, int coluna, ESTADO* e);
-COORDENADA melhor_coord(ESTADO *e, LISTA l);
+COORDENADA melhor_coord(ESTADO e, LISTA l);
+void area_par(ESTADO e, LISTA *l);
+int verifica_par(ESTADO e, COORDENADA c);
+COORDENADA melhor_coord02(ESTADO e, LISTA l);
 void jog01(ESTADO *e, LISTA l);
-
+void jog02(ESTADO *e, LISTA *l);
 
 //int printRandoms (int lower, int upper, int count);
 //void jorge(ESTADO *e,LISTA l);

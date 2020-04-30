@@ -45,10 +45,10 @@ LISTA proximo(LISTA L){
  * @param L
  * @return
  */
-LISTA remove_cabeca(LISTA L){
-    LISTA r = L -> prox;
-    free(L);
-    return r;
+void remove_cabeca(LISTA *l){
+    LISTA r = (*l) -> prox;
+    free(*l);
+    (*l) = r;
 }
 /**
  * Devolve true se a lista estiver vazia e false para quando não estiver fazia

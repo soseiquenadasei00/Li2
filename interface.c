@@ -136,7 +136,7 @@ int interpretador(ESTADO *e) {
         }
         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
         if (sscanf(linha,"jog %s")==(-1)) {
-            jog01(e, d);
+            jog02(&e, &d);
         }
         freeList(&d);
         if (e->tab[7][0] == BRANCA) {

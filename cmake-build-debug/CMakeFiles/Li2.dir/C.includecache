@@ -6,39 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/pedro/CLionProjects/Li2/camadaDeDados.c
-stdlib.h
--
-camadaDeDados.h
 /home/pedro/CLionProjects/Li2/camadaDeDados.h
-
-/home/pedro/CLionProjects/Li2/camadaDeDados.h
-
-/home/pedro/CLionProjects/Li2/interface.c
-stdlib.h
--
-stdio.h
--
-string.h
--
-camadaDeDados.h
-/home/pedro/CLionProjects/Li2/camadaDeDados.h
-logica.h
-/home/pedro/CLionProjects/Li2/logica.h
-lista.h
-/home/pedro/CLionProjects/Li2/lista.h
-
-/home/pedro/CLionProjects/Li2/interface.h
-lista.h
-/home/pedro/CLionProjects/Li2/lista.h
-
-/home/pedro/CLionProjects/Li2/lista.c
-stdio.h
--
-stdlib.h
--
-lista.h
-/home/pedro/CLionProjects/Li2/lista.h
 
 /home/pedro/CLionProjects/Li2/lista.h
 
@@ -59,16 +27,6 @@ lista.h
 /home/pedro/CLionProjects/Li2/lista.h
 
 /home/pedro/CLionProjects/Li2/logica.h
-lista.h
-/home/pedro/CLionProjects/Li2/lista.h
-
-/home/pedro/CLionProjects/Li2/main.c
-stdio.h
--
-camadaDeDados.h
-/home/pedro/CLionProjects/Li2/camadaDeDados.h
-interface.h
-/home/pedro/CLionProjects/Li2/interface.h
 lista.h
 /home/pedro/CLionProjects/Li2/lista.h
 
