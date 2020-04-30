@@ -5,7 +5,6 @@
 #include "logica.h"
 #include "lista.h"
 #define  TAMANHO 1024
-
 /**
  * \brief
  * @param e é o estado
@@ -19,16 +18,15 @@ void savetab(ESTADO *e, char *tabuleiro){
     aux_movf(e,f);
     fclose(f);
 }
-
 /**
  * \brief
  * @param e é o estado
  * @param tab_file nome dado ao ficheiro que será lido
  * Função que le o arquivo gerado
  */
-
 void lertab(ESTADO *e,char *tabuleiro) {
         FILE *f= fopen(tabuleiro,"r");
+        //char c1,c2,c3,c4,c5,c6,c7,c8;
         int jogadas;
         tabuleiro_inicial(e);
         iniciar_estado(e);
@@ -38,13 +36,13 @@ void lertab(ESTADO *e,char *tabuleiro) {
 
         while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
             sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
-            COORDENADA c1 = {*col1 -'a','8' - *lin1};
+            COORDENADA c1 = {*col1 -'a','8' - *lin1,0};
             c1.letra = *col1 -'a';
             c1.linha = '8'- *lin1;
             c1.letrinha = col1[0];
 
             sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
-            COORDENADA c2 = {*col2 -'a','8' - *lin2};
+            COORDENADA c2 = {*col2 -'a','8' - *lin2,0};
             c2.letra = *col2 -'a';
             c2.linha = '8'- *lin2;
             c2.letrinha = col2[0];
@@ -83,8 +81,6 @@ void mostrar_tabuleiro(ESTADO *e) {
     printf("\nA B C D E F G H\n");
 }
 
-
-
 /**
 \brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
@@ -105,7 +101,7 @@ int interpretador(ESTADO *e) {
         prompt(e);
         fgets(linha, TAMANHO, stdin);
         sscanf(linha, "%[a-h]%[1-8]", col, lin);
-        COORDENADA c = {*col - 'a', '8' - *lin};
+        COORDENADA c = {*col - 'a', '8' - *lin,0};
         c.letra = *col - 'a';
         c.linha = '8' - *lin;
         c.letrinha = col[0];

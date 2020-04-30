@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "camadaDeDados.h"
 #include "interface.h"
-#include "lista.h"
+
 int main()
 {
     //LISTA d = criar_lista();

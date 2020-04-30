@@ -33,16 +33,12 @@ typedef struct {
     int qntjogs;
     COORDENADA possiveis_jog[8];
     COORDENADA ultima_jogada;
-
     //COORDENADA possivel_jogada;
 } ESTADO;
 
 /** Funções feita no .c*/
-int numeroJogadas (ESTADO *e);
-int JogAtual (ESTADO *e);
-CASA estadoDaPeca (ESTADO *e ,COORDENADA *x);
 ESTADO *inicializar_estado();
 void tabuleiro_inicial(ESTADO *e);
-void checaCasa (ESTADO *e, COORDENADA c, CASA h);
+//void checaCasa (ESTADO *e, COORDENADA c, CASA h);
 
 #endif //LI2_CAMADADEDADOS_H

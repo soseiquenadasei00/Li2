@@ -10,7 +10,7 @@
  * @param e Estado atual do jogo
  * @param c A coordenada
  */
-int jogar(ESTADO *e, COORDENADA c) {
+void jogar(ESTADO *e, COORDENADA c) {
     //Busca colocar a peça branca na coordenada especifica buscando está informação no estado
     e->tab[c.linha][c.letra]='*';
     int i = e->ultima_jogada.linha;
@@ -144,6 +144,7 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
 
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0)))
         return 1;
+    else return 0;
 }
 /**
  \brief Função que confer se a casa específica está livre para jogar
@@ -154,6 +155,7 @@ int casa_livre (ESTADO *e, COORDENADA c)
 {
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA)
         return 1;
+    else return 0;
 }
 void parabens(int jogador)
 {
@@ -285,10 +287,10 @@ void mudar_estado(ESTADO *e){
  */
 int printRandoms (int lower, int upper, int count)
 {
-    int i, num;
+    int i,num=0;
     for (i=0; i < count; i++)
     {
-        num = (rand ()) %(upper - lower + 1) + lower;
+         num = (rand ()) %(upper - lower + 1) + lower;
     }
     return num;
 }
@@ -432,10 +434,6 @@ void area_par(ESTADO *e, LISTA *l){
     }
     //printl2(l);
 }
-
-
-
-
 void jog02(ESTADO *e, LISTA *l){
     //printl2(*l);
     area_par(e,l);
@@ -463,7 +461,7 @@ void jorge(ESTADO *e,LISTA l) {
     sscanf(coord, "%c%c", lin, col);
     int colint = abs('0' - *col);
     int linint = abs('0' - *lin)-1;
-    COORDENADA c = {abs('0' - *col), abs('0' - *lin)};
+    COORDENADA c = {abs('0' - *col), abs('0' - *lin),(0)};
     c.letra = colint;
     c.linha = linint;
     c.letrinha = 'a' + (colint-1);
@@ -490,8 +488,6 @@ COORDENADA melhor_coord(ESTADO *e, LISTA l){
     }
     return melhor;
 }
-
-
 
 void jog01(ESTADO *e, LISTA l){
     COORDENADA c = melhor_coord(e,l);
