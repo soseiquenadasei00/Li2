@@ -99,24 +99,23 @@ int concat(int a, int b)
  */
 int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
-    LISTA r=NULL;
-    int count = 0, i, j,coord,minlin,minlet;
+    //LISTA r;
     COORDENADA pcoord;
+    int count = 0, i, j,minlin,minlet;
     minlin = min((e->ultima_jogada.linha + 1), 7);
     minlet = min((e->ultima_jogada.letra + 1), 7);
     i = max((e->ultima_jogada.linha - 1), 0);
     j = max((e->ultima_jogada.letra - 1), 0);
+    //printf("%d %d| %d %d\n",i,minlin,j,minlet);
     while (i <= minlin)
     {
         while( j <= minlet)
         {
             if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {
-                //coord = concat((i+1),j);
-                pcoord.letra= j;
-                pcoord.linha=i;
-                printf("%d %d\n",pcoord.letra,pcoord.linha);
-                insere_cabeca(d,&pcoord);
-                //e->possiveis_jog[count]=coord;
+                pcoord.linha = i;
+                pcoord.letra = j;
+                e->possiveis_jog[count] = pcoord;
+
                 count++;
             }
             j++;
@@ -124,10 +123,11 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
         i++;
         j = max((e->ultima_jogada.letra - 1), 0);
     }
-    printl2((*d));
     e->qntjogs = count;
-    //insere_lista(d,e);
+    insere_lista(d,e);
+    //printl2(d);
     printf("\n");
+    printf("%d\n",count);
     return count;
 }
 /**
@@ -307,13 +307,13 @@ int tamanho_list(LISTA d){
  * @param e Estado atual do jogo
  * @param l lista ligada
  */
-int calcula_dist(int linha, int coluna, ESTADO* e){
+int calcula_dist(COORDENADA c, ESTADO* e){
     int dist;
     if (e->jogador_atual == 1){
-        dist = (abs(linha - 7)) + coluna;
+        dist = (abs(c.linha - 7)) + c.letra;
     }
     else{
-        dist = linha + (abs(coluna - 7));
+        dist = c.linha + (abs(c.letra - 7));
     }
     return dist;
 }
@@ -323,7 +323,6 @@ int verifica_par(ESTADO e, COORDENADA c) {
     minlet = min((c.letra + 1), 7);
     i = max((c.linha - 1), 0);
     j = max((c.letra - 1), 0);
-
     while (i <= minlin) {
         while (j <= minlet) {
             if (e.tab[i][j] == VAZIA || e.tab[i][j] == UM || e.tab[i][j] == DOIS) {
@@ -334,42 +333,67 @@ int verifica_par(ESTADO e, COORDENADA c) {
         i++;
         j = max((c.letra - 1), 0);
     }
+    printf("%d\n",count);
     return count;
 }
+/*int possiveis_jogadas(ESTADO *e, LISTA *d)
+{
+    //LISTA r;
+    COORDENADA pcoord;
+    int count = 0, i, j,minlin,minlet;
+    minlin = min((e->ultima_jogada.linha + 1), 7);
+    minlet = min((e->ultima_jogada.letra + 1), 7);
+    i = max((e->ultima_jogada.linha - 1), 0);
+    j = max((e->ultima_jogada.letra - 1), 0);
+    while (i <= minlin)
+    {
+        while( j <= minlet)
+        {
+            if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {
+                pcoord.letra = i;
+                pcoord.linha = j;
+                e->possiveis_jog[count] = pcoord;
+
+                count++;
+            }
+            j++;
+        }
+        i++;
+        j = max((e->ultima_jogada.letra - 1), 0);
+    }
+    e->qntjogs = count;
+    insere_lista(d,e);
+    //printl2(d);
+    printf("\n");
+    return count;
+}
+*/
 
 COORDENADA melhor_coord02(ESTADO e, LISTA l){
     COORDENADA melhor, coordAtual;
     melhor.linha = e.ultima_jogada.linha;
     melhor.letra = e.ultima_jogada.letra;
     melhor.letrinha = e.ultima_jogada.letrinha;
-    char col[2],lin[2],coord[5];
-    int atual,colint,linint, distatual,area1,area2,bestdist = 15;
+    int distatual,area1,area2,bestdist = 15;
     while (l != NULL){
-        atual = *(int *)l->valor;
-        sprintf(coord, "%d", atual);
-        sscanf(coord, "%c%c", lin, col);
-        colint = abs('0' - *col);
-        linint = abs('0' - *lin)-1;
-        coordAtual.letra = colint;
-        coordAtual.linha = linint;
-        coordAtual.letrinha = 'a' + (colint-1);
-        distatual = calcula_dist(linint,colint,&e);
+        coordAtual = *(COORDENADA *)l->valor;
+        distatual = calcula_dist(coordAtual,&e);
         if (distatual <= bestdist){
             if (distatual == bestdist){
                 area1 = (verifica_par(e,melhor));
                 area2 = (verifica_par(e,coordAtual));
                 if (area2 >= area1){
                     bestdist = distatual;
-                    melhor.letra = colint;
-                    melhor.linha = linint;
-                    melhor.letrinha = 'a' + (colint-1);
+                    melhor.letra = coordAtual.letra;
+                    melhor.linha = coordAtual.linha;
+                    melhor.letrinha = 'a' + ((coordAtual.letra)-1);
                 }
             }
             else {
                 bestdist = distatual;
-                melhor.letra = colint;
-                melhor.linha = linint;
-                melhor.letrinha = 'a' + (colint - 1);
+                melhor.letra = coordAtual.letra;
+                melhor.linha = coordAtual.linha;
+                melhor.letrinha = 'a' + ((coordAtual.letra)-1);
             }
         }
         l = l->prox;
@@ -377,25 +401,27 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     return melhor;
 }
 
-void area_par(ESTADO e, LISTA *l){
-    char coord[5],col[2],lin[2];
-    int atual,colint,linint;
+void area_par(ESTADO *e, LISTA *l){
+    //printl2(l);
     LISTA guardaPar = NULL;
     COORDENADA c;
-    while (*l) {
-        atual = *(int *) (*l)->valor;
-        sprintf(coord, "%d", atual);
-        sscanf(coord, "%c%c", lin, col);
-        colint = abs('0' - *col);
-        linint = abs('0' - *lin) - 1;
-        c.letra = colint;
-        c.linha = linint;
-        c.letrinha = 'a' + (colint - 1);
-        if ((verifica_par(e,c)) % 2 == 0) {
-            insere_cabeca(&guardaPar,&atual);
+    int i = 0;
+    printl2(l);
+    while ((*l)!=NULL) {
+        c = *(COORDENADA *)(*l)->valor;
+        printf("COORD ATUAL: %d|%d\n",c.linha,c.letra);
+        if ((verifica_par((*e),c)) % 2 == 0) {
+            printf("ENTROU PAR: %d|%d\n",c.linha,c.letra);
+            e->possiveis_jog[i] = c;
+            i++;
+            //insere_cabeca(&guardaPar,&c);
         }
         l = &((*l)->prox);
     }
+    //putchar('\n');
+    e->qntjogs = i;
+    insere_lista(&guardaPar,e);
+    //printl2(&guardaPar);
     if (guardaPar != NULL){
         freeList(l);
         while(guardaPar != NULL){
@@ -404,15 +430,16 @@ void area_par(ESTADO e, LISTA *l){
             guardaPar = guardaPar->prox;
         }
     }
+    //printl2(l);
 }
 
 
 
 
 void jog02(ESTADO *e, LISTA *l){
-    printl2(*l);
-    area_par((*e),l);
-    printl2(*l);
+    //printl2(*l);
+    area_par(e,l);
+    //printl2(*l);
     COORDENADA c = melhor_coord02((*e),(*l));
     movs(e,c);
     jogar(e,c);
@@ -444,36 +471,20 @@ void jorge(ESTADO *e,LISTA l) {
     jogar(e,c);
     mudar_estado(e);
 }
-/*
-int calcula_dist(int linha, int coluna, ESTADO* e){
-    int dist;
-    if (e->jogador_atual == 1){
-        dist = (abs(linha - 7)) + coluna;
-    }
-    else{
-        dist = linha + (abs(coluna - 7));
-    }
-    return dist;
-}
 
 
 COORDENADA melhor_coord(ESTADO *e, LISTA l){
-    COORDENADA melhor;
+    COORDENADA melhor, atual;
     int bestdist = 15;
-    char col[2],lin[2],coord[5];
-    int atual,colint,linint, distatual;
+    int distatual;
     while (l != NULL){
-        atual = *(int *)l->valor;
-        sprintf(coord, "%d", atual);
-        sscanf(coord, "%c%c", lin, col);
-        colint = abs('0' - *col);
-        linint = abs('0' - *lin)-1;
-        distatual = calcula_dist(linint,colint,e);
+        atual = *(COORDENADA *)l->valor;
+        distatual = calcula_dist(atual,e);
         if (distatual < bestdist){
             bestdist = distatual;
-            melhor.letra = colint;
-            melhor.linha = linint;
-            melhor.letrinha = 'a' + (colint-1);
+            melhor.letra = atual.letra;
+            melhor.linha = atual.linha;
+            melhor.letrinha = 'a' + ((atual.letra)-1);
         }
         l = l->prox;
     }
@@ -483,9 +494,8 @@ COORDENADA melhor_coord(ESTADO *e, LISTA l){
 
 
 void jog01(ESTADO *e, LISTA l){
-    COORDENADA c = melhor_coord((*e),l);
+    COORDENADA c = melhor_coord(e,l);
     movs(e,c);
     jogar(e,c);
     mudar_estado(e);
 }
-*/
