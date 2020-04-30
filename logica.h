@@ -19,7 +19,7 @@ void mudar_estado(ESTADO *e);
 void insere_lista(LISTA *a,ESTADO *e);
 int concat(int a, int b);
 int tamanho_list(LISTA d);
-void printl2(LISTA a);
+void printl2(LISTA *a);
 void jogs(ESTADO *e,LISTA l);
 int calcula_dist(int linha, int coluna, ESTADO* e);
 COORDENADA melhor_coord(ESTADO e, LISTA l);

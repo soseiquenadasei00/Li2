@@ -67,13 +67,13 @@ void insere_lista(LISTA *a, ESTADO *e) {
     }
 }
 //Printa as informações que está dentro da lista ligada
-void printl2(LISTA a) {
+void printl2(LISTA *a) {
     COORDENADA pcoord;
-    if (a==NULL) printf("TEM MAIS NADA");
-    while(a != NULL) {
-        pcoord=*(COORDENADA*) a->valor;
+    if ((*a)==NULL) printf("TEM MAIS NADA");
+    while((*a) != NULL) {
+        pcoord=*(COORDENADA*) (*a)->valor;
         printf("%d,%d\n",pcoord.letra,pcoord.linha); //*(int*) a->valor);
-        a = a->prox;
+        a = &((*a)->prox);
     }
     printf("\n");
 }
@@ -99,6 +99,7 @@ int concat(int a, int b)
  */
 int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
+    LISTA r=NULL;
     int count = 0, i, j,coord,minlin,minlet;
     COORDENADA pcoord;
     minlin = min((e->ultima_jogada.linha + 1), 7);
