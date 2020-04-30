@@ -68,9 +68,11 @@ void insere_lista(LISTA *a, ESTADO *e) {
 }
 //Printa as informações que está dentro da lista ligada
 void printl2(LISTA a) {
+    COORDENADA pcoord;
     if (a==NULL) printf("TEM MAIS NADA");
-    while(a != NULL) { //while(a)
-        printf("%d, ", *(int*) a->valor);
+    while(a != NULL) {
+        pcoord=*(COORDENADA*) a->valor;
+        printf("%d,%d\n",pcoord.letra,pcoord.linha); //*(int*) a->valor);
         a = a->prox;
     }
     printf("\n");
@@ -98,19 +100,21 @@ int concat(int a, int b)
 int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
     int count = 0, i, j,coord,minlin,minlet;
+    COORDENADA pcoord;
     minlin = min((e->ultima_jogada.linha + 1), 7);
     minlet = min((e->ultima_jogada.letra + 1), 7);
     i = max((e->ultima_jogada.linha - 1), 0);
     j = max((e->ultima_jogada.letra - 1), 0);
-
     while (i <= minlin)
     {
         while( j <= minlet)
         {
             if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {
-                coord = concat((i+1),j);
-                insere_cabeca(d,&coord);
-                d = &((*d)->prox);
+                //coord = concat((i+1),j);
+                pcoord.letra= j;
+                pcoord.linha=i;
+                printf("%d %d\n",pcoord.letra,pcoord.linha);
+                insere_cabeca(d,&pcoord);
                 //e->possiveis_jog[count]=coord;
                 count++;
             }
@@ -302,7 +306,6 @@ int tamanho_list(LISTA d){
  * @param e Estado atual do jogo
  * @param l lista ligada
  */
-
 int calcula_dist(int linha, int coluna, ESTADO* e){
     int dist;
     if (e->jogador_atual == 1){
@@ -313,10 +316,8 @@ int calcula_dist(int linha, int coluna, ESTADO* e){
     }
     return dist;
 }
-
-
 int verifica_par(ESTADO e, COORDENADA c) {
-    int count = 0, i, j, coord, minlin, minlet;
+    int count = 0, i, j, minlin, minlet;
     minlin = min((c.linha + 1), 7);
     minlet = min((c.letra + 1), 7);
     i = max((c.linha - 1), 0);
@@ -340,9 +341,8 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     melhor.linha = e.ultima_jogada.linha;
     melhor.letra = e.ultima_jogada.letra;
     melhor.letrinha = e.ultima_jogada.letrinha;
-    int bestdist = 15;
     char col[2],lin[2],coord[5];
-    int atual,colint,linint, distatual,area1,area2;
+    int atual,colint,linint, distatual,area1,area2,bestdist = 15;
     while (l != NULL){
         atual = *(int *)l->valor;
         sprintf(coord, "%d", atual);
@@ -375,9 +375,6 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     }
     return melhor;
 }
-
-
-
 
 void area_par(ESTADO e, LISTA *l){
     char coord[5],col[2],lin[2];

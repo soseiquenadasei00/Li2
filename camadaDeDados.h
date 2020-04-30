@@ -1,6 +1,6 @@
 #ifndef LI2_CAMADADEDADOS_H
 #define LI2_CAMADADEDADOS_H
-
+#include "lista.h"
 /**
  * Typedef para valores da CASA, todos são char
  */

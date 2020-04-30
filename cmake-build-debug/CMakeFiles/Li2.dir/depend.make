@@ -3,6 +3,7 @@
 
 CMakeFiles/Li2.dir/camadaDeDados.c.o: ../camadaDeDados.c
 CMakeFiles/Li2.dir/camadaDeDados.c.o: ../camadaDeDados.h
+CMakeFiles/Li2.dir/camadaDeDados.c.o: ../lista.h
 
 CMakeFiles/Li2.dir/interface.c.o: ../camadaDeDados.h
 CMakeFiles/Li2.dir/interface.c.o: ../interface.c
