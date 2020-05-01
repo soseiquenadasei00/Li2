@@ -234,7 +234,6 @@ void troca_jog(ESTADO *e){
 void iniciar_estado(ESTADO *e) {
     e->num = 0;
     e->count_jog = 1;
-    e->count_mov = 1;
     e->count_movs = 1;
     e->num_jogadas = 1;
 }

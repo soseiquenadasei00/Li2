@@ -88,7 +88,7 @@ int interpretador(ESTADO *e) {
     int x;
     LISTA d = criar_lista();
     iniciar_estado(e);
-
+    e->count_mov = 1;
     while (e->num == 0) {
         troca_jog(e);
         if ((possiveis_jogadas(e, &d)) == 0) {
