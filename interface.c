@@ -1,4 +1,4 @@
-#include <stdlib.h>
+
 #include <stdio.h>
 #include <string.h>
 #include "camadaDeDados.h"
@@ -128,8 +128,12 @@ int interpretador(ESTADO *e) {
                 posf(e, x);
             }
             //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-            //printf("%s e o scanf deu:%d \n\n", linha, strcmp(linha,"jog2") );
-            if (strcmp(linha, "jog2") == 10) {
+           // printf("%s e o scanf deu:%d \n\n", linha, strcmp(linha,"jog") );
+            if (strcmp(linha, "jog")==10) {
+                //printf("entrou");
+                jog01(e,d);
+            }
+            if (strcmp(linha, "jog2")==10) {
                 jog02(e, &d);
             }
             freeList(&d);

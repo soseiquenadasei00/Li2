@@ -17,7 +17,6 @@ void troca_jog(ESTADO *e);
 void iniciar_estado(ESTADO *e);
 void mudar_estado(ESTADO *e);
 void insere_lista(LISTA *a,ESTADO *e);
-void jogs(ESTADO *e,LISTA l);
 int calcula_dist(COORDENADA c, ESTADO* e);
 COORDENADA melhor_coord(ESTADO *e, LISTA l);
 COORDENADA area_par(ESTADO *e, LISTA *l);
