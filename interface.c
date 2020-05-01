@@ -5,7 +5,7 @@
 #include "logica.h"
 #include "lista.h"
 #define  TAMANHO 1024
-/**
+/** Está função salva o tabuleiro em um ficheiro
  * \brief
  * @param e é o estado
  * @param tab_file nome dado ao ficheiro no qual será gerado
@@ -18,54 +18,53 @@ void savetab(ESTADO *e, char *tabuleiro){
     aux_movf(e,f);
     fclose(f);
 }
-/**
+/** Esta função ler o ficheiro salvo
  * \brief
  * @param e é o estado
  * @param tab_file nome dado ao ficheiro que será lido
  * Função que le o arquivo gerado
  */
 void lertab(ESTADO *e,char *tabuleiro) {
-        FILE *f= fopen(tabuleiro,"r");
-        int jogadas;
-        tabuleiro_inicial(e);
-        iniciar_estado(e);
-        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2],linha[TAMANHO];
-        for (int i = 0; i < 8 && fgets(linha, TAMANHO, f) != NULL;i++);
-        while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
-            sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
-            COORDENADA c1 = {*col1 -'a','8' - *lin1,0};
-            c1.letra = *col1 -'a';
-            c1.linha = '8'- *lin1;
-            c1.letrinha = col1[0];
+    FILE *f= fopen(tabuleiro,"r");
+    tabuleiro_inicial(e);
+    iniciar_estado(e);
+    char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2],linha[TAMANHO];
+    int jogadas;
+    for (int i = 0; i < 8 && fgets(linha, TAMANHO, f) != NULL;i++);
+    while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
+        sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
+        COORDENADA c1 = {*col1 -'a','8' - *lin1,0};
+        c1.letra = *col1 -'a';
+        c1.linha = '8'- *lin1;
+        c1.letrinha = col1[0];
+        sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
+        COORDENADA c2 = {*col2 -'a','8' - *lin2,0};
+        c2.letra = *col2 -'a';
+        c2.linha = '8'- *lin2;
+        c2.letrinha = col2[0];
+        if (jogadas==2){
+            troca_jog(e);
+            movs(e,c1);
+            jogar(e,c1);
+            mudar_estado(e);
 
-            sscanf(j2, "%[a-h]%[1-8]", col2,lin2);
-            COORDENADA c2 = {*col2 -'a','8' - *lin2,0};
-            c2.letra = *col2 -'a';
-            c2.linha = '8'- *lin2;
-            c2.letrinha = col2[0];
-
-            if (jogadas==2){
-                troca_jog(e);
-                movs(e,c1);
-                jogar(e,c1);
-                mudar_estado(e);
-
-                troca_jog(e);
-                movs(e,c2);
-                jogar(e,c2);
-                mudar_estado(e);
+            troca_jog(e);
+            movs(e,c2);
+            jogar(e,c2);
+            mudar_estado(e);
              }
-            else if (jogadas==1){
-                troca_jog(e);
-                movs(e,c1);
-                jogar(e,c1);
-                mudar_estado(e);
-        }
+        else if (jogadas==1){
+            troca_jog(e);
+            movs(e,c1);
+            jogar(e,c1);
+            mudar_estado(e);}
     }
     fclose(f);
     }
 /**
- \brief Função que mostra a tabuleiro no ecrã.
+ * \brief
+ Função que mostra a tabuleiro no ecrã.
+ * @param e Estado atual
  */
 void mostrar_tabuleiro(ESTADO *e) {
     int i, j;
@@ -79,12 +78,11 @@ void mostrar_tabuleiro(ESTADO *e) {
 }
 
 /**
-\brief I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
+\brief
+ I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
 */
 int interpretador(ESTADO *e) {
-    char file_name[TAMANHO];
-    char linha[TAMANHO];
-    char col[2], lin[2];
+    char file_name[TAMANHO],linha[TAMANHO],col[2],lin[2];
     int x;
     LISTA d = criar_lista();
     iniciar_estado(e);
@@ -93,8 +91,7 @@ int interpretador(ESTADO *e) {
         troca_jog(e);
         if ((possiveis_jogadas(e, &d)) == 0) {
             parabens(e->jogador_atual);
-            break;
-        }
+            break;}
         prompt(e);
         if (fgets(linha, TAMANHO, stdin)) {
             sscanf(linha, "%[a-h]%[1-8]", col, lin);
@@ -119,20 +116,19 @@ int interpretador(ESTADO *e) {
             /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
             if (sscanf(linha, "ler %s", file_name) == (1)) {
                 lertab(e, file_name);
-            }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-            if (strcmp(linha, "movs") == 10) {
+            }/*Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento*/
+            if (strcmp(linha, "movs")==10) {
                 aux_mov(e);
             }
-            //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
+            /*Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos*/
             if (sscanf(linha, "pos %d", &x) == 1) {
                 posf(e, x);
             }
-            //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-           // printf("%s e o scanf deu:%d \n\n", linha, strcmp(linha,"jog") );
+            /*Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada*/
             if (strcmp(linha, "jog")==10) {
-                //printf("entrou");
                 jog01(e,d);
             }
+            /*Caso o jogador digite "jog2" irá ativar o bot2 e haverá uma jogada*/
             if (strcmp(linha, "jog2")==10) {
                 jog02(e, &d);
             }
@@ -143,8 +139,7 @@ int interpretador(ESTADO *e) {
             }
             if (e->tab[0][7] == BRANCA) {
                 parabens(2);
-                e->num++;
-            }
+                e->num++;}
             e->count_mov++;
             if (e->num == 0) mostrar_tabuleiro(e);
         }

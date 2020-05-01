@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include "camadaDeDados.h"
 #include "logica.h"
 #include "lista.h"
 /**
-\brief Faz a mudança de estado e realiza a jogada
+ * \brief
+ * Faz a mudança de estado e realiza a jogada
  * @param e Estado atual do jogo
  * @param c A coordenada
  */
@@ -21,12 +21,14 @@ void jogar(ESTADO *e, COORDENADA c) {
     e->ultima_jogada.letra = c.letra;
 }
 /**
- * \brief Prompt do jogo
+ * \brief
+ * Prompt do jogo
  */
 void prompt(ESTADO *e){
     printf("#%02d Jogador %d (%d) -> ", e->count_mov, e->jogador_atual, e->num_jogadas);
 }
 /**
+ * \brief
  * Cria o tabuleiro no file
  */
 void show_tab(FILE *f, ESTADO *e){
@@ -37,7 +39,8 @@ void show_tab(FILE *f, ESTADO *e){
         } fprintf(f,"\n");}
 }
 /**
-  \brief Função auxiliar que compara o maior número de 2 inteiros
+ * \brief
+ * Função auxiliar que compara o maior número de 2 inteiros
  */
 int max (int x, int y)
 {
@@ -46,7 +49,8 @@ int max (int x, int y)
     return z;
 }
 /**
-  \brief Função auxiliar que compara o menor número de 2 inteiros
+ * \brief
+ * Função auxiliar que compara o menor número de 2 inteiros
  */
 int min (int x, int y)
 {
@@ -55,9 +59,10 @@ int min (int x, int y)
     return z;
 }
 /**
+ * \brief
  * Insere na lista ligada as possiveis jogadas
- * @param a
- * @param e
+ * @param a Lista ligada
+ * @param e estado atual
  */
 void insere_lista(LISTA *a, ESTADO *e) {
     int max, i;
@@ -67,7 +72,8 @@ void insere_lista(LISTA *a, ESTADO *e) {
     }
 }
 /**
- \brief Função que conta quantas possíveis jogadas existem no momento
+ * \brief
+ * Função que conta quantas possíveis jogadas existem no momento
  * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
  */
 int possiveis_jogadas(ESTADO *e, LISTA *d)
@@ -115,21 +121,28 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
     else return 0;
 }
 /**
- \brief Função que confer se a casa específica está livre para jogar
+ * \brief
+ * Função que confere se a casa específica está livre para jogar
  * @param e Estado que nos dará o tabuleiro com os estados das suas casas
  * @param c coordenada da casa que queremos conferir o estado
  */
-int casa_livre (ESTADO *e, COORDENADA c)
+int casa_livre(ESTADO *e, COORDENADA c)
 {
     if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA)
         return 1;
     else return 0;
 }
+/**
+ * \brief
+ * Função que da parabens ao jogador que ganhar.
+ * @param jogador
+ */
 void parabens(int jogador)
 {
     printf("\nParabéns Jogador %d!! Você venceu!!\n", jogador);
 }
 /**
+ * \brief
  * Função salvar_movs, armazena na lista de jogadas o ultimo movimento feito
  * @param e Estado atuaç
  * @param c coordenada imserida
@@ -150,6 +163,7 @@ void movs(ESTADO *e, COORDENADA c)
     }
 }
 /**
+ * \brief
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo)
  * @param e estado atual
  * @param f ficheiro
@@ -174,6 +188,7 @@ void aux_mov(ESTADO *e){
     putchar('\n');
 }
 /**
+ * \brief
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo), feita para ser gravada no ficheiro
  * @param e
  * @param f
@@ -198,6 +213,7 @@ void aux_movf(ESTADO *e,FILE *f){
     putchar('\n');
 }
 /**
+ * \brief
  * Função para o comando pos,no qual retornar a jogada específica no índice declado
  * @param e estado
  * @param x índice
@@ -216,6 +232,7 @@ void posf (ESTADO *e, int x) {
     }
 }
 /**
+ * \brief
  * Função no qual alternar os jogadores ao decorrer das jogadas efetuadas
  * @param e Estado
  */
@@ -228,8 +245,9 @@ void troca_jog(ESTADO *e){
     }
 }
 /**
+ * \brief
  * Função criada apenas para inicir o estado devidamente
- * @param e
+ * @param e Estado atual
  */
 void iniciar_estado(ESTADO *e) {
     e->num = 0;
@@ -238,6 +256,7 @@ void iniciar_estado(ESTADO *e) {
     e->num_jogadas = 1;
 }
 /**
+ * \brief
  * Função que altera o estado com atualização das jogadas feita
  * @param e
  */
@@ -245,26 +264,15 @@ void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_movs++;
 }
+
+/*BOT-01*/
+
 /**
- * Função para gerar numeros aleatorios
- * @param lower
- * @param upper
- * @param count
+ * \brief
+ * Função que calcula a melhor distancia entre a casa que o jogador deve ir e a posição atual
+ * @param c Coordenada atual
+ * @param e Estado atual
  * @return
- */
-int printRandoms (int lower, int upper, int count)
-{
-    int i,num=0;
-    for (i=0; i < count; i++)
-    {
-         num = (rand ()) %(upper - lower + 1) + lower;
-    }
-    return num;
-}
-/**
- * Função criada para jogar em uma posição de forma aleatoria (Bot)
- * @param e Estado atual do jogo
- * @param l lista ligada
  */
 int calcula_dist(COORDENADA c, ESTADO* e){
     int dist;
@@ -276,7 +284,14 @@ int calcula_dist(COORDENADA c, ESTADO* e){
     }
     return dist;
 }
-int verifica_par(ESTADO e, COORDENADA c) {
+/**
+ * \brief
+ * Simula em cada coordenada atribuida,verificada as suas possibilidades e se é par, retornando a quantidade de possibilidade que cada coordenada pode retornar
+ * @param e Estado atual
+ * @param c Coordenada atual
+ * @return
+ */
+int verifica_jog(ESTADO e, COORDENADA c) {
     int count = 0, i, j, minlin, minlet;
     minlin = min((c.linha + 1), 7);
     minlet = min((c.letra + 1), 7);
@@ -296,7 +311,75 @@ int verifica_par(ESTADO e, COORDENADA c) {
     return count;
 }
 
+/**
+ * Verifica se a área no qual foi simulado na função verifica_par
+ * @param e
+ * @param l
+ * @return
+ */
+COORDENADA area_par(ESTADO *e, LISTA *l){
+    LISTA guardaPar = (*l);
+    COORDENADA c,d,posjog[8];
+    int i = 0;
+    while (guardaPar!=NULL) {
+        c = *(COORDENADA *)guardaPar->valor;
+        if ((verifica_jog((*e),c)) % 2 == 0) {
+            posjog[i] = c;
+            i++;
+        }
+        guardaPar = proximo(&guardaPar);}
+    if (i > 0){
+        freeList(l);
+        i--;
+        while(i >= 0){
+            insere_cabeca(l, &(posjog[i]));
+            i--;}
+    }
+    d = melhor_coord02((*e),(*l));
+    return d;
+}
+/**
+ * Função feita para procurar qual é a melhor coordenada possivel e aplica-la na lista ligada
+ * @param e Estado atual
+ * @param l Lista ligada
+ * @return
+ */
+COORDENADA melhor_coord01(ESTADO *e, LISTA l){
+    COORDENADA melhor, atual;
+    int bestdist = 15;
+    int distatual;
+    while (l != NULL){
+        atual = *(COORDENADA *)l->valor;
+        distatual = calcula_dist(atual,e);
+        if (distatual < bestdist){
+            bestdist = distatual;
+            melhor.letra = atual.letra;
+            melhor.linha = atual.linha;
+            melhor.letrinha = 'a' + ((atual.letra)-1);
+        }
+        l = l->prox;
+    }
+    return melhor;
+}
+/**
+ * Função do bot 01, bot cujo estrategia Euclidiana
+ * @param e
+ * @param l
+ */
+void jog01(ESTADO *e, LISTA l){
+    COORDENADA c = melhor_coord01(e,l);
+    movs(e,c);
+    jogar(e,c);
+    mudar_estado(e);
+}
+/*BOT-02*/
 
+/**
+ * Função feita para procurar qual é a melhor coordenada possivel e aplica-la na lista ligada
+ * @param e Estado atual
+ * @param l Lista ligada
+ * @return
+ */
 COORDENADA melhor_coord02(ESTADO e, LISTA l){
     COORDENADA melhor, coordAtual;
     melhor.linha = e.ultima_jogada.linha;
@@ -308,8 +391,8 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
         distatual = calcula_dist(coordAtual,&e);
         if (distatual <= bestdist){
             if (distatual == bestdist){
-                area1 = (verifica_par(e,melhor));
-                area2 = (verifica_par(e,coordAtual));
+                area1 = (verifica_jog(e,melhor));
+                area2 = (verifica_jog(e,coordAtual));
                 if (area2 >= area1){
                     bestdist = distatual;
                     melhor.letra = coordAtual.letra;
@@ -329,89 +412,8 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     return melhor;
 }
 /**
- *
- * @param e
- * @param l
- * @return
- */
-COORDENADA area_par(ESTADO *e, LISTA *l){
-    LISTA guardaPar = (*l);
-    COORDENADA c,d,posjog[8];
-    int i = 0;
-    while (guardaPar!=NULL) {
-        c = *(COORDENADA *)guardaPar->valor;
-        if ((verifica_par((*e),c)) % 2 == 0) {
-            posjog[i] = c;
-            i++;
-        }
-        guardaPar = proximo(&guardaPar);
-
-    }
-    if (i > 0){
-        freeList(l);
-        i--;
-        while(i >= 0){
-            insere_cabeca(l, &(posjog[i]));
-            i--;
-        }
-    }
-    d = melhor_coord02((*e),(*l));
-    return d;
-}
-void jorge(ESTADO *e,LISTA l) {
-    int max = e->qntjogs;
-    char col[2];
-    char lin[2];
-    srand(time(0));
-    int num = printRandoms(0, max, 1);
-    int i;
-    for (i = 1; i < num; i++) {
-        l = l->prox;
-    }
-    int atual = *(int *)l->valor;
-    char coord[5];
-    sprintf(coord, "%d", atual);
-    sscanf(coord, "%c%c", lin, col);
-    int colint = abs('0' - *col);
-    int linint = abs('0' - *lin)-1;
-    COORDENADA c = {abs('0' - *col), abs('0' - *lin),(0)};
-    c.letra = colint;
-    c.linha = linint;
-    c.letrinha = 'a' + (colint-1);
-    movs(e,c);
-    jogar(e,c);
-    mudar_estado(e);
-}
-COORDENADA melhor_coord(ESTADO *e, LISTA l){
-    COORDENADA melhor, atual;
-    int bestdist = 15;
-    int distatual;
-    while (l != NULL){
-        atual = *(COORDENADA *)l->valor;
-        distatual = calcula_dist(atual,e);
-        if (distatual < bestdist){
-            bestdist = distatual;
-            melhor.letra = atual.letra;
-            melhor.linha = atual.linha;
-            melhor.letrinha = 'a' + ((atual.letra)-1);
-        }
-        l = l->prox;
-    }
-    return melhor;
-}
-/**
- *
- * @param e
- * @param l
- */
-void jog01(ESTADO *e, LISTA l){
-    COORDENADA c = melhor_coord(e,l);
-    movs(e,c);
-    jogar(e,c);
-    mudar_estado(e);
-}
-/**
- *
+ * \brief
+ * Função do bot 02, bot cujo a estrategia de paridade + euclidiana
  * @param e
  * @param l
  */

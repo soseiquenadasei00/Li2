@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "camadaDeDados.h"
 /**
+ * \brief
  * Função que inicializa o estado,ou seja, aloca uma memoria e gera o tabuleiro inicial
  */
 ESTADO *inicializar_estado() {
@@ -20,6 +21,7 @@ ESTADO *inicializar_estado() {
     return e;
 }
 /**
+ * \brief
  * Função no qual começamos com um tabuleiro do 0
  * @param e estado zerado
  */

@@ -4,7 +4,7 @@
 
 /**
  * Função que cria uma lista vazia
- * @return
+ * @return lista
  */
 LISTA criar_lista(){
    LISTA d = NULL;
@@ -31,8 +31,10 @@ LISTA proximo(LISTA *l){
     LISTA r = (*l) -> prox;
     return r;
 }
-
-
+/**
+ * Esta função libera os elementos da lista
+ * @param l lista ligada
+ */
 void freeList(LISTA *l)  {
     LISTA current = (*l);
 
