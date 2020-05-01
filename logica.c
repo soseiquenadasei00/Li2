@@ -66,47 +66,18 @@ void insere_lista(LISTA *a, ESTADO *e) {
         insere_cabeca(a, &(e->possiveis_jog[i]));
     }
 }
-//Printa as informações que está dentro da lista ligada
-void printl2(LISTA a) {
-    COORDENADA pcoord;
-    if (a==NULL) printf("TEM MAIS NADA");
-    while(a != NULL) {
-        pcoord=*(COORDENADA*) a->valor;
-        printf("%d,%d\n",pcoord.linha,pcoord.letra); //*(int*) a->valor);
-        a = a -> prox;
-    }
-    printf("\n");
-}
-/**
- * Função que primeiro transformar em string,concatena as strings e depois passamos de strings para inteiros
- * @param a inteiro que é a
- * @param b
- * @return
- */
-int concat(int a, int b)
-{
-    char s1[20];
-    char s2[20];
-    sprintf(s1, "%d", a);
-    sprintf(s2, "%d", b);
-    strcat(s1, s2);
-    int c = atoi(s1);
-    return c;
-}
 /**
  \brief Função que conta quantas possíveis jogadas existem no momento
  * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
  */
 int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
-    //LISTA r;
     COORDENADA pcoord;
     int count = 0, i, j,minlin,minlet;
     minlin = min((e->ultima_jogada.linha + 1), 7);
     minlet = min((e->ultima_jogada.letra + 1), 7);
     i = max((e->ultima_jogada.linha - 1), 0);
     j = max((e->ultima_jogada.letra - 1), 0);
-    //printf("%d %d| %d %d\n",i,minlin,j,minlet);
     while (i <= minlin)
     {
         while( j <= minlet)
@@ -125,7 +96,6 @@ int possiveis_jogadas(ESTADO *e, LISTA *d)
     }
     e->qntjogs = count;
     insere_lista(d,e);
-    //printl2(d);
     printf("\n");
     return count;
 }
@@ -140,7 +110,6 @@ int casa_viz(COORDENADA cAntes, COORDENADA cJog)
 
     x = abs(cAntes.linha - cJog.linha);
     y = abs(cAntes.letra - cJog.letra);
-
     if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0)))
         return 1;
     else return 0;
@@ -294,16 +263,6 @@ int printRandoms (int lower, int upper, int count)
     return num;
 }
 /**
- * Função criada para auxiliar na contagem da lista ligada (Apenas para saber o tamnho que a lista tem)
- * @param d lista ligada
- * @return retorna o tamnho da lista
- */
-int tamanho_list(LISTA d){
-    int i;
-    for(i = 0; d != NULL; i++);
-    return i;
-}
-/**
  * Função criada para jogar em uma posição de forma aleatoria (Bot)
  * @param e Estado atual do jogo
  * @param l lista ligada
@@ -335,41 +294,9 @@ int verifica_par(ESTADO e, COORDENADA c) {
         i++;
         j = max((c.letra - 1), 0);
     }
-    //printf("count: %d\n",count);
     return count;
 }
-/*int possiveis_jogadas(ESTADO *e, LISTA *d)
-{
-    //LISTA r;
-    COORDENADA pcoord;
-    int count = 0, i, j,minlin,minlet;
-    minlin = min((e->ultima_jogada.linha + 1), 7);
-    minlet = min((e->ultima_jogada.letra + 1), 7);
-    i = max((e->ultima_jogada.linha - 1), 0);
-    j = max((e->ultima_jogada.letra - 1), 0);
-    while (i <= minlin)
-    {
-        while( j <= minlet)
-        {
-            if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {
-                pcoord.letra = i;
-                pcoord.linha = j;
-                e->possiveis_jog[count] = pcoord;
 
-                count++;
-            }
-            j++;
-        }
-        i++;
-        j = max((e->ultima_jogada.letra - 1), 0);
-    }
-    e->qntjogs = count;
-    insere_lista(d,e);
-    //printl2(d);
-    printf("\n");
-    return count;
-}
-*/
 
 COORDENADA melhor_coord02(ESTADO e, LISTA l){
     COORDENADA melhor, coordAtual;
@@ -380,8 +307,6 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     while (l!=NULL){
         coordAtual = *(COORDENADA *)l->valor;
         distatual = calcula_dist(coordAtual,&e);
-        //printf("coordAtual: %d%d\n",coordAtual.linha,coordAtual.letra);
-        //printf("Distancia: %d\n",distatual);
         if (distatual <= bestdist){
             if (distatual == bestdist){
                 area1 = (verifica_par(e,melhor));
@@ -404,21 +329,12 @@ COORDENADA melhor_coord02(ESTADO e, LISTA l){
     }
     return melhor;
 }
-void printArray(COORDENADA posjog[],int max){
-    int i=0;
-    COORDENADA c;
-    printf("O que guardou no array: ");
-    while (i < max){
-        c = posjog[i];
-        printf("%d|%d, ",c.linha,c.letra);
-        i++;
-    }
-    putchar('\n');
-}
-
-
-
-
+/**
+ *
+ * @param e
+ * @param l
+ * @return
+ */
 COORDENADA area_par(ESTADO *e, LISTA *l){
     LISTA guardaPar = (*l);
     COORDENADA c,d,posjog[8];
@@ -432,7 +348,6 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
         guardaPar = proximo(&guardaPar);
 
     }
-    //printArray(posjog,i);
     if (i > 0){
         freeList(l);
         i--;
@@ -444,14 +359,6 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
     d = melhor_coord02((*e),(*l));
     return d;
 }
-void jog02(ESTADO *e, LISTA *l){
-    COORDENADA c = area_par(e,l);
-    movs(e,c);
-    jogar(e,c);
-    mudar_estado(e);
-}
-
-
 void jorge(ESTADO *e,LISTA l) {
     int max = e->qntjogs;
     char col[2];
@@ -476,8 +383,6 @@ void jorge(ESTADO *e,LISTA l) {
     jogar(e,c);
     mudar_estado(e);
 }
-
-
 COORDENADA melhor_coord(ESTADO *e, LISTA l){
     COORDENADA melhor, atual;
     int bestdist = 15;
@@ -495,9 +400,24 @@ COORDENADA melhor_coord(ESTADO *e, LISTA l){
     }
     return melhor;
 }
-
+/**
+ *
+ * @param e
+ * @param l
+ */
 void jog01(ESTADO *e, LISTA l){
     COORDENADA c = melhor_coord(e,l);
+    movs(e,c);
+    jogar(e,c);
+    mudar_estado(e);
+}
+/**
+ *
+ * @param e
+ * @param l
+ */
+void jog02(ESTADO *e, LISTA *l){
+    COORDENADA c = area_par(e,l);
     movs(e,c);
     jogar(e,c);
     mudar_estado(e);

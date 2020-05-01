@@ -1,0 +1,138 @@
+Index: interface.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include <stdlib.h>\n#include <stdio.h>\n#include <string.h>\n#include \"camadaDeDados.h\"\n#include \"logica.h\"\n#include \"lista.h\"\n#define  TAMANHO 1024\n/**\n * \\brief\n * @param e é o estado\n * @param tab_file nome dado ao ficheiro no qual será gerado\n * Função que gera um arquivo\n */\nvoid savetab(ESTADO *e, char *tabuleiro){\n    FILE *f= fopen(tabuleiro, \"w\");\n    show_tab(f,e);\n    fprintf(f,\"\\n\");\n    aux_movf(e,f);\n    fclose(f);\n}\n/**\n * \\brief\n * @param e é o estado\n * @param tab_file nome dado ao ficheiro que será lido\n * Função que le o arquivo gerado\n */\nvoid lertab(ESTADO *e,char *tabuleiro) {\n        FILE *f= fopen(tabuleiro,\"r\");\n        //char c1,c2,c3,c4,c5,c6,c7,c8;\n        int jogadas;\n        tabuleiro_inicial(e);\n        iniciar_estado(e);\n        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];\n        for (int i = 0; i < 8;i++) {\n            fscanf(f,\"%*c%*c%*c%*c%*c%*c%*c%*c\\n\");}\n\n        while ((jogadas = (fscanf(f,\"%*s %s %s\\n\",j1,j2)))!= EOF) {\n            sscanf(j1, \"%[a-h]%[1-8]\", col1,lin1);\n            COORDENADA c1 = {*col1 -'a','8' - *lin1,0};\n            c1.letra = *col1 -'a';\n            c1.linha = '8'- *lin1;\n            c1.letrinha = col1[0];\n\n            sscanf(j2, \"%[a-h]%[1-8]\", col2,lin2);\n            COORDENADA c2 = {*col2 -'a','8' - *lin2,0};\n            c2.letra = *col2 -'a';\n            c2.linha = '8'- *lin2;\n            c2.letrinha = col2[0];\n\n            if (jogadas==2){\n                troca_jog(e);\n                movs(e,c1);\n                jogar(e,c1);\n                mudar_estado(e);\n\n                troca_jog(e);\n                movs(e,c2);\n                jogar(e,c2);\n                mudar_estado(e);\n             }\n            else if (jogadas==1){\n                troca_jog(e);\n                movs(e,c1);\n                jogar(e,c1);\n                mudar_estado(e);\n        }\n    }\n    fclose(f);\n    }\n/**\n \\brief Função que mostra a tabuleiro no ecrã.\n */\nvoid mostrar_tabuleiro(ESTADO *e) {\n    int i, j;\n    int c = 8;\n    for (i = 0; i < 8; i++) {\n        for (j = 0; j < 8; j++) {\n          printf (\"%c \",e->tab[i][j]);}\n        printf(\"  %d\\n\", c);\n        c--;}\n    printf(\"\\nA B C D E F G H\\n\");\n}\n\n/**\n\\brief I\\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados\n*/\nint interpretador(ESTADO *e) {\n    char file_name[TAMANHO];\n    char linha[TAMANHO];\n    char col[2], lin[2];\n    int x;\n    LISTA d = criar_lista();\n    iniciar_estado(e);\n\n    while (e->num == 0) {\n        troca_jog(e);\n        if ((possiveis_jogadas(e, &d)) == 0) {\n            parabens(e->jogador_atual);\n            break;\n        }\n        prompt(e);\n        fgets(linha, TAMANHO, stdin);\n        sscanf(linha, \"%[a-h]%[1-8]\", col, lin);\n        COORDENADA c = {*col - 'a', '8' - *lin,0};\n        c.letra = *col - 'a';\n        c.linha = '8' - *lin;\n        c.letrinha = col[0];\n        /*Validação de jogadas*/\n        if (strlen(linha) == 3 && sscanf(linha, \"%[a-h]%[1-8]\", col, lin) == 2) {\n            if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e, c) == 1)) {\n                movs(e, c);\n                jogar(e, c);\n                mudar_estado(e);\n            } else printf(\"Jogada invalida,tente novamente!!\\n\\n\");\n        }\n        /* Caso o jogador digite \"Quit\" o jogo acaba*/\n        if (!(strncmp(linha, \"Quit\", 4))) break;\n        /*Caso o jogador digite \"gr\" irá gravar o tabuleiro e o estado */\n        if (sscanf(linha, \"gr %s\", file_name) == 1) {\n            savetab(e, file_name);\n        }\n        /*Caso o jogador digite \"ler\" irá ler o arquivo gerado anteriormente */\n        if (sscanf(linha, \"ler %s\", file_name) == (1)) {\n            lertab(e, file_name);\n        }//Caso o jogador digite \"movs\" irá dar no ecrã as jogadas feita até o momento\n        if (sscanf(linha, \"movs %s\") == (-1)) {\n            aux_mov(e);\n        }\n        //Caso o jogador digite \"pos\" irá gravar o tabuleiro e os movimentos\n        if (sscanf(linha, \"pos %d\", &x) == 1) {\n            posf(e, x);\n        }\n        //Caso o jogador digite \"jog\" irá ativar o bot e haverá uma jogada\n        if (sscanf(linha,\"jog %s\")==(-1)) {\n            jog02(e,&d);\n        }\n        freeList(&d);\n        if (e->tab[7][0] == BRANCA) {\n            parabens(1);\n            e->num++;\n        }\n        if (e->tab[0][7] == BRANCA) {\n            parabens(2);\n            e->num++;\n        }\n        e->count_mov++;\n        if (e->num == 0) mostrar_tabuleiro(e);\n    }\n    return 0;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- interface.c	(revision 33b9d7add06477cb362576c84ae6a339d5fced32)
++++ interface.c	(date 1588352157928)
+@@ -99,6 +99,7 @@
+             break;
+         }
+         prompt(e);
++
+         fgets(linha, TAMANHO, stdin);
+         sscanf(linha, "%[a-h]%[1-8]", col, lin);
+         COORDENADA c = {*col - 'a', '8' - *lin,0};
+@@ -123,7 +124,7 @@
+         if (sscanf(linha, "ler %s", file_name) == (1)) {
+             lertab(e, file_name);
+         }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
+-        if (sscanf(linha, "movs %s") == (-1)) {
++        if(strcmp(linha, "movs") == 10) {
+             aux_mov(e);
+         }
+         //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
+@@ -131,7 +132,7 @@
+             posf(e, x);
+         }
+         //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
+-        if (sscanf(linha,"jog %s")==(-1)) {
++        if(strcmp(linha, "jog2") == 0) {
+             jog02(e,&d);
+         }
+         freeList(&d);
+Index: camadaDeDados.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include <stdlib.h>\n#include \"camadaDeDados.h\"\n\n/**\n * Função que inicializa o estado,ou seja, aloca uma memoria e gera o tabuleiro inicial\n */\nESTADO *inicializar_estado() {\n    ESTADO *e =malloc(sizeof(ESTADO));\n    e->jogador_atual = 1;\n    e->num_jogadas = 0;\n    //mapa inicial\n    int i,j;\n    for (i=0;i<8;i++){\n        for(j=0;j<8;j++)\n            e->tab[i][j]=VAZIA;}\n    e->tab[3][4]=BRANCA;\n    e->tab[0][7]=DOIS;\n    e->tab[7][0]=UM;\n    e->ultima_jogada.letra = 4;\n    e->ultima_jogada.linha = 3;\n    return e;\n}\n/**\n * Função no qual começamos com um tabuleiro do 0\n * @param e estado zerado\n */\nvoid tabuleiro_inicial(ESTADO *e){\n    int i,j;\n    e->num_jogadas = 0;\n    for (i=0;i<8;i++){\n        for(j=0;j<8;j++)\n            e->tab[i][j]=VAZIA;}\n    e->tab[3][4]=BRANCA;\n    e->tab[0][7]=DOIS;\n    e->tab[7][0]=UM;\n    e->ultima_jogada.letra = 4;\n    e->ultima_jogada.linha = 3;\n}\n/**\n * Função que chega a casa\n * @param e estado atual da peça\n * @param c coordenada especifica da casa\n * @param h valor que a casa toma (BRANCA,VAZIA,PRETA)\n */\n/*void checaCasa (ESTADO *e, COORDENADA c, CASA h){\n    e->tab[c.letra][c.linha]=h;\n}*/
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- camadaDeDados.c	(revision 33b9d7add06477cb362576c84ae6a339d5fced32)
++++ camadaDeDados.c	(date 1588350008899)
+@@ -1,6 +1,5 @@
+ #include <stdlib.h>
+ #include "camadaDeDados.h"
+-
+ /**
+  * Função que inicializa o estado,ou seja, aloca uma memoria e gera o tabuleiro inicial
+  */
+Index: cmake-build-debug/CMakeFiles/Li2.dir/C.includecache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#IncludeRegexLine: ^[ \t]*[#%][ \t]*(include|import)[ \t]*[<\"]([^\">]+)([\">])\n\n#IncludeRegexScan: ^.*$\n\n#IncludeRegexComplain: ^$\n\n#IncludeRegexTransform: \n\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c\nstdlib.h\n-\ncamadaDeDados.h\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/interface.c\nstdlib.h\n-\nstdio.h\n-\nstring.h\n-\ncamadaDeDados.h\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\nlogica.h\n/home/pedro/Documents/Uminho/Li2/Li2/logica.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/interface.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/logica.c\nstdio.h\n-\nstdlib.h\n-\nstring.h\n-\ntime.h\n-\ncamadaDeDados.h\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\nlogica.h\n/home/pedro/Documents/Uminho/Li2/Li2/logica.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/logica.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/main.c\nstdio.h\n-\ncamadaDeDados.h\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\ninterface.h\n/home/pedro/Documents/Uminho/Li2/Li2/interface.h\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cmake-build-debug/CMakeFiles/Li2.dir/C.includecache	(revision 33b9d7add06477cb362576c84ae6a339d5fced32)
++++ cmake-build-debug/CMakeFiles/Li2.dir/C.includecache	(date 1588351645036)
+@@ -6,12 +6,6 @@
+ 
+ #IncludeRegexTransform: 
+ 
+-/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c
+-stdlib.h
+--
+-camadaDeDados.h
+-/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+-
+ /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+ lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+@@ -30,37 +24,9 @@
+ lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+ 
+-/home/pedro/Documents/Uminho/Li2/Li2/interface.h
+-lista.h
+-/home/pedro/Documents/Uminho/Li2/Li2/lista.h
+-
+-/home/pedro/Documents/Uminho/Li2/Li2/lista.h
+-
+-/home/pedro/Documents/Uminho/Li2/Li2/logica.c
+-stdio.h
+--
+-stdlib.h
+--
+-string.h
+--
+-time.h
+--
+-camadaDeDados.h
+-/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+-logica.h
+-/home/pedro/Documents/Uminho/Li2/Li2/logica.h
+-lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+ 
+ /home/pedro/Documents/Uminho/Li2/Li2/logica.h
+ lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+ 
+-/home/pedro/Documents/Uminho/Li2/Li2/main.c
+-stdio.h
+--
+-camadaDeDados.h
+-/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+-interface.h
+-/home/pedro/Documents/Uminho/Li2/Li2/interface.h
+-
+Index: cmake-build-debug/tab.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.......2\n........\n........\n....#...\n....#...\n....##..\n....##..\n1...*#..\n\n01: e4 e3\n02: e2 f3\n03: f2 f1\n04: e1 
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cmake-build-debug/tab.txt	(revision 33b9d7add06477cb362576c84ae6a339d5fced32)
++++ cmake-build-debug/tab.txt	(date 1588351387473)
+@@ -3,11 +3,9 @@
+ ........
+ ....#...
+ ....#...
+-....##..
+-....##..
+-1...*#..
++....#...
++....*...
++1.......
+ 
+ 01: e4 e3
+-02: e2 f3
+-03: f2 f1
+-04: e1 
+\ No newline at end of file
++02: e2 
+\ No newline at end of file

@@ -26,13 +26,12 @@ void savetab(ESTADO *e, char *tabuleiro){
  */
 void lertab(ESTADO *e,char *tabuleiro) {
         FILE *f= fopen(tabuleiro,"r");
-        //char c1,c2,c3,c4,c5,c6,c7,c8;
         int jogadas;
         tabuleiro_inicial(e);
         iniciar_estado(e);
         char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
         for (int i = 0; i < 8;i++) {
-            fscanf(f,"%*c%*c%*c%*c%*c%*c%*c%*c\n");}
+            fscanf(f,"%*s\n");}
 
         while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
             sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
@@ -99,52 +98,54 @@ int interpretador(ESTADO *e) {
             break;
         }
         prompt(e);
-        fgets(linha, TAMANHO, stdin);
-        sscanf(linha, "%[a-h]%[1-8]", col, lin);
-        COORDENADA c = {*col - 'a', '8' - *lin,0};
-        c.letra = *col - 'a';
-        c.linha = '8' - *lin;
-        c.letrinha = col[0];
-        /*Validação de jogadas*/
-        if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-            if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e, c) == 1)) {
-                movs(e, c);
-                jogar(e, c);
-                mudar_estado(e);
-            } else printf("Jogada invalida,tente novamente!!\n\n");
+        if (fgets(linha, TAMANHO, stdin)) {
+            sscanf(linha, "%[a-h]%[1-8]", col, lin);
+            COORDENADA c = {*col - 'a', '8' - *lin, 0};
+            c.letra = *col - 'a';
+            c.linha = '8' - *lin;
+            c.letrinha = col[0];
+            /*Validação de jogadas*/
+            if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+                if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e, c) == 1)) {
+                    movs(e, c);
+                    jogar(e, c);
+                    mudar_estado(e);
+                } else printf("Jogada invalida,tente novamente!!\n\n");
+            }
+            /* Caso o jogador digite "Quit" o jogo acaba*/
+            if (!(strncmp(linha, "Quit", 4))) break;
+            /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
+            if (sscanf(linha, "gr %s", file_name) == 1) {
+                savetab(e, file_name);
+            }
+            /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
+            if (sscanf(linha, "ler %s", file_name) == (1)) {
+                lertab(e, file_name);
+            }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
+            if (strcmp(linha, "movs") == 10) {
+                aux_mov(e);
+            }
+            //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
+            if (sscanf(linha, "pos %d", &x) == 1) {
+                posf(e, x);
+            }
+            //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
+            //printf("%s e o scanf deu:%d \n\n", linha, strcmp(linha,"jog2") );
+            if (strcmp(linha, "jog2") == 10) {
+                jog02(e, &d);
+            }
+            freeList(&d);
+            if (e->tab[7][0] == BRANCA) {
+                parabens(1);
+                e->num++;
+            }
+            if (e->tab[0][7] == BRANCA) {
+                parabens(2);
+                e->num++;
+            }
+            e->count_mov++;
+            if (e->num == 0) mostrar_tabuleiro(e);
         }
-        /* Caso o jogador digite "Quit" o jogo acaba*/
-        if (!(strncmp(linha, "Quit", 4))) break;
-        /*Caso o jogador digite "gr" irá gravar o tabuleiro e o estado */
-        if (sscanf(linha, "gr %s", file_name) == 1) {
-            savetab(e, file_name);
-        }
-        /*Caso o jogador digite "ler" irá ler o arquivo gerado anteriormente */
-        if (sscanf(linha, "ler %s", file_name) == (1)) {
-            lertab(e, file_name);
-        }//Caso o jogador digite "movs" irá dar no ecrã as jogadas feita até o momento
-        if (sscanf(linha, "movs %s") == (-1)) {
-            aux_mov(e);
-        }
-        //Caso o jogador digite "pos" irá gravar o tabuleiro e os movimentos
-        if (sscanf(linha, "pos %d", &x) == 1) {
-            posf(e, x);
-        }
-        //Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada
-        if (sscanf(linha,"jog %s")==(-1)) {
-            jog02(e,&d);
-        }
-        freeList(&d);
-        if (e->tab[7][0] == BRANCA) {
-            parabens(1);
-            e->num++;
-        }
-        if (e->tab[0][7] == BRANCA) {
-            parabens(2);
-            e->num++;
-        }
-        e->count_mov++;
-        if (e->num == 0) mostrar_tabuleiro(e);
     }
     return 0;
 }

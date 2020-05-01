@@ -1,0 +1,34 @@
+<changelist name="Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]" date="1588353916824" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 01/05/20, 18:25 [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="a.out" />
+    <option name="AFTER_PATH" value="a.out" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/a.out" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/interface.c.o" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/interface.c.o" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/interface.c.o" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/camadaDeDados.c.o" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/camadaDeDados.c.o" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/camadaDeDados.c.o" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/main.c.o" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/main.c.o" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/main.c.o" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/logica.c.o" />
+    <option name="AFTER_PATH" value="cmake-build-debug/CMakeFiles/Li2.dir/logica.c.o" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/logica.c.o" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="cmake-build-debug/Li2" />
+    <option name="AFTER_PATH" value="cmake-build-debug/Li2" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_05_20,_18_25_[Default_Changelist]/Li2" />
+  </binary>
+</changelist>

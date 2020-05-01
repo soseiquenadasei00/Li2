@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "camadaDeDados.h"
-
 /**
  * Função que inicializa o estado,ou seja, aloca uma memoria e gera o tabuleiro inicial
  */
