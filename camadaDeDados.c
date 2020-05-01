@@ -35,12 +35,3 @@ void tabuleiro_inicial(ESTADO *e){
     e->ultima_jogada.letra = 4;
     e->ultima_jogada.linha = 3;
 }
-/**
- * Função que chega a casa
- * @param e estado atual da peça
- * @param c coordenada especifica da casa
- * @param h valor que a casa toma (BRANCA,VAZIA,PRETA)
- */
-/*void checaCasa (ESTADO *e, COORDENADA c, CASA h){
-    e->tab[c.letra][c.linha]=h;
-}*/

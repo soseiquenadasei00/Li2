@@ -29,10 +29,8 @@ void lertab(ESTADO *e,char *tabuleiro) {
         int jogadas;
         tabuleiro_inicial(e);
         iniciar_estado(e);
-        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2];
-        for (int i = 0; i < 8;i++) {
-            fscanf(f,"%*s\n");}
-
+        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2],linha[TAMANHO];
+        for (int i = 0; i < 8 && fgets(linha, TAMANHO, f) != NULL;i++);
         while ((jogadas = (fscanf(f,"%*s %s %s\n",j1,j2)))!= EOF) {
             sscanf(j1, "%[a-h]%[1-8]", col1,lin1);
             COORDENADA c1 = {*col1 -'a','8' - *lin1,0};
