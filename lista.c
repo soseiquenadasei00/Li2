@@ -36,8 +36,8 @@ void *devolve_cabeca(LISTA L){
  * @param L
  * @return
  */
-LISTA proximo(LISTA L){
-    LISTA r = L -> prox;
+LISTA proximo(LISTA *l){
+    LISTA r = (*l) -> prox;
     return r;
 }
 /**

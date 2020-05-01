@@ -10,7 +10,7 @@ typedef struct lista {
 LISTA criar_lista();
 void insere_cabeca(LISTA *l, void *valor);
 void *devolve_cabeca(LISTA L);
-LISTA proximo(LISTA L);
+LISTA proximo(LISTA *l);
 void remove_cabeca(LISTA *l);
 int lista_esta_vazia(LISTA L);
 void freeList(LISTA *l);
