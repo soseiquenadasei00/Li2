@@ -47,7 +47,6 @@ typedef struct {
     int qntjogs;
     COORDENADA possiveis_jog[8];
     COORDENADA ultima_jogada;
-    //COORDENADA possivel_jogada;
 } ESTADO;
 
 /*Funções feita no .c*/
