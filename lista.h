@@ -9,13 +9,13 @@ typedef struct lista {
     struct lista *prox;
 }*LISTA;
 
-// Função criada para a struct do bot
+// Função criada para a struct da lista ligada
 LISTA criar_lista();
 LISTA proximo(LISTA *l);
 void freeList(LISTA *l);
 void insere_cabeca(LISTA *l, void *valor);
-int tamanho_lista(LISTA l);
 void remove_cabeca(LISTA *l);
 int lista_vazia(LISTA l);
+int tamanho_lista(LISTA l);
 
 #endif //LI2_LISTA_H

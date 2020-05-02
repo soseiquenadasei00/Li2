@@ -265,7 +265,6 @@ void mudar_estado(ESTADO *e){
     e->count_movs++;
 }
 
-/*BOT-01*/
 
 /**
  * \brief
@@ -335,7 +334,7 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
             insere_cabeca(l, &(posjog[i]));
             i--;}
     }
-    d = melhor_coord02((*e),(*l));
+    d = melhor_coord02((*e),l);
     return d;
 }
 /**
@@ -353,8 +352,7 @@ COORDENADA melhor_coord02(ESTADO e, LISTA *l){
     tamanhoL = tamanho_lista(*l);
     while (*l!=NULL && stop == 0){
         if (tamanhoL > 1 && verifica_jog(e,*(COORDENADA *)(*l)->valor) == 0){
-            remove_cabeca(l);
-        }
+            remove_cabeca(l);}
         if (lista_vazia(*l) != 1) {
             coordAtual = *(COORDENADA *) (*l)->valor;
             distatual = calcula_dist(coordAtual, &e);
@@ -366,8 +364,7 @@ COORDENADA melhor_coord02(ESTADO e, LISTA *l){
                         bestdist = distatual;
                         melhor.letra = coordAtual.letra;
                         melhor.linha = coordAtual.linha;
-                        melhor.letrinha = 'a' + ((coordAtual.letra) - 1);
-                    }
+                        melhor.letrinha = 'a' + ((coordAtual.letra) - 1);}
                 } else {
                     bestdist = distatual;
                     melhor.letra = coordAtual.letra;
@@ -381,6 +378,7 @@ COORDENADA melhor_coord02(ESTADO e, LISTA *l){
     }
     return melhor;
 }
+/* BOT-01*/
 /**
  * Função do bot 01, bot cujo estrategia Euclidiana
  * @param e

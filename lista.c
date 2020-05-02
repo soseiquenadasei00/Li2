@@ -70,7 +70,7 @@ int lista_vazia(LISTA l){
  * @return tamanho da lista
  */
 int tamanho_lista(LISTA l){
-    int t;
+    int t=0;
     while (l){
         t++;
         l = l->prox;
