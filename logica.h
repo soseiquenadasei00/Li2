@@ -13,7 +13,7 @@ void troca_jog(ESTADO *e);
 void iniciar_estado(ESTADO *e);
 void mudar_estado(ESTADO *e);
 void insere_lista(LISTA *a,ESTADO *e);
-void jog01(ESTADO *e, LISTA l);
+void jog01(ESTADO *e, LISTA *l);
 void jog02(ESTADO *e, LISTA *l);
 int casa_viz(COORDENADA cAntes, COORDENADA cJog);
 int casa_livre (ESTADO *e, COORDENADA c);
@@ -22,5 +22,5 @@ int calcula_dist(COORDENADA c, ESTADO* e);
 int verifica_jog(ESTADO e, COORDENADA c);
 COORDENADA area_par(ESTADO *e, LISTA *l);
 COORDENADA melhor_coord01(ESTADO *e, LISTA l);
-COORDENADA melhor_coord02(ESTADO e, LISTA l);
+COORDENADA melhor_coord02(ESTADO e, LISTA *l);
 #endif //LI2_LOGICA_H

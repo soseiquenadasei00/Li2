@@ -14,5 +14,8 @@ LISTA criar_lista();
 LISTA proximo(LISTA *l);
 void freeList(LISTA *l);
 void insere_cabeca(LISTA *l, void *valor);
+int tamanho_lista(LISTA l);
+void remove_cabeca(LISTA *l);
+int lista_vazia(LISTA l);
 
 #endif //LI2_LISTA_H

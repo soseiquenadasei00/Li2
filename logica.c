@@ -286,7 +286,7 @@ int calcula_dist(COORDENADA c, ESTADO* e){
 }
 /**
  * \brief
- * Simula em cada coordenada atribuida,verificada as suas possibilidades e se é par, retornando a quantidade de possibilidade que cada coordenada pode retornar
+ * Simula em cada coordenada atribuida,verificada as suas possibilidades par, retornando a quantidade de possibilidade de jogada que cada coordenada pode retornar
  * @param e Estado atual
  * @param c Coordenada atual
  * @return
@@ -312,7 +312,7 @@ int verifica_jog(ESTADO e, COORDENADA c) {
 }
 
 /**
- * Verifica se a área no qual foi simulado na função verifica_par
+ * Verifica a área no qual cada possivel jogada possui
  * @param e
  * @param l
  * @return
@@ -344,20 +344,40 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
  * @param l Lista ligada
  * @return
  */
-COORDENADA melhor_coord01(ESTADO *e, LISTA l){
-    COORDENADA melhor, atual;
-    int bestdist = 15;
-    int distatual;
-    while (l != NULL){
-        atual = *(COORDENADA *)l->valor;
-        distatual = calcula_dist(atual,e);
-        if (distatual < bestdist){
-            bestdist = distatual;
-            melhor.letra = atual.letra;
-            melhor.linha = atual.linha;
-            melhor.letrinha = 'a' + ((atual.letra)-1);
+COORDENADA melhor_coord02(ESTADO e, LISTA *l){
+    COORDENADA melhor, coordAtual;
+    melhor.linha = e.ultima_jogada.linha;
+    melhor.letra = e.ultima_jogada.letra;
+    melhor.letrinha = e.ultima_jogada.letrinha;
+    int distatual,area1,area2,tamanhoL,bestdist = 15,stop = 0;
+    tamanhoL = tamanho_lista(*l);
+    while (*l!=NULL && stop == 0){
+        if (tamanhoL > 1 && verifica_jog(e,*(COORDENADA *)(*l)->valor) == 0){
+            remove_cabeca(l);
         }
-        l = l->prox;
+        if (lista_vazia(*l) != 1) {
+            coordAtual = *(COORDENADA *) (*l)->valor;
+            distatual = calcula_dist(coordAtual, &e);
+            if (distatual <= bestdist) {
+                if (distatual == bestdist) {
+                    area1 = (verifica_jog(e, melhor));
+                    area2 = (verifica_jog(e, coordAtual));
+                    if (area2 >= area1) {
+                        bestdist = distatual;
+                        melhor.letra = coordAtual.letra;
+                        melhor.linha = coordAtual.linha;
+                        melhor.letrinha = 'a' + ((coordAtual.letra) - 1);
+                    }
+                } else {
+                    bestdist = distatual;
+                    melhor.letra = coordAtual.letra;
+                    melhor.linha = coordAtual.linha;
+                    melhor.letrinha = 'a' + ((coordAtual.letra) - 1);
+                }
+            }
+            (*l) = proximo(l);
+        }
+        else stop++;
     }
     return melhor;
 }
@@ -366,51 +386,14 @@ COORDENADA melhor_coord01(ESTADO *e, LISTA l){
  * @param e
  * @param l
  */
-void jog01(ESTADO *e, LISTA l){
-    COORDENADA c = melhor_coord01(e,l);
+void jog01(ESTADO *e, LISTA *l){
+    COORDENADA c = melhor_coord02(*e,l);
     movs(e,c);
     jogar(e,c);
     mudar_estado(e);
 }
-/*BOT-02*/
 
-/**
- * Função feita para procurar qual é a melhor coordenada possivel e aplica-la na lista ligada
- * @param e Estado atual
- * @param l Lista ligada
- * @return
- */
-COORDENADA melhor_coord02(ESTADO e, LISTA l){
-    COORDENADA melhor, coordAtual;
-    melhor.linha = e.ultima_jogada.linha;
-    melhor.letra = e.ultima_jogada.letra;
-    melhor.letrinha = e.ultima_jogada.letrinha;
-    int distatual,area1,area2,bestdist = 15;
-    while (l!=NULL){
-        coordAtual = *(COORDENADA *)l->valor;
-        distatual = calcula_dist(coordAtual,&e);
-        if (distatual <= bestdist){
-            if (distatual == bestdist){
-                area1 = (verifica_jog(e,melhor));
-                area2 = (verifica_jog(e,coordAtual));
-                if (area2 >= area1){
-                    bestdist = distatual;
-                    melhor.letra = coordAtual.letra;
-                    melhor.linha = coordAtual.linha;
-                    melhor.letrinha = 'a' + ((coordAtual.letra)-1);
-                }
-            }
-            else {
-                bestdist = distatual;
-                melhor.letra = coordAtual.letra;
-                melhor.linha = coordAtual.linha;
-                melhor.letrinha = 'a' + ((coordAtual.letra)-1);
-            }
-        }
-        l = proximo(&l);
-    }
-    return melhor;
-}
+/*BOT-02*/
 /**
  * \brief
  * Função do bot 02, bot cujo a estrategia de paridade + euclidiana
@@ -422,4 +405,5 @@ void jog02(ESTADO *e, LISTA *l){
     movs(e,c);
     jogar(e,c);
     mudar_estado(e);
+
 }

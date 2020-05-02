@@ -126,7 +126,7 @@ int interpretador(ESTADO *e) {
             }
             /*Caso o jogador digite "jog" irá ativar o bot e haverá uma jogada*/
             if (strcmp(linha, "jog")==10) {
-                jog01(e,d);
+                jog01(e,&d);
             }
             /*Caso o jogador digite "jog2" irá ativar o bot2 e haverá uma jogada*/
             if (strcmp(linha, "jog2")==10) {
@@ -142,6 +142,7 @@ int interpretador(ESTADO *e) {
                 e->num++;}
             e->count_mov++;
             if (e->num == 0) mostrar_tabuleiro(e);
+
         }
     }
     return 0;
