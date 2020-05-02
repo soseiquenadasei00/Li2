@@ -338,6 +338,17 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
     d = melhor_coord02((*e),(*l));
     return d;
 }
+
+/**
+ * Função que modifica a coordenada, caso condição seja satisfeita
+ * @param melhor , melhor coordenada até o momento
+ * @param coordAtual , coordenada atual à ser analisada
+ */
+void altera_bestdist(COORDENADA *melhor,COORDENADA coordAtual){
+    melhor->letra = coordAtual.letra;
+    melhor->linha = coordAtual.linha;
+    melhor->letrinha = 'a' + ((coordAtual.letra) - 1);
+}
 /**
  * Função feita para procurar qual é a melhor coordenada possivel e aplica-la na lista ligada
  * @param e Estado atual
@@ -364,15 +375,11 @@ COORDENADA melhor_coord02(ESTADO e, LISTA *l){
                     area2 = (verifica_jog(e, coordAtual));
                     if (area2 >= area1) {
                         bestdist = distatual;
-                        melhor.letra = coordAtual.letra;
-                        melhor.linha = coordAtual.linha;
-                        melhor.letrinha = 'a' + ((coordAtual.letra) - 1);
+                        altera_bestdist(&melhor,coordAtual);
                     }
                 } else {
                     bestdist = distatual;
-                    melhor.letra = coordAtual.letra;
-                    melhor.linha = coordAtual.linha;
-                    melhor.letrinha = 'a' + ((coordAtual.letra) - 1);
+                    altera_bestdist(&melhor,coordAtual);
                 }
             }
             (*l) = proximo(l);
