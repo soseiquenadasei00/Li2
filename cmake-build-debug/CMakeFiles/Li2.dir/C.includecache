@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.c
+stdlib.h
+-
+camadaDeDados.h
+/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+
 /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
 lista.h
 /home/pedro/Documents/Uminho/Li2/Li2/lista.h
@@ -19,6 +25,10 @@ camadaDeDados.h
 /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
 logica.h
 /home/pedro/Documents/Uminho/Li2/Li2/logica.h
+lista.h
+/home/pedro/Documents/Uminho/Li2/Li2/lista.h
+
+/home/pedro/Documents/Uminho/Li2/Li2/interface.h
 lista.h
 /home/pedro/Documents/Uminho/Li2/Li2/lista.h
 
@@ -49,4 +59,12 @@ lista.h
 /home/pedro/Documents/Uminho/Li2/Li2/logica.h
 lista.h
 /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+
+/home/pedro/Documents/Uminho/Li2/Li2/main.c
+stdio.h
+-
+camadaDeDados.h
+/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+interface.h
+/home/pedro/Documents/Uminho/Li2/Li2/interface.h
 

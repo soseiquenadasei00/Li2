@@ -214,8 +214,8 @@
 <codeline lineno="12"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="18"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>insere_cabeca(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*valor)<sp/>{</highlight></codeline>
 <codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structlista" kindref="compound">LISTA</ref><sp/>d<sp/>=<sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structlista" kindref="compound">lista</ref>));</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>d-&gt;valor<sp/>=<sp/>valor;</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>d-&gt;prox<sp/>=<sp/>(*l);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>d-&gt;<ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref><sp/>=<sp/>valor;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>d-&gt;<ref refid="structlista_1a3b0e375147c1163d74544fd206a1f1de" kindref="member">prox</ref><sp/>=<sp/>(*l);</highlight></codeline>
 <codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>*l<sp/>=<sp/>d;</highlight></codeline>
 <codeline lineno="23"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="29"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/>proximo(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l){</highlight></codeline>
@@ -247,7 +247,7 @@
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>t=0;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(l){</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>t++;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l<sp/>=<sp/>l-&gt;prox;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l<sp/>=<sp/>l-&gt;<ref refid="structlista_1a3b0e375147c1163d74544fd206a1f1de" kindref="member">prox</ref>;</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>t;</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">}</highlight></codeline>

@@ -5,7 +5,13 @@
  * Struct de lista ligada generalizada, ou seja, com void.
  */
 typedef struct lista {
+    /**
+     * Void no qual a lista ligada pode receber qualquer tipo
+     */
     void *valor;
+    /**
+     * Da o proximo da lista
+     */
     struct lista *prox;
 }*LISTA;
 

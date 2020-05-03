@@ -12,10 +12,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Tabuleiro no qual realizamos as jogadas </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="38" column="1" bodyfile="camadaDeDados.h" bodystart="38" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="55" column="1" bodyfile="camadaDeDados.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1afae43b87a488fad0f2b56a18bad31d18" prot="public" static="no" mutable="no">
         <type>JOGADAS</type>
@@ -25,10 +25,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Array conte todas as jogadas feitas </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="39" column="1" bodyfile="camadaDeDados.h" bodystart="39" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="59" column="1" bodyfile="camadaDeDados.h" bodystart="59" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a261495728744647e618b4e623f5a4b7a" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -38,10 +38,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Numero de jogadas </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="40" column="1" bodyfile="camadaDeDados.h" bodystart="40" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="63" column="1" bodyfile="camadaDeDados.h" bodystart="63" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a5dd28e2e68b7aef2b6b7ea88e02eff58" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -51,10 +51,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Jogador atual </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="41" column="1" bodyfile="camadaDeDados.h" bodystart="41" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="67" column="1" bodyfile="camadaDeDados.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a5632721fdfcc6c98f084c91aef5b6e25" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -64,10 +64,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Contador para a troca de jogador </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="42" column="1" bodyfile="camadaDeDados.h" bodystart="42" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="71" column="1" bodyfile="camadaDeDados.h" bodystart="71" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a36e8d21ac156e82ce914ccdafc6796ea" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -77,10 +77,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Contador para todos os movimentos do jogo </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="43" column="1" bodyfile="camadaDeDados.h" bodystart="43" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="75" column="1" bodyfile="camadaDeDados.h" bodystart="75" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a49b04d6940f820509146c9162ac10542" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -90,10 +90,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Contador para os movimentos sendo auxiliar para a funcionalidade do estado </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="44" column="1" bodyfile="camadaDeDados.h" bodystart="44" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="79" column="1" bodyfile="camadaDeDados.h" bodystart="79" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a248a8554633b7e8e40142e5b8c4e6960" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -103,10 +103,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Caso de paragem </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="45" column="1" bodyfile="camadaDeDados.h" bodystart="45" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="83" column="1" bodyfile="camadaDeDados.h" bodystart="83" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1ae0aaae1dc17799598305cd40a3ca2ba8" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -116,10 +116,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Conta quantas possiveis jogadas </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="46" column="1" bodyfile="camadaDeDados.h" bodystart="46" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="87" column="1" bodyfile="camadaDeDados.h" bodystart="87" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1ab9b11998a54bde459f72cbbc32e79b0b" prot="public" static="no" mutable="no">
         <type><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref></type>
@@ -129,10 +129,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Array com as possiveis coordenadas </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="47" column="1" bodyfile="camadaDeDados.h" bodystart="47" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="91" column="1" bodyfile="camadaDeDados.h" bodystart="91" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structESTADO_1a4896a5c5c1f40b43fb795623327e3f47" prot="public" static="no" mutable="no">
         <type><ref refid="structCOORDENADA" kindref="compound">COORDENADA</ref></type>
@@ -142,10 +142,10 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para>Coordenada da ultima jogada </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="camadaDeDados.h" line="48" column="1" bodyfile="camadaDeDados.h" bodystart="48" bodyend="-1"/>
+        <location file="camadaDeDados.h" line="95" column="1" bodyfile="camadaDeDados.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -177,7 +177,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="camadaDeDados.h" line="37" column="1" bodyfile="camadaDeDados.h" bodystart="37" bodyend="49"/>
+    <location file="camadaDeDados.h" line="51" column="1" bodyfile="camadaDeDados.h" bodystart="51" bodyend="96"/>
     <listofallmembers>
       <member refid="structESTADO_1a5632721fdfcc6c98f084c91aef5b6e25" prot="public" virt="non-virtual"><scope>ESTADO</scope><name>count_jog</name></member>
       <member refid="structESTADO_1a36e8d21ac156e82ce914ccdafc6796ea" prot="public" virt="non-virtual"><scope>ESTADO</scope><name>count_mov</name></member>

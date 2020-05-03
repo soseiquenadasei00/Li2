@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="10" column="1"/>
+        <location file="lista.h" line="16" column="1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -62,7 +62,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="16" column="1" bodyfile="lista.c" bodystart="9" bodyend="12"/>
+        <location file="lista.h" line="22" column="1" bodyfile="lista.c" bodystart="9" bodyend="12"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1aa9464b296b7a55af908934b3007f5712" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structlista" kindref="compound">LISTA</ref></type>
@@ -88,7 +88,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="17" column="1" bodyfile="lista.c" bodystart="29" bodyend="32"/>
+        <location file="lista.h" line="23" column="1" bodyfile="lista.c" bodystart="29" bodyend="32"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a8471aa9581af95e1417a0e59d9e3542c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -113,7 +113,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="18" column="1" bodyfile="lista.c" bodystart="37" bodyend="46"/>
+        <location file="lista.h" line="24" column="1" bodyfile="lista.c" bodystart="37" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1aa41ba0e589620103449550ab91121aca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -149,7 +149,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="19" column="1" bodyfile="lista.c" bodystart="18" bodyend="23"/>
+        <location file="lista.h" line="25" column="1" bodyfile="lista.c" bodystart="18" bodyend="23"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a8cb8431dc543891d916899135893db0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -174,7 +174,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="20" column="1" bodyfile="lista.c" bodystart="52" bodyend="57"/>
+        <location file="lista.h" line="26" column="1" bodyfile="lista.c" bodystart="52" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a8424d69f60510800eee6a678f461fc3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -192,7 +192,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="21" column="1" bodyfile="lista.c" bodystart="62" bodyend="65"/>
+        <location file="lista.h" line="27" column="1" bodyfile="lista.c" bodystart="62" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="lista_8h_1a7daf2472369dc2617e86e90118cc01e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -218,7 +218,7 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="lista.h" line="22" column="1" bodyfile="lista.c" bodystart="71" bodyend="78"/>
+        <location file="lista.h" line="28" column="1" bodyfile="lista.c" bodystart="71" bodyend="78"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -230,19 +230,19 @@ Função que cria uma lista vazia <simplesect kind="return"><para>lista </para><
 <codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LI2_LISTA_H</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal"></highlight></codeline>
 <codeline lineno="7" refid="structlista" refkind="compound"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlista" kindref="compound">lista</ref><sp/>{</highlight></codeline>
-<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*valor;</highlight></codeline>
-<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlista" kindref="compound">lista</ref><sp/>*prox;</highlight></codeline>
-<codeline lineno="10"><highlight class="normal">}*<ref refid="structlista" kindref="compound">LISTA</ref>;</highlight></codeline>
-<codeline lineno="11"><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/>criar_lista();</highlight></codeline>
-<codeline lineno="17"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/>proximo(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeList(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>insere_cabeca(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*valor);</highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>remove_cabeca(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lista_vazia(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>l);</highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tamanho_lista(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>l);</highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LI2_LISTA_H</highlight></codeline>
+<codeline lineno="11" refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>;</highlight></codeline>
+<codeline lineno="15" refid="structlista_1a3b0e375147c1163d74544fd206a1f1de" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structlista" kindref="compound">lista</ref><sp/>*<ref refid="structlista_1a3b0e375147c1163d74544fd206a1f1de" kindref="member">prox</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}*<ref refid="structlista" kindref="compound">LISTA</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/>criar_lista();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="structlista" kindref="compound">LISTA</ref><sp/>proximo(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>freeList(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>insere_cabeca(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="structlista_1a1851230b0237deef0519ee33de9f2dd0" kindref="member">valor</ref>);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>remove_cabeca(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>*l);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lista_vazia(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>l);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>tamanho_lista(<ref refid="structlista" kindref="compound">LISTA</ref><sp/>l);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//LI2_LISTA_H</highlight></codeline>
     </programlisting>
     <location file="lista.h"/>
   </compounddef>
