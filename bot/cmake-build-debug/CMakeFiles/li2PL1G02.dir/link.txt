@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/li2PL1G02.dir/main.c.o CMakeFiles/li2PL1G02.dir/lista.c.o CMakeFiles/li2PL1G02.dir/aux.c.o  -o li2PL1G02 

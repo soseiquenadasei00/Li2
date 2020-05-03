@@ -1,0 +1,3 @@
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/cmake-build-debug/CMakeFiles/li2PL1G02.dir

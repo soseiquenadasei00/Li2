@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/aux.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+aux.h
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/aux.h
+lista.h
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/lista.h
+
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/aux.h
+lista.h
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/lista.h
+
+/home/pedro/Documents/Uminho/Li2/li2PL1G02/lista.h
+
