@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.13">
+  <compounddef id="relatorio_8md" kind="file" language="Markdown">
+    <compoundname>relatorio.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">MIEI-UC<sp/>1º<sp/>ano-2º<sp/>SEMESTRE<sp/></highlight></codeline>
+<codeline><highlight class="normal">Numeração<sp/>do<sp/>grupo:2<sp/></highlight></codeline>
+<codeline><highlight class="normal">PL1</highlight></codeline>
+<codeline><highlight class="normal">Grupo:<sp/>Pedro<sp/>Aquino<sp/>A90614</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Pedro<sp/>Saldanha<sp/>A90618</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vitor<sp/>Lelis<sp/>A90707</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Relatorio<sp/>(Guião<sp/>5)</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Objetivo:Neste<sp/>guião<sp/>tivemos<sp/>como<sp/>tarefa<sp/>produzir<sp/>modulos,<sp/>além<sp/>de<sp/>desenvolver<sp/>código<sp/>para<sp/>cada<sp/>modulo<sp/>sendo<sp/>eles<sp/>(CamadaDeDados,logica,<sp/>interface).</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Desafios:<sp/>Nas<sp/>primeiras<sp/>impressões<sp/>o<sp/>código<sp/>de<sp/>exemplo<sp/>parecia<sp/>ser<sp/>demasiado<sp/>complexo<sp/>pelo<sp/>facto<sp/>de<sp/>utilizar<sp/>algumas<sp/>funções<sp/>não<sp/>apresentadas<sp/>ou<sp/>estudadas<sp/>em<sp/>sala<sp/>de<sp/>aula,com<sp/>isso,foi<sp/></highlight></codeline>
+<codeline><highlight class="normal">preciso<sp/>sentar<sp/>os<sp/>três<sp/>a<sp/>tentar<sp/>analisar<sp/>o<sp/>código<sp/>que<sp/>vos<sp/>foi<sp/>dado,<sp/>além<sp/>disso,<sp/>tivemos<sp/>uma<sp/>discursão<sp/>o<sp/>que<sp/>seria<sp/>melhor<sp/>para<sp/>o<sp/>desenvolvimento<sp/>do<sp/>trabalho,fazer<sp/>o<sp/>nosso<sp/>próprio<sp/>código<sp/>ou<sp/></highlight></codeline>
+<codeline><highlight class="normal">utilizar<sp/>os<sp/>ja<sp/>estava<sp/>pre<sp/>estabelecido.Sendo<sp/>assim,<sp/>depois<sp/>de<sp/>3<sp/>dias<sp/>de<sp/>analise<sp/>de<sp/>código<sp/>para<sp/>percebemos<sp/>o<sp/>que<sp/>cada<sp/>função<sp/>faz,<sp/>começamos<sp/>a<sp/>reparar<sp/>o<sp/>como<sp/>as<sp/>partes<sp/>se<sp/>encaixavam<sp/>de<sp/></highlight></codeline>
+<codeline><highlight class="normal">forma<sp/>simples<sp/>e<sp/>clara<sp/>e<sp/>então<sp/>inicializamos<sp/>o<sp/>nosso<sp/>desenvolvimento.<sp/>Diante<sp/>disto,<sp/>ficamos<sp/>um<sp/>pouco<sp/>perdidos<sp/>em<sp/>relação<sp/>o<sp/>que<sp/>tínhamos<sp/>que<sp/>complementar<sp/>e<sp/>como<sp/>poderíamos<sp/>construir<sp/>um<sp/>código<sp/>para<sp/>que<sp/>ficasse</highlight></codeline>
+<codeline><highlight class="normal">tão<sp/>compacto<sp/>e<sp/>simples<sp/>como<sp/>o<sp/>já<sp/>estabelecido.Embora,apesar<sp/><sp/>nos<sp/>apresentar<sp/>um<sp/>código<sp/>que<sp/>é<sp/>simples<sp/>nos<sp/>faltava<sp/>conhecimento<sp/>mas<sp/>conseguimos<sp/>aprender<sp/>um<sp/>pouco<sp/>mais<sp/>das<sp/>funções<sp/>e<sp/>com<sp/>os<sp/>nossos<sp/>erros<sp/>em<sp/>testes.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+    </programlisting>
+    <location file="relatorio.md"/>
+  </compounddef>
+</doxygen>

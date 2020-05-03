@@ -75,6 +75,8 @@ void insere_lista(LISTA *a, ESTADO *e) {
  * \brief
  * Função que conta quantas possíveis jogadas existem no momento
  * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita
+ * @param d Lista ligada
+ * @return retorna as possiveis jogadas
  */
 int possiveis_jogadas(ESTADO *e, LISTA *d)
 {
@@ -166,7 +168,6 @@ void movs(ESTADO *e, COORDENADA c)
  * \brief
  * Função desenvolvida para ser o prompt do jogo (Estados do jogo)
  * @param e estado atual
- * @param f ficheiro
  */
 void aux_mov(ESTADO *e){
     int movi = 1, jogs = 1, numjog = 1, allmovs;
@@ -258,20 +259,18 @@ void iniciar_estado(ESTADO *e) {
 /**
  * \brief
  * Função que altera o estado com atualização das jogadas feita
- * @param e
+ * @param e Estado atual
  */
 void mudar_estado(ESTADO *e){
     e->count_jog++;
     e->count_movs++;
 }
-
-
 /**
  * \brief
  * Função que calcula a melhor distancia entre a casa que o jogador deve ir e a posição atual
  * @param c Coordenada atual
  * @param e Estado atual
- * @return
+ * @return retorna qual é a melhor distancia
  */
 int calcula_dist(COORDENADA c, ESTADO* e){
     int dist;
@@ -288,7 +287,7 @@ int calcula_dist(COORDENADA c, ESTADO* e){
  * Simula em cada coordenada atribuida,verificada as suas possibilidades par, retornando a quantidade de possibilidade de jogada que cada coordenada pode retornar
  * @param e Estado atual
  * @param c Coordenada atual
- * @return
+ * @return Retorna a quantidade de possiveis jogadas
  */
 int verifica_jog(ESTADO e, COORDENADA c) {
     int count = 0, i, j, minlin, minlet;
@@ -312,9 +311,9 @@ int verifica_jog(ESTADO e, COORDENADA c) {
 
 /**
  * Verifica a área no qual cada possivel jogada possui
- * @param e
- * @param l
- * @return
+ * @param e Estado atual
+ * @param l Lista ligada
+ * @return devolve a coordenada onde há área é par
  */
 COORDENADA area_par(ESTADO *e, LISTA *l){
     LISTA guardaPar = (*l);
@@ -337,22 +336,22 @@ COORDENADA area_par(ESTADO *e, LISTA *l){
     d = melhor_coord02((*e),l);
     return d;
 }
-
 /**
  * Função que modifica a coordenada, caso condição seja satisfeita
- * @param melhor , melhor coordenada até o momento
- * @param coordAtual , coordenada atual à ser analisada
+ * @param melhor melhor coordenada até o momento
+ * @param coordAtual coordenada atual à ser analisada
  */
-void altera_bestdist(COORDENADA *melhor,COORDENADA coordAtual){
+void altera_bestdist(COORDENADA *melhor, COORDENADA coordAtual) {
     melhor->letra = coordAtual.letra;
     melhor->linha = coordAtual.linha;
     melhor->letrinha = 'a' + ((coordAtual.letra) - 1);
 }
+
 /**
  * Função feita para procurar qual é a melhor coordenada possivel e aplica-la na lista ligada
  * @param e Estado atual
  * @param l Lista ligada
- * @return
+ * @return procura a melhor coordenada
  */
 COORDENADA melhor_coord02(ESTADO e, LISTA *l){
     COORDENADA melhor, coordAtual;
@@ -389,8 +388,8 @@ COORDENADA melhor_coord02(ESTADO e, LISTA *l){
 /* BOT-01*/
 /**
  * Função do bot 01, bot cujo estrategia Euclidiana
- * @param e
- * @param l
+ * @param e Estado atual
+ * @param l Lista ligada
  */
 void jog01(ESTADO *e, LISTA *l){
     COORDENADA c = melhor_coord02(*e,l);
@@ -403,8 +402,8 @@ void jog01(ESTADO *e, LISTA *l){
 /**
  * \brief
  * Função do bot 02, bot cujo a estrategia de paridade + euclidiana
- * @param e
- * @param l
+ * @param e Estado atual
+ * @param l Lista ligada
  */
 void jog02(ESTADO *e, LISTA *l){
     COORDENADA c = area_par(e,l);

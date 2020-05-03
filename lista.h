@@ -9,7 +9,10 @@ typedef struct lista {
     struct lista *prox;
 }*LISTA;
 
-// Função criada para a struct da lista ligada
+/**
+ * Funções criadas no .c
+ * @return
+ */
 LISTA criar_lista();
 LISTA proximo(LISTA *l);
 void freeList(LISTA *l);

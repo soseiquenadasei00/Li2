@@ -1,0 +1,112 @@
+Index: logica.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#ifndef LI2_LOGICA_H\n#define LI2_LOGICA_H\n#include \"lista.h\"\n\nvoid movs(ESTADO *e, COORDENADA c);\nvoid show_tab(FILE *f, ESTADO *e);\nvoid prompt(ESTADO *e);\nvoid jogar(ESTADO *e, COORDENADA c);\nint casa_viz(COORDENADA cAntes, COORDENADA cJog);\nint casa_livre (ESTADO *e, COORDENADA c);\nint possiveis_jogadas(ESTADO *e,LISTA *d);\nvoid parabens(int jogador);\nvoid aux_mov(ESTADO *e);\nvoid aux_movf(ESTADO *e,FILE *f);\nvoid posf(ESTADO *e, int x);\nvoid troca_jog(ESTADO *e);\nvoid iniciar_estado(ESTADO *e);\nvoid mudar_estado(ESTADO *e);\nvoid insere_lista(LISTA *a,ESTADO *e);\nint calcula_dist(COORDENADA c, ESTADO* e);\nCOORDENADA melhor_coord(ESTADO *e, LISTA l);\nCOORDENADA area_par(ESTADO *e, LISTA *l);\nint verifica_par(ESTADO e, COORDENADA c);\nCOORDENADA melhor_coord02(ESTADO e, LISTA l);\nvoid jog01(ESTADO *e, LISTA l);\nvoid jog02(ESTADO *e, LISTA *l);\n\n//int printRandoms (int lower, int upper, int count);\n//void jorge(ESTADO *e,LISTA l);\n#endif //LI2_LOGICA_H\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- logica.h	(revision 00020629464f8e38a476f70311146598a6144e6c)
++++ logica.h	(date 1588361001831)
+@@ -17,6 +17,7 @@
+ void iniciar_estado(ESTADO *e);
+ void mudar_estado(ESTADO *e);
+ void insere_lista(LISTA *a,ESTADO *e);
++void jorge(ESTADO *e,LISTA l);
+ int calcula_dist(COORDENADA c, ESTADO* e);
+ COORDENADA melhor_coord(ESTADO *e, LISTA l);
+ COORDENADA area_par(ESTADO *e, LISTA *l);
+Index: interface.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\n#include <stdio.h>\n#include <string.h>\n#include \"camadaDeDados.h\"\n#include \"logica.h\"\n#include \"lista.h\"\n#define  TAMANHO 1024\n/**\n * \\brief\n * @param e é o estado\n * @param tab_file nome dado ao ficheiro no qual será gerado\n * Função que gera um arquivo\n */\nvoid savetab(ESTADO *e, char *tabuleiro){\n    FILE *f= fopen(tabuleiro, \"w\");\n    show_tab(f,e);\n    fprintf(f,\"\\n\");\n    aux_movf(e,f);\n    fclose(f);\n}\n/**\n * \\brief\n * @param e é o estado\n * @param tab_file nome dado ao ficheiro que será lido\n * Função que le o arquivo gerado\n */\nvoid lertab(ESTADO *e,char *tabuleiro) {\n        FILE *f= fopen(tabuleiro,\"r\");\n        int jogadas;\n        tabuleiro_inicial(e);\n        iniciar_estado(e);\n        char j1[3],j2[3],col1[2],lin1[2],col2[2],lin2[2],linha[TAMANHO];\n        for (int i = 0; i < 8 && fgets(linha, TAMANHO, f) != NULL;i++);\n        while ((jogadas = (fscanf(f,\"%*s %s %s\\n\",j1,j2)))!= EOF) {\n            sscanf(j1, \"%[a-h]%[1-8]\", col1,lin1);\n            COORDENADA c1 = {*col1 -'a','8' - *lin1,0};\n            c1.letra = *col1 -'a';\n            c1.linha = '8'- *lin1;\n            c1.letrinha = col1[0];\n\n            sscanf(j2, \"%[a-h]%[1-8]\", col2,lin2);\n            COORDENADA c2 = {*col2 -'a','8' - *lin2,0};\n            c2.letra = *col2 -'a';\n            c2.linha = '8'- *lin2;\n            c2.letrinha = col2[0];\n\n            if (jogadas==2){\n                troca_jog(e);\n                movs(e,c1);\n                jogar(e,c1);\n                mudar_estado(e);\n\n                troca_jog(e);\n                movs(e,c2);\n                jogar(e,c2);\n                mudar_estado(e);\n             }\n            else if (jogadas==1){\n                troca_jog(e);\n                movs(e,c1);\n                jogar(e,c1);\n                mudar_estado(e);\n        }\n    }\n    fclose(f);\n    }\n/**\n \\brief Função que mostra a tabuleiro no ecrã.\n */\nvoid mostrar_tabuleiro(ESTADO *e) {\n    int i, j;\n    int c = 8;\n    for (i = 0; i < 8; i++) {\n        for (j = 0; j < 8; j++) {\n          printf (\"%c \",e->tab[i][j]);}\n        printf(\"  %d\\n\", c);\n        c--;}\n    printf(\"\\nA B C D E F G H\\n\");\n}\n\n/**\n\\brief I\\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados\n*/\nint interpretador(ESTADO *e) {\n    char file_name[TAMANHO];\n    char linha[TAMANHO];\n    char col[2], lin[2];\n    int x;\n    LISTA d = criar_lista();\n    iniciar_estado(e);\n\n    while (e->num == 0) {\n        troca_jog(e);\n        if ((possiveis_jogadas(e, &d)) == 0) {\n            parabens(e->jogador_atual);\n            break;\n        }\n        prompt(e);\n        if (fgets(linha, TAMANHO, stdin)) {\n            sscanf(linha, \"%[a-h]%[1-8]\", col, lin);\n            COORDENADA c = {*col - 'a', '8' - *lin, 0};\n            c.letra = *col - 'a';\n            c.linha = '8' - *lin;\n            c.letrinha = col[0];\n            /*Validação de jogadas*/\n            if (strlen(linha) == 3 && sscanf(linha, \"%[a-h]%[1-8]\", col, lin) == 2) {\n                if ((casa_viz(e->ultima_jogada, c) == 1) && (casa_livre(e, c) == 1)) {\n                    movs(e, c);\n                    jogar(e, c);\n                    mudar_estado(e);\n                } else printf(\"Jogada invalida,tente novamente!!\\n\\n\");\n            }\n            /* Caso o jogador digite \"Quit\" o jogo acaba*/\n            if (!(strncmp(linha, \"Quit\", 4))) break;\n            /*Caso o jogador digite \"gr\" irá gravar o tabuleiro e o estado */\n            if (sscanf(linha, \"gr %s\", file_name) == 1) {\n                savetab(e, file_name);\n            }\n            /*Caso o jogador digite \"ler\" irá ler o arquivo gerado anteriormente */\n            if (sscanf(linha, \"ler %s\", file_name) == (1)) {\n                lertab(e, file_name);\n            }//Caso o jogador digite \"movs\" irá dar no ecrã as jogadas feita até o momento\n            if (strcmp(linha, \"movs\") == 10) {\n                aux_mov(e);\n            }\n            //Caso o jogador digite \"pos\" irá gravar o tabuleiro e os movimentos\n            if (sscanf(linha, \"pos %d\", &x) == 1) {\n                posf(e, x);\n            }\n            //Caso o jogador digite \"jog\" irá ativar o bot e haverá uma jogada\n           // printf(\"%s e o scanf deu:%d \\n\\n\", linha, strcmp(linha,\"jog\") );\n            if (strcmp(linha, \"jog\")==10) {\n                //printf(\"entrou\");\n                jog01(e,d);\n            }\n            if (strcmp(linha, \"jog2\")==10) {\n                jog02(e, &d);\n            }\n            freeList(&d);\n            if (e->tab[7][0] == BRANCA) {\n                parabens(1);\n                e->num++;\n            }\n            if (e->tab[0][7] == BRANCA) {\n                parabens(2);\n                e->num++;\n            }\n            e->count_mov++;\n            if (e->num == 0) mostrar_tabuleiro(e);\n        }\n    }\n    return 0;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- interface.c	(revision 00020629464f8e38a476f70311146598a6144e6c)
++++ interface.c	(date 1588361037395)
+@@ -136,6 +136,9 @@
+             if (strcmp(linha, "jog2")==10) {
+                 jog02(e, &d);
+             }
++            if (strcmp(linha,"ale")==10){
++                jorge(e,d);
++            }
+             freeList(&d);
+             if (e->tab[7][0] == BRANCA) {
+                 parabens(1);
+Index: logica.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n#include \"camadaDeDados.h\"\n#include \"logica.h\"\n#include \"lista.h\"\n/**\n\\brief Faz a mudança de estado e realiza a jogada\n * @param e Estado atual do jogo\n * @param c A coordenada\n */\nvoid jogar(ESTADO *e, COORDENADA c) {\n    //Busca colocar a peça branca na coordenada especifica buscando está informação no estado\n    e->tab[c.linha][c.letra]='*';\n    int i = e->ultima_jogada.linha;\n    int j = e->ultima_jogada.letra;\n    e->tab[i][j] = PRETA;\n    e->tab[c.linha][c.letra] = BRANCA;\n    e->ultima_jogada.linha = c.linha;\n    e->ultima_jogada.letra = c.letra;\n}\n/**\n * \\brief Prompt do jogo\n */\nvoid prompt(ESTADO *e){\n    printf(\"#%02d Jogador %d (%d) -> \", e->count_mov, e->jogador_atual, e->num_jogadas);\n}\n/**\n * Cria o tabuleiro no file\n */\nvoid show_tab(FILE *f, ESTADO *e){\n    int i, j;\n    for (i = 0; i < 8; i++) {\n        for (j = 0; j < 8; j++){\n            fprintf(f,\"%c\",e->tab[i][j]);\n        } fprintf(f,\"\\n\");}\n}\n/**\n  \\brief Função auxiliar que compara o maior número de 2 inteiros\n */\nint max (int x, int y)\n{\n    int z;\n    z = (x >= y) ?  x : y;\n    return z;\n}\n/**\n  \\brief Função auxiliar que compara o menor número de 2 inteiros\n */\nint min (int x, int y)\n{\n    int z;\n    z = (x <= y) ? x : y;\n    return z;\n}\n/**\n * Insere na lista ligada as possiveis jogadas\n * @param a\n * @param e\n */\nvoid insere_lista(LISTA *a, ESTADO *e) {\n    int max, i;\n    max = e->qntjogs;\n    for (i = 0; i < max; i++) {\n        insere_cabeca(a, &(e->possiveis_jog[i]));\n    }\n}\n/**\n \\brief Função que conta quantas possíveis jogadas existem no momento\n * @param e Estado que vai nos fornecer: o tabuleiro com o estado de cada casa e a última jogada feita\n */\nint possiveis_jogadas(ESTADO *e, LISTA *d)\n{\n    COORDENADA pcoord;\n    int count = 0, i, j,minlin,minlet;\n    minlin = min((e->ultima_jogada.linha + 1), 7);\n    minlet = min((e->ultima_jogada.letra + 1), 7);\n    i = max((e->ultima_jogada.linha - 1), 0);\n    j = max((e->ultima_jogada.letra - 1), 0);\n    while (i <= minlin)\n    {\n        while( j <= minlet)\n        {\n            if (e->tab[i][j] == VAZIA || e->tab[i][j] == UM || e->tab[i][j]== DOIS) {\n                pcoord.linha = i;\n                pcoord.letra = j;\n                e->possiveis_jog[count] = pcoord;\n\n                count++;\n            }\n            j++;\n        }\n        i++;\n        j = max((e->ultima_jogada.letra - 1), 0);\n    }\n    e->qntjogs = count;\n    insere_lista(d,e);\n    printf(\"\\n\");\n    return count;\n}\n/**\n \\brief Função que garante se duas coordenadas são vizinhas no tabuleiro\n * @param cAntes última coordenada jogada no tabuleiro\n * @param cJog coordenada jogada pelo jogador\n */\nint casa_viz(COORDENADA cAntes, COORDENADA cJog)\n{\n    int x, y;\n\n    x = abs(cAntes.linha - cJog.linha);\n    y = abs(cAntes.letra - cJog.letra);\n    if ((x==1 && (y==1||y==0)) || (y==1 && (x==1||x==0)))\n        return 1;\n    else return 0;\n}\n/**\n \\brief Função que confer se a casa específica está livre para jogar\n * @param e Estado que nos dará o tabuleiro com os estados das suas casas\n * @param c coordenada da casa que queremos conferir o estado\n */\nint casa_livre (ESTADO *e, COORDENADA c)\n{\n    if (e->tab[c.linha][c.letra] != PRETA && e->tab[c.linha][c.letra] != BRANCA)\n        return 1;\n    else return 0;\n}\nvoid parabens(int jogador)\n{\n    printf(\"\\nParabéns Jogador %d!! Você venceu!!\\n\", jogador);\n}\n/**\n * Função salvar_movs, armazena na lista de jogadas o ultimo movimento feito\n * @param e Estado atuaç\n * @param c coordenada imserida\n */\nvoid movs(ESTADO *e, COORDENADA c)\n{\n    if (e->jogador_atual == 1)\n    {\n        e->jogadas[e->num_jogadas-1].jogador1.letrinha = c.letrinha;\n        e->jogadas[e->num_jogadas-1].jogador1.letra = c.letra;\n        e->jogadas[e->num_jogadas-1].jogador1.linha = c.linha;\n    }\n    if (e->jogador_atual == 2)\n    {\n        e->jogadas[e->num_jogadas-1].jogador2.letrinha = c.letrinha;\n        e->jogadas[e->num_jogadas-1].jogador2.letra = c.letra;\n        e->jogadas[e->num_jogadas-1].jogador2.linha =  c.linha;\n    }\n}\n/**\n * Função desenvolvida para ser o prompt do jogo (Estados do jogo)\n * @param e estado atual\n * @param f ficheiro\n */\nvoid aux_mov(ESTADO *e){\n    int movi = 1, jogs = 1, numjog = 1, allmovs;\n    allmovs = e->count_movs;\n    while(movi < allmovs){\n        if (jogs > 2){\n            numjog++;\n            jogs = 1;\n        }\n        if (movi % 2 == 0){\n            printf( \"%c%d\\n\",e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);\n        }\n        else {\n            printf(\"%02d: %c%d \",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);\n        }\n        movi++;\n        jogs++;\n    }\n    putchar('\\n');\n}\n/**\n * Função desenvolvida para ser o prompt do jogo (Estados do jogo), feita para ser gravada no ficheiro\n * @param e\n * @param f\n */\nvoid aux_movf(ESTADO *e,FILE *f){\n    int movi = 1, jogs = 1, numjog = 1,allmovs;\n    allmovs = e->count_movs;\n    while(movi < allmovs){\n        if (jogs > 2){\n            numjog++;\n            jogs = 1;\n        }\n        if (movi % 2 == 0){\n            fprintf(f,\"%c%d\\n\",e->jogadas[(numjog-1)].jogador2.letrinha,8 - e->jogadas[(numjog-1)].jogador2.linha);\n        }\n        else {\n            fprintf(f,\"%02d: %c%d \",numjog,e->jogadas[(numjog-1)].jogador1.letrinha,8 - e->jogadas[(numjog-1)].jogador1.linha);\n        }\n        movi++;\n        jogs++;\n    }\n    putchar('\\n');\n}\n/**\n * Função para o comando pos,no qual retornar a jogada específica no índice declado\n * @param e estado\n * @param x índice\n */\nvoid posf (ESTADO *e, int x) {\n    int i;\n    tabuleiro_inicial(e);\n    iniciar_estado(e);\n    for (i = 1; i <= x; i++) {\n        troca_jog(e);\n        jogar(e, e->jogadas[i - 1].jogador1);\n        mudar_estado(e);\n        troca_jog(e);\n        jogar(e, e->jogadas[i - 1].jogador2);\n        mudar_estado(e);\n    }\n}\n/**\n * Função no qual alternar os jogadores ao decorrer das jogadas efetuadas\n * @param e Estado\n */\nvoid troca_jog(ESTADO *e){\n    e->jogador_atual = ((e->count_movs) % 2 == 0) ? 2 : 1;\n\n    if ((e->count_jog) == 3) {\n        e->num_jogadas++;\n        e->count_jog = 1;\n    }\n}\n/**\n * Função criada apenas para inicir o estado devidamente\n * @param e\n */\nvoid iniciar_estado(ESTADO *e) {\n    e->num = 0;\n    e->count_jog = 1;\n    e->count_mov = 1;\n    e->count_movs = 1;\n    e->num_jogadas = 1;\n}\n/**\n * Função que altera o estado com atualização das jogadas feita\n * @param e\n */\nvoid mudar_estado(ESTADO *e){\n    e->count_jog++;\n    e->count_movs++;\n}\n/**\n * Função para gerar numeros aleatorios\n * @param lower\n * @param upper\n * @param count\n * @return\n */\nint printRandoms (int lower, int upper, int count)\n{\n    int i,num=0;\n    for (i=0; i < count; i++)\n    {\n         num = (rand ()) %(upper - lower + 1) + lower;\n    }\n    return num;\n}\n/**\n * Função criada para jogar em uma posição de forma aleatoria (Bot)\n * @param e Estado atual do jogo\n * @param l lista ligada\n */\nint calcula_dist(COORDENADA c, ESTADO* e){\n    int dist;\n    if (e->jogador_atual == 1){\n        dist = (abs(c.linha - 7)) + c.letra;\n    }\n    else{\n        dist = c.linha + (abs(c.letra - 7));\n    }\n    return dist;\n}\nint verifica_par(ESTADO e, COORDENADA c) {\n    int count = 0, i, j, minlin, minlet;\n    minlin = min((c.linha + 1), 7);\n    minlet = min((c.letra + 1), 7);\n    i = max((c.linha - 1), 0);\n    j = max((c.letra - 1), 0);\n    e.tab[c.linha][c.letra] = BRANCA;\n    while (i <= minlin) {\n        while (j <= minlet) {\n            if (e.tab[i][j] == VAZIA || e.tab[i][j] == UM || e.tab[i][j] == DOIS) {\n                count++;\n            }\n            j++;\n        }\n        i++;\n        j = max((c.letra - 1), 0);\n    }\n    return count;\n}\n\n\nCOORDENADA melhor_coord02(ESTADO e, LISTA l){\n    COORDENADA melhor, coordAtual;\n    melhor.linha = e.ultima_jogada.linha;\n    melhor.letra = e.ultima_jogada.letra;\n    melhor.letrinha = e.ultima_jogada.letrinha;\n    int distatual,area1,area2,bestdist = 15;\n    while (l!=NULL){\n        coordAtual = *(COORDENADA *)l->valor;\n        distatual = calcula_dist(coordAtual,&e);\n        if (distatual <= bestdist){\n            if (distatual == bestdist){\n                area1 = (verifica_par(e,melhor));\n                area2 = (verifica_par(e,coordAtual));\n                if (area2 >= area1){\n                    bestdist = distatual;\n                    melhor.letra = coordAtual.letra;\n                    melhor.linha = coordAtual.linha;\n                    melhor.letrinha = 'a' + ((coordAtual.letra)-1);\n                }\n            }\n            else {\n                bestdist = distatual;\n                melhor.letra = coordAtual.letra;\n                melhor.linha = coordAtual.linha;\n                melhor.letrinha = 'a' + ((coordAtual.letra)-1);\n            }\n        }\n        l = proximo(&l);\n    }\n    return melhor;\n}\n/**\n *\n * @param e\n * @param l\n * @return\n */\nCOORDENADA area_par(ESTADO *e, LISTA *l){\n    LISTA guardaPar = (*l);\n    COORDENADA c,d,posjog[8];\n    int i = 0;\n    while (guardaPar!=NULL) {\n        c = *(COORDENADA *)guardaPar->valor;\n        if ((verifica_par((*e),c)) % 2 == 0) {\n            posjog[i] = c;\n            i++;\n        }\n        guardaPar = proximo(&guardaPar);\n\n    }\n    if (i > 0){\n        freeList(l);\n        i--;\n        while(i >= 0){\n            insere_cabeca(l, &(posjog[i]));\n            i--;\n        }\n    }\n    d = melhor_coord02((*e),(*l));\n    return d;\n}\nvoid jorge(ESTADO *e,LISTA l) {\n    int max = e->qntjogs;\n    char col[2];\n    char lin[2];\n    srand(time(0));\n    int num = printRandoms(0, max, 1);\n    int i;\n    for (i = 1; i < num; i++) {\n        l = l->prox;\n    }\n    int atual = *(int *)l->valor;\n    char coord[5];\n    sprintf(coord, \"%d\", atual);\n    sscanf(coord, \"%c%c\", lin, col);\n    int colint = abs('0' - *col);\n    int linint = abs('0' - *lin)-1;\n    COORDENADA c = {abs('0' - *col), abs('0' - *lin),(0)};\n    c.letra = colint;\n    c.linha = linint;\n    c.letrinha = 'a' + (colint-1);\n    movs(e,c);\n    jogar(e,c);\n    mudar_estado(e);\n}\nCOORDENADA melhor_coord(ESTADO *e, LISTA l){\n    COORDENADA melhor, atual;\n    int bestdist = 15;\n    int distatual;\n    while (l != NULL){\n        atual = *(COORDENADA *)l->valor;\n        distatual = calcula_dist(atual,e);\n        if (distatual < bestdist){\n            bestdist = distatual;\n            melhor.letra = atual.letra;\n            melhor.linha = atual.linha;\n            melhor.letrinha = 'a' + ((atual.letra)-1);\n        }\n        l = l->prox;\n    }\n    return melhor;\n}\n/**\n *\n * @param e\n * @param l\n */\nvoid jog01(ESTADO *e, LISTA l){\n    COORDENADA c = melhor_coord(e,l);\n    movs(e,c);\n    jogar(e,c);\n    mudar_estado(e);\n}\n/**\n *\n * @param e\n * @param l\n */\nvoid jog02(ESTADO *e, LISTA *l){\n    COORDENADA c = area_par(e,l);\n    movs(e,c);\n    jogar(e,c);\n    mudar_estado(e);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- logica.c	(revision 00020629464f8e38a476f70311146598a6144e6c)
++++ logica.c	(date 1588361217792)
+@@ -361,26 +361,16 @@
+ }
+ void jorge(ESTADO *e,LISTA l) {
+     int max = e->qntjogs;
+-    char col[2];
+-    char lin[2];
++    char col[2],lin[2];
+     srand(time(0));
+     int num = printRandoms(0, max, 1);
+     int i;
+     for (i = 1; i < num; i++) {
+         l = l->prox;
+     }
+-    int atual = *(int *)l->valor;
+-    char coord[5];
+-    sprintf(coord, "%d", atual);
+-    sscanf(coord, "%c%c", lin, col);
+-    int colint = abs('0' - *col);
+-    int linint = abs('0' - *lin)-1;
+-    COORDENADA c = {abs('0' - *col), abs('0' - *lin),(0)};
+-    c.letra = colint;
+-    c.linha = linint;
+-    c.letrinha = 'a' + (colint-1);
+-    movs(e,c);
+-    jogar(e,c);
++    COORDENADA atual = *(COORDENADA *)l->valor;
++    movs(e,atual);
++    jogar(e,atual);
+     mudar_estado(e);
+ }
+ COORDENADA melhor_coord(ESTADO *e, LISTA l){
+Index: cmake-build-debug/CMakeFiles/Li2.dir/C.includecache
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#IncludeRegexLine: ^[ \t]*[#%][ \t]*(include|import)[ \t]*[<\"]([^\">]+)([\">])\n\n#IncludeRegexScan: ^.*$\n\n#IncludeRegexComplain: ^$\n\n#IncludeRegexTransform: \n\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/interface.c\nstdio.h\n-\nstring.h\n-\ncamadaDeDados.h\n/home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h\nlogica.h\n/home/pedro/Documents/Uminho/Li2/Li2/logica.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n/home/pedro/Documents/Uminho/Li2/Li2/logica.h\nlista.h\n/home/pedro/Documents/Uminho/Li2/Li2/lista.h\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- cmake-build-debug/CMakeFiles/Li2.dir/C.includecache	(revision 00020629464f8e38a476f70311146598a6144e6c)
++++ cmake-build-debug/CMakeFiles/Li2.dir/C.includecache	(date 1588361218276)
+@@ -10,19 +10,23 @@
+ lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+ 
+-/home/pedro/Documents/Uminho/Li2/Li2/interface.c
++/home/pedro/Documents/Uminho/Li2/Li2/lista.h
++
++/home/pedro/Documents/Uminho/Li2/Li2/logica.c
+ stdio.h
+ -
++stdlib.h
++-
+ string.h
+ -
++time.h
++-
+ camadaDeDados.h
+ /home/pedro/Documents/Uminho/Li2/Li2/camadaDeDados.h
+ logica.h
+ /home/pedro/Documents/Uminho/Li2/Li2/logica.h
+ lista.h
+ /home/pedro/Documents/Uminho/Li2/Li2/lista.h
+-
+-/home/pedro/Documents/Uminho/Li2/Li2/lista.h
+ 
+ /home/pedro/Documents/Uminho/Li2/Li2/logica.h
+ lista.h

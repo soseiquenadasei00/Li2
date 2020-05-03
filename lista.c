@@ -12,9 +12,8 @@ LISTA criar_lista(){
 }
 /**
  * Insere na cabeça da lista o valor
- * @param L lista ligada
- * @param valor void
- * @return
+ * @param l Lista ligada
+ * @param valor pode receber qualquer valor
  */
 void insere_cabeca(LISTA *l, void *valor) {
     LISTA d = malloc(sizeof(struct lista));
@@ -24,8 +23,8 @@ void insere_cabeca(LISTA *l, void *valor) {
 }
 /**
  * Da o proximo valor da lista
- * @param L
- * @return
+ * @param l Lista ligada
+ * @return retorna o proximo da lista
  */
 LISTA proximo(LISTA *l){
     LISTA r = (*l) -> prox;
@@ -33,7 +32,7 @@ LISTA proximo(LISTA *l){
 }
 /**
  * Esta função libera os elementos da lista
- * @param l lista ligada
+ * @param l Lista ligada
  */
 void freeList(LISTA *l)  {
     LISTA current = (*l);
@@ -51,7 +50,7 @@ void freeList(LISTA *l)  {
  * @param l lista ligada
  */
 void remove_cabeca(LISTA *l){
-    LISTA current = (*l);
+    LISTA current;
     current = (*l) -> prox;
     free(*l);
     (*l) = current;

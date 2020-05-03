@@ -1,15 +1,14 @@
-
 #include <stdio.h>
 #include <string.h>
 #include "camadaDeDados.h"
 #include "logica.h"
 #include "lista.h"
 #define  TAMANHO 1024
-/** Está função salva o tabuleiro em um ficheiro
+/**
  * \brief
- * @param e é o estado
- * @param tab_file nome dado ao ficheiro no qual será gerado
- * Função que gera um arquivo
+ *  Está função salva o tabuleiro em um ficheiro
+ * @param e Estado atual
+ * @param tabuleiro
  */
 void savetab(ESTADO *e, char *tabuleiro){
     FILE *f= fopen(tabuleiro, "w");
@@ -18,11 +17,11 @@ void savetab(ESTADO *e, char *tabuleiro){
     aux_movf(e,f);
     fclose(f);
 }
-/** Esta função ler o ficheiro salvo
+/**
  * \brief
- * @param e é o estado
- * @param tab_file nome dado ao ficheiro que será lido
- * Função que le o arquivo gerado
+ * Esta função ler o ficheiro salvo
+ * @param e Estado Atual
+ * @param tabuleiro
  */
 void lertab(ESTADO *e,char *tabuleiro) {
     FILE *f= fopen(tabuleiro,"r");
@@ -63,7 +62,7 @@ void lertab(ESTADO *e,char *tabuleiro) {
     }
 /**
  * \brief
- Função que mostra a tabuleiro no ecrã.
+ * Função que mostra a tabuleiro no ecrã.
  * @param e Estado atual
  */
 void mostrar_tabuleiro(ESTADO *e) {
@@ -78,9 +77,10 @@ void mostrar_tabuleiro(ESTADO *e) {
 }
 
 /**
-\brief
- I\O do jogo, onde conforme a jogadas acontecem, é atualizado o estado dos dados
-*/
+ * Interpretador do jogo, local onde aplicamos as funções e comandos par ao jogo
+ * @param e Estado do jogo
+ * @return 0
+ */
 int interpretador(ESTADO *e) {
     char file_name[TAMANHO],linha[TAMANHO],col[2],lin[2];
     int x;

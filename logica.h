@@ -21,6 +21,5 @@ int possiveis_jogadas(ESTADO *e,LISTA *d);
 int calcula_dist(COORDENADA c, ESTADO* e);
 int verifica_jog(ESTADO e, COORDENADA c);
 COORDENADA area_par(ESTADO *e, LISTA *l);
-COORDENADA melhor_coord01(ESTADO *e, LISTA l);
 COORDENADA melhor_coord02(ESTADO e, LISTA *l);
 #endif //LI2_LOGICA_H

@@ -7,12 +7,10 @@
  */
 typedef enum {UM='1',DOIS='2',VAZIA='.',PRETA='#',BRANCA='*'} CASA;
 /**
- * \brief
  * COORDENADA há dois inteiros sendo eles para identificar as colunas=letras (A-H),linhas de (1-8) e o letrinh é um char para utilizamos no movs e prompt .
- *
  */
 typedef struct {
-    int letra;
+    int letra; // Coordenada das colunas
     int linha;
     char letrinha;
 } COORDENADA;
